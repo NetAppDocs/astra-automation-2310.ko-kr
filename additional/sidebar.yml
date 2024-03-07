@@ -1,0 +1,12 @@
+---
+section: additional
+title: 추가 고려 사항
+entries:
+- title: RBAC 보안
+  url: "/additional/rbac.html"
+- title: 컬렉션 작업
+  url: "/additional/work_with_collections.html"
+- title: 진단
+  url: "/additional/diagnostics_support.html"
+- title: API 토큰을 취소합니다
+  url: "/additional/revoke_token.html"

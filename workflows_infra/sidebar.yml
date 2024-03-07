@@ -1,0 +1,48 @@
+---
+section: workflows_infra
+title: 인프라 워크플로우
+entries:
+- title: 시작하기 전에
+  url: "/workflows_infra/workflows_infra_before.html"
+- title: ID 및 액세스
+  entries:
+  - title: 사용자를 나열합니다
+    url: "/workflows_infra/wf_list_users.html"
+  - title: 사용자를 생성합니다
+    url: "/workflows_infra/wf_create_user.html"
+- title: LDAP 구성
+  entries:
+  - title: LDAP 구성을 준비합니다
+    url: "/workflows_infra/ldap_prepare.html"
+  - title: LDAP 서버를 구성합니다
+    url: "/workflows_infra/wf_ldap_configure_server.html"
+  - title: Astra에 LDAP 항목을 추가합니다
+    url: "/workflows_infra/wf_ldap_add_entries.html"
+  - title: LDAP를 비활성화하고 재설정합니다
+    url: "/workflows_infra/wf_ldap_disable_reset.html"
+- title: 클러스터
+  entries:
+  - title: 클러스터 나열
+    url: "/workflows_infra/wf_list_clusters.html"
+  - title: 클러스터를 추가합니다
+    url: "/workflows_infra/wf_add_cluster.html"
+  - title: 관리되는 클러스터를 나열합니다
+    url: "/workflows_infra/wf_list_man_clusters.html"
+  - title: 클러스터 관리
+    url: "/workflows_infra/wf_man_cluster.html"
+- title: 클라우드
+  entries:
+  - title: 구름 목록을 표시합니다
+    url: "/workflows_infra/wf_list_clouds.html"
+- title: 버킷
+  entries:
+  - title: 버킷 나열
+    url: "/workflows_infra/wf_list_buckets.html"
+- title: 스토리지
+  entries:
+  - title: 스토리지 클래스를 나열합니다
+    url: "/workflows_infra/wf_list_storage_classes.html"
+  - title: 저장소 백엔드를 나열합니다
+    url: "/workflows_infra/wf_list_storage_backends.html"
+  - title: 동적 ANF 풀을 설정합니다
+    url: "/workflows_infra/wf_enable_anf_dyn_pools.html"

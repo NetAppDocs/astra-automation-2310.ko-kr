@@ -1,0 +1,1253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blocks>
+  <block id="7bf69d8a687703afd9b5af54243f143d" category="summary">백업에서 새 애플리케이션을 클론 복제하여 생성할 수 있습니다.</block>
+  <block id="879ad4bddb82a977b90643c7b33a4e49" category="doc">백업에서 앱을 복제합니다</block>
+  <block id="135b308ed83c53f1516b7c754566d1c4" category="section-title">시작하기 전에</block>
+  <block id="f9af5d61179519ce2b27f22348ea2c5b" category="paragraph">이 워크플로에 대해 다음 사항을 참고하십시오.</block>
+  <block id="6a3f7086385ab02e213a4864a905e1e5" category="list-text">앱 백업이 사용됩니다</block>
+  <block id="8b442400420c3b7121c9e031882bcf48" category="list-text">클론 작업은 동일한 클러스터 내에서 수행됩니다</block>
+  <block id="e1d39bdee6b9663d35dc3845e9dd04e5" category="admonition">앱을 다른 클러스터에 클론 복제하려면 을 업데이트해야 합니다<block ref="792ca1969ece6362fb045f326e3976de" prefix=" " category="inline-code"></block> 해당 환경에 맞게 JSON 입력의 매개 변수입니다.</block>
+  <block id="1db96426d6f4f867edf3cc0ae9e35947" category="section-title">복제할 앱을 선택합니다</block>
+  <block id="7d45849f0acada4f0f40e1349c847305" category="inline-link-macro">앱을 나열합니다</block>
+  <block id="b46f6842bf882cb490d122382f7a98d5" category="paragraph">워크플로우를 수행합니다 <block ref="d96e127c1e0eb8087e951700668e3465" category="inline-link-macro-rx"></block> 을 클릭하고 복제할 애플리케이션을 선택합니다. 앱을 복제하는 데 사용되는 나머지 통화에는 몇 가지 리소스 값이 필요합니다.</block>
+  <block id="a873d81cfc688902e71d08400f93684a" category="section-title">사용할 백업을 선택합니다</block>
+  <block id="8aa0f7001085d2ffdad3efbc0e9de159" category="inline-link-macro">백업을 나열합니다</block>
+  <block id="d40d66b0e6d970d00db3de547260af68" category="paragraph">워크플로우를 수행합니다 <block ref="e6b45b76c52a9dd27daf9fa3d915439e" category="inline-link-macro-rx"></block> 을 클릭하고 사용할 백업을 선택합니다.</block>
+  <block id="a2e167678135121b44df9d3e6c7a8d2d" category="section-title">앱을 복제합니다</block>
+  <block id="0ded27ebd95eb2dcf0ec2ac7f61b926c" category="paragraph">다음과 같은 REST API 호출을 수행한다.</block>
+  <block id="3ded167f4ad4afb85c6ace5862e27ba0" category="cell">HTTP 메소드</block>
+  <block id="ac70412e939d72a9234cdebb1af5867b" category="cell">경로</block>
+  <block id="a02439ec229d8be0e74b0c1602392310" category="cell">게시</block>
+  <block id="5c34a50da5f12aa3bc1f055d0736ae80" category="cell">/accounts/{account_id}/k8s/v2/qpps</block>
+  <block id="c24b0224d3b54e6b4e908019f2447f30" category="section-title">추가 입력 매개변수</block>
+  <block id="8ad1007adda12ebaacc83f24d677e5e6" category="paragraph">모든 REST API 호출에서 일반적으로 사용되는 매개 변수 외에도 이 단계의 curl 예제에도 다음 매개 변수가 사용됩니다.</block>
+  <block id="83f499a540b1323009c200d6f8cc9396" category="cell">매개 변수</block>
+  <block id="a1fa27779242b4902f7ae3bdd5c6d508" category="cell">유형</block>
+  <block id="b651efdb98a5d6bd2b3935d0c3f4a5e2" category="cell">필수 요소입니다</block>
+  <block id="b5a7adde1af5c87d7fd797b6245c2a39" category="cell">설명</block>
+  <block id="0ecd11c1d7a287401d148a23bbd7a2f8" category="cell">JSON을 참조하십시오</block>
+  <block id="ac101b32dda4448cf13a93fe283dddd8" category="cell">바디</block>
+  <block id="93cba07454f06a4a960172bbd6e2a435" category="cell">예</block>
+  <block id="5a77a315cc422da89819194837af885d" category="cell">복제된 앱에 대한 매개 변수를 제공합니다. 아래 예를 참조하십시오.</block>
+  <block id="0577bbabd0439eea401a8ec18491d1a6" category="section-title">JSON 입력 예</block>
+  <block id="b8622ecf971d21371a3ba9d07a233300" category="section-title">curl 예: 백업에서 앱을 복제합니다</block>
+  <block id="0388f8ab481ed6c7aef94777258ef378" category="summary">단일 응용 프로그램을 설명하는 모든 리소스 변수를 검색할 수 있습니다.</block>
+  <block id="61b98994206e2a99e823ca136bdf24a1" category="doc">앱을 다운로드하세요</block>
+  <block id="c2e04773cf7cf8f91a4a9a351b03c32f" category="paragraph">검색할 앱의 ID가 있어야 합니다. 필요한 경우 워크플로를 사용할 수 있습니다 <block ref="d96e127c1e0eb8087e951700668e3465" category="inline-link-macro-rx"></block> 를 눌러 응용 프로그램을 찾습니다.</block>
+  <block id="d822b85cd89777748e1bd6b0a8fd0a46" category="section-title">1.응용 프로그램을 가져옵니다</block>
+  <block id="7528035a93ee69cedb1dbddb2f0bfcc8" category="cell">가져오기</block>
+  <block id="f6ae66a627b9c3047f8f88beffc23cd7" category="cell">/accounts/{account_id}/k8s/v2/apps/{app_id}</block>
+  <block id="c9a1712ca7c64da73ff9ce7bc4f48bea" category="cell">앱 ID입니다</block>
+  <block id="6bb9953a8e27258bd16ce65f51b81000" category="cell">검색할 애플리케이션의 ID 값입니다.</block>
+  <block id="036e9ec4ee01123ffae8afd3dab3ff9f" category="section-title">curl 예: 응용 프로그램에 대한 모든 데이터를 반환합니다</block>
+  <block id="5678454487dc87ea3b9a2601e9ecd8e3" category="summary">애플리케이션과 연결된 스냅샷을 삭제할 수 있습니다.</block>
+  <block id="efb44cfe1d5b8d9954ea045385675c66" category="doc">스냅샷을 삭제합니다</block>
+  <block id="a08d0039b6defc60dd0db0aebca289d8" category="paragraph">다음 항목이 있어야 합니다.</block>
+  <block id="057648776a4afb375be6db76fd760748" category="list-text">스냅샷을 소유하는 앱의 ID입니다. 필요한 경우 워크플로를 사용할 수 있습니다 <block ref="d96e127c1e0eb8087e951700668e3465" category="inline-link-macro-rx"></block> 를 눌러 응용 프로그램을 찾습니다.</block>
+  <block id="020ac174aad4268a50eed3705447b327" category="inline-link-macro">스냅샷을 나열합니다</block>
+  <block id="8228d21d4972f0a8ed1a2129680b70b2" category="list-text">삭제할 스냅샷의 ID입니다. 필요한 경우 워크플로를 사용할 수 있습니다 <block ref="ec07e92ba8186e37075c19b8ee786603" category="inline-link-macro-rx"></block> 스냅샷을 찾습니다.</block>
+  <block id="860aa2c08f5183e7dd18366105498ef2" category="section-title">스냅샷을 삭제합니다</block>
+  <block id="32f68a60cef40faedbc6af20298c1a1e" category="cell">삭제</block>
+  <block id="c25f938f3e5ab183a0718fbc32b60cce" category="cell">/accounts/{account_id}/k8s/v1/apps/{app_id}/appSnaps/{appSnap_id}</block>
+  <block id="151b82a6507e2eebe2f879130b46a783" category="cell">스냅샷을 소유하는 관리되는 애플리케이션을 식별합니다.</block>
+  <block id="79e04f95eeac07344faa5b56bab83760" category="cell">스냅샷 ID입니다</block>
+  <block id="49a137437654fc49a3099dbd628c1484" category="cell">삭제할 스냅샷을 식별합니다.</block>
+  <block id="c60d917b462a557b73224bd3194b4cf6" category="section-title">curl 예: 앱에 대한 스냅샷 하나를 삭제합니다</block>
+  <block id="ecf41bcdc089c3b619f5975173077430" category="summary">특정 애플리케이션에 대해 생성된 백업을 나열할 수 있습니다.</block>
+  <block id="dbd2251516ab8d7e1775469c5c1508a3" category="paragraph">백업을 나열할 앱의 ID가 있어야 합니다. 필요한 경우 워크플로를 사용할 수 있습니다 <block ref="d96e127c1e0eb8087e951700668e3465" category="inline-link-macro-rx"></block> 를 눌러 응용 프로그램을 찾습니다.</block>
+  <block id="4cd1e59d794feeee43e7cd32844ec8ec" category="section-title">백업을 나열합니다</block>
+  <block id="96d15410fa829d04096983645e60475b" category="cell">/accounts/{account_id}/k8s/v1/apps/{app_id}/appBackups</block>
+  <block id="0254dd3f84d764f594f8490729e7c196" category="cell">나열된 백업을 소유하는 관리되는 애플리케이션을 식별합니다.</block>
+  <block id="53c07d76a2f4ca060d727cd96fd24eeb" category="section-title">curl 예: 앱의 모든 백업을 반환합니다</block>
+  <block id="bff6b273561ec6570215c14bdba13a26" category="section-title">JSON 출력 예</block>
+  <block id="82d9e1423b1fe50e0e9afcb47255d25a" category="summary">현재 Astra에서 관리하는 애플리케이션을 나열할 수 있습니다. 특정 앱의 스냅샷 또는 백업을 찾는 과정에서 이 작업을 수행할 수 있습니다.</block>
+  <block id="48db3210f5486202c6926aa7551be0bd" category="section-title">응용 프로그램을 나열합니다</block>
+  <block id="567a9af273a25b92860b783e7f5a7524" category="cell">/account/{account_id}/k8s/v2/apps</block>
+  <block id="d436eb0fd9de10b54a828ce6435f7e81" category="cell">포함</block>
+  <block id="66c1b4c7f3dc385b68a9fa903ccd016d" category="cell">쿼리</block>
+  <block id="bafd7322c6e97d25b6299b5d6fe8920b" category="cell">아니요</block>
+  <block id="17539f6f1332e8e1eec67098e0601a06" category="cell">필요에 따라 응답에서 반환할 값을 선택합니다.</block>
+  <block id="6ca58aed53ac62d5749597600edbbdff" category="section-title">curl 예: 모든 앱에 대한 모든 데이터를 반환합니다</block>
+  <block id="68c53a357a1ff35f5aa8ba654aab4362" category="section-title">curl 예: 모든 앱의 이름, ID 및 상태를 반환합니다</block>
+  <block id="bfdba4e9998c294b1a4016914698c099" category="summary">백업에서 새 앱을 만들어 애플리케이션을 복원할 수 있습니다.</block>
+  <block id="dc299aaf3e84eb3627f50d2d2484cf17" category="doc">백업에서 앱을 복원합니다</block>
+  <block id="14e236ddabe391b8a0496211807ab78b" category="section-title">복원할 앱을 선택합니다</block>
+  <block id="7a217d2f25d9076086e8f01a3a0e198d" category="paragraph">워크플로우를 수행합니다 <block ref="d96e127c1e0eb8087e951700668e3465" category="inline-link-macro-rx"></block> 을 클릭하고 복제할 애플리케이션을 선택합니다. 앱을 복원하는 데 사용되는 나머지 통화에는 몇 가지 리소스 값이 필요합니다.</block>
+  <block id="dac907b900763815cd0dab3692a0ccb9" category="section-title">앱을 복원합니다</block>
+  <block id="08d7f360c94a906d3639173599184943" category="paragraph">다음과 같은 REST API 호출을 수행한다. 백업(아래 그림 참조) 또는 스냅샷의 ID를 제공해야 합니다.</block>
+  <block id="3e75383a5992a6d15fb81e872e46e256" category="cell">를 누릅니다</block>
+  <block id="a477f086784d869d73c5ae084b145ca8" category="section-title">CURL 예: 백업에서 앱을 복원하십시오</block>
+  <block id="3559bd2aaec7a375c246be9bad63a176" category="summary">특정 애플리케이션에 대한 백업을 생성한 다음 백업을 사용하여 앱을 복원 또는 클론 복제할 수 있습니다.</block>
+  <block id="80681c9412a27f13b376ee7ffc18f647" category="doc">앱에 대한 백업을 생성합니다</block>
+  <block id="e02fd4c0a67641762561c661c332b72d" category="paragraph">백업할 앱의 ID가 있어야 합니다. 필요한 경우 워크플로를 사용할 수 있습니다 <block ref="d96e127c1e0eb8087e951700668e3465" category="inline-link-macro-rx"></block> 를 눌러 응용 프로그램을 찾습니다.</block>
+  <block id="15d4d7ada9bf77d46154e409388ea743" category="section-title">백업을 생성합니다</block>
+  <block id="8eb729367d3278cfd6c5aa5310d1f61c" category="cell">백업을 생성할 애플리케이션을 식별합니다.</block>
+  <block id="6f3183b7efdec0553f8a26ad8a42bd12" category="cell">백업에 대한 매개 변수를 제공합니다. 아래 예를 참조하십시오.</block>
+  <block id="eaa80d521faeae22624528a6ab4291dc" category="section-title">curl 예: 앱의 백업을 만듭니다</block>
+  <block id="a9f7d2aed593551dc011220c90a52be3" category="summary">특정 네임스페이스에서 이미 Astra에 알려진 응용 프로그램을 기반으로 관리되는 응용 프로그램을 만들 수 있습니다. 애플리케이션이 Astra에 관리 또는 정의되면 백업 및 스냅샷을 생성하여 보호할 수 있습니다.</block>
+  <block id="44d23b5c3f8571e7bb4294d0b82f7497" category="doc">앱을 관리합니다</block>
+  <block id="d801ba89b540c5da0e4f732a81e855fd" category="section-title">네임스페이스를 선택합니다</block>
+  <block id="ef1d4c0913b02ff6423ee4d1161fea0b" category="inline-link-macro">네임스페이스를 나열합니다</block>
+  <block id="0a94b02b2f35acb72af0ca2e31006abb" category="paragraph">워크플로우를 수행합니다 <block ref="d14574597a65756c248d691b26627131" category="inline-link-macro-rx"></block> 이름 공간을 선택합니다.</block>
+  <block id="cb1d8fe3c0fa41d5a40e80cca7f91ff2" category="section-title">클러스터를 선택합니다</block>
+  <block id="1a26d4a9628f05c630331939becee5ab" category="inline-link-macro">클러스터 나열</block>
+  <block id="4c52978a3e6a86d17e5ea3080d73c1d4" category="paragraph">워크플로우를 수행합니다 <block ref="23d58ac86c4531c319d79804ab05ca2c" category="inline-link-macro-rx"></block> 클러스터를 선택합니다.</block>
+  <block id="0c686bb338de3ff0d9a5c7aff0164f66" category="section-title">애플리케이션을 관리합니다</block>
+  <block id="3c7008ad6fd78ff999655de722126630" category="paragraph">다음 REST API 호출을 수행하여 애플리케이션을 관리합니다.</block>
+  <block id="2f5ce90d175d947756af57ecef4d8e84" category="cell">/accounts/{account_id}/k8s/v2/apps</block>
+  <block id="f211caf53405c1c7a730894c76845b78" category="cell">관리할 응용 프로그램을 식별하는 데 필요한 매개 변수를 제공합니다. 아래 예를 참조하십시오.</block>
+  <block id="6a476923d36b27fb8d2ff2da1e18c322" category="section-title">CURL 예: 앱 관리</block>
+  <block id="c9ed41c2c3fbdd3ab2809e8a19fa57ee" category="summary">사용 가능한 네임스페이스를 나열할 수 있습니다.</block>
+  <block id="2a983bbf122e057a73bf1870cf2ea2db" category="section-title">네임스페이스를 나열합니다</block>
+  <block id="c42968dfccb26ee2ef5912aaf9ee50ed" category="paragraph">다음 REST API 호출을 수행하여 네임스페이스를 나열합니다.</block>
+  <block id="4f68859db9edc2924f9e6968c7236f3c" category="cell">/accounts/{account_id}/topology/v1/namespaces</block>
+  <block id="55b85a82f8838ea89842d9ebe5cbe0d6" category="section-title">curl 예제: 모든 네임스페이스에 대한 모든 데이터를 반환합니다</block>
+  <block id="f06023f42f86a62fda5cde9e1ca56143" category="section-title">curl 예: 모든 네임스페이스에 대한 이름, 상태 및 클러스터 ID를 반환합니다</block>
+  <block id="596763b84eac1a557d6c2b19a508c915" category="summary">응용 프로그램과 연결된 백업을 삭제할 수 있습니다.</block>
+  <block id="cb2cecbd9776fc0c17c7929541fe9404" category="doc">백업을 삭제합니다</block>
+  <block id="9a7affff9968bb03650e50fa108c3fa7" category="list-text">백업을 소유하는 앱의 ID입니다. 필요한 경우 워크플로를 사용할 수 있습니다 <block ref="d96e127c1e0eb8087e951700668e3465" category="inline-link-macro-rx"></block> 를 눌러 응용 프로그램을 찾습니다.</block>
+  <block id="9332cf683c594f797fdb3d0a19819c01" category="list-text">삭제할 백업의 ID입니다. 필요한 경우 워크플로를 사용할 수 있습니다 <block ref="e6b45b76c52a9dd27daf9fa3d915439e" category="inline-link-macro-rx"></block> 스냅샷을 찾습니다.</block>
+  <block id="9764b72f7f4c0e5ee3e7e8350c8ccd00" category="section-title">백업을 삭제합니다</block>
+  <block id="e6c08d334ddcc8f5824e2eb3371f9b4f" category="admonition">아래 설명된 대로 선택적 요청 헤더를 사용하여 실패한 백업을 강제로 삭제할 수 있습니다.</block>
+  <block id="907cc0ef4298a38b7fa096493c7684a0" category="cell">/accounts/{account_id}/k8s/v1/apps/{app_id}/appBackups/{appBackup_id}</block>
+  <block id="bd5f8c5e1797c9b7450b0fcd4de20d28" category="cell">백업을 소유하는 관리되는 애플리케이션을 식별합니다.</block>
+  <block id="deed7df33f535761651277671dff8ecd" category="cell">백업 ID입니다</block>
+  <block id="31bed42d29869473ab52c27108626330" category="cell">삭제할 백업을 식별합니다.</block>
+  <block id="24d522ed56286396130064a0fbfa76f1" category="cell">강제 삭제</block>
+  <block id="bf50d5e661106d0abe925af3c2e6f7e7" category="cell">머리글</block>
+  <block id="7fbc2bc01923d084eec8be7efd48837b" category="cell">실패한 백업을 강제로 삭제하는 데 사용됩니다.</block>
+  <block id="97b9689d8a4aef28c756533c3e3bca1d" category="section-title">curl 예: 앱에 대한 단일 백업을 삭제합니다</block>
+  <block id="58f00e9fb9c0fb6247e6c188b96d901b" category="section-title">curl 예: force 옵션을 사용하여 앱에 대한 단일 백업을 삭제합니다</block>
+  <block id="29fd28138191fbfa1b58ba0623d40105" category="summary">특정 애플리케이션에 대한 스냅샷을 생성할 수 있습니다.</block>
+  <block id="be48e6237dab1df212834256a63ceb44" category="doc">앱에 대한 스냅샷을 생성합니다</block>
+  <block id="e32d1c8a20aafa5c39c1d3b2c3875f36" category="paragraph">스냅샷을 생성할 앱의 ID가 있어야 합니다. 필요한 경우 워크플로를 사용할 수 있습니다 <block ref="d96e127c1e0eb8087e951700668e3465" category="inline-link-macro-rx"></block> 를 눌러 응용 프로그램을 찾습니다.</block>
+  <block id="18c7420f03313eb33044afb6b943cb43" category="section-title">스냅샷을 생성합니다</block>
+  <block id="250f359ba7b762da3435baba160a6f1b" category="cell">/accounts/{account_id}/k8s/v1/apps/{app_id}/appSnaps</block>
+  <block id="ca88d296d98d8a63f103fe3b0b63d819" category="cell">스냅샷이 생성될 관리되는 애플리케이션을 식별합니다.</block>
+  <block id="97edc5e90d2062e191a3eae330d2afa0" category="cell">스냅샷에 대한 매개 변수를 제공합니다. 아래 예를 참조하십시오.</block>
+  <block id="c681a34970e8e1b61eddc5718f0627e9" category="section-title">curl 예: 앱에 대한 스냅샷을 생성합니다</block>
+  <block id="ada65121a72989ba6a7ceafb787c2971" category="summary">기존 앱을 복제하여 새 애플리케이션을 만들 수 있습니다.</block>
+  <block id="9d29351a61669dd1dfeee1d7e8b13578" category="doc">앱 클론 생성</block>
+  <block id="c16473b0d0e0a369510a4772f6a13523" category="list-text">앱 백업 또는 스냅샷이 사용되지 않습니다</block>
+  <block id="c92ab9403e09db69311aeb9f72e2e480" category="list-text">새 앱은 다른 네임스페이스에 배치됩니다</block>
+  <block id="91e9ad87c32b1417c98a1c8a57d14d21" category="section-title">앱을 복제합니다</block>
+  <block id="af2926b139e31d88056f28937a9c49b6" category="paragraph">다음 REST API 호출을 수행하여 앱을 복제합니다.</block>
+  <block id="812ae8a5c2b12f97ec673b1ed61bab86" category="section-title">컬링 예: 앱 복제</block>
+  <block id="2b194b9170143eb845c618e13f34e5fb" category="summary">더 이상 필요하지 않은 경우 관리되는 앱을 제거할 수 있습니다. 관리되는 응용 프로그램을 제거하면 연결된 스케줄도 삭제됩니다.</block>
+  <block id="f33f60a3b5c95e8659ec5a992f0f055c" category="doc">앱 관리를 취소합니다</block>
+  <block id="a32aff1568b14bb39f1c15ef5e32eb54" category="paragraph">관리를 취소할 앱의 ID가 있어야 합니다. 필요한 경우 워크플로를 사용할 수 있습니다 <block ref="d96e127c1e0eb8087e951700668e3465" category="inline-link-macro-rx"></block> 를 눌러 응용 프로그램을 찾습니다.</block>
+  <block id="1fa9ca676a71f70d29ff65963febbf34" category="paragraph">애플리케이션의 백업 및 스냅샷은 삭제되어도 자동으로 제거되지 않습니다. 더 이상 백업 및 스냅샷이 필요하지 않은 경우, 응용 프로그램을 제거하기 전에 삭제해야 합니다.</block>
+  <block id="ba058813d4014443679bdc5bad08e6da" category="section-title">1.앱을 비관리했습니다</block>
+  <block id="cc627e860ccc11393d4a5fb9a37cf9a7" category="paragraph">다음 REST API 호출을 수행하여 앱을 제거합니다.</block>
+  <block id="58e5b159105a6ed936549bb5a1695ea7" category="cell">제거할 응용 프로그램을 식별합니다.</block>
+  <block id="0be694be5856c81608913372d1359b00" category="section-title">curl 예: 관리되는 앱을 제거합니다</block>
+  <block id="36698dfb0401a82ae4a38d7a89d2f6ac" category="summary">하나 이상의 일정을 기반으로 데이터 보호 정책을 생성할 수 있습니다.</block>
+  <block id="37a344179b5428c5bfd29a3e5ebc4386" category="doc">데이터 보호 정책을 생성합니다</block>
+  <block id="d60248c3a037c50b4fab1b40e42d382b" category="section-title">앱을 선택합니다</block>
+  <block id="3617b7e17906ff769522250249891768" category="paragraph">워크플로우를 수행합니다 <block ref="c7a76b5950dd1b7839ca89fdcde3242a" category="inline-link-macro-rx"></block> 원하는 애플리케이션을 선택합니다.</block>
+  <block id="6e1fa1e618821080db74d32c83305ac0" category="section-title">보호 기능을 생성합니다</block>
+  <block id="984ccae8e91a0f8522083819554ac899" category="paragraph">다음 REST API 호출을 수행하여 특정 앱에 대한 보호 정책을 생성합니다.</block>
+  <block id="84fe78ce214ed629070f9fc2c47da727" category="cell">/accounts/{account_id}/k8s/v1/apps/{app_id}/schedules</block>
+  <block id="e0da47631d6f2648f3a36bde7e269c3b" category="section-title">컬의 예</block>
+  <block id="28e5da4816b7e4821438045e6ed86d2b" category="summary">특정 Astra 계정에 대한 알림을 나열할 수 있습니다. 시스템 작업을 모니터링하거나 문제를 디버깅하는 과정에서 이 작업을 수행할 수 있습니다.</block>
+  <block id="a6fe5f717c07a456c15f8f2af8c1c7b7" category="doc">알림을 나열합니다</block>
+  <block id="9d9ee088d3dd8f7e21041745a8cf259f" category="section-title">알림 목록을 표시합니다</block>
+  <block id="2d548fd4304c3df5c7e5211c43482750" category="cell">/accounts/{account_id}/core/v1/notifications</block>
+  <block id="b2c97ae425dd751b0e48a3acae79cf4a" category="cell">필터</block>
+  <block id="0aaaa617845874504df6c76a750325da" category="cell">필요에 따라 응답에서 반환하려는 알림을 필터링합니다.</block>
+  <block id="f921030431759c9c846d8a3fd7d84ca2" category="section-title">curl 예: 모든 알림을 반환합니다</block>
+  <block id="943e5258980784703a84c31110cf2eec" category="section-title">curl 예: 경고의 심각도를 나타내는 알림에 대한 설명을 반환합니다</block>
+  <block id="1003e23b805c899981a7d5126ccc0378" category="summary">특정 애플리케이션에 대해 생성된 스냅샷을 나열할 수 있습니다.</block>
+  <block id="9abace8c90645d3ee8eec992f42d897a" category="paragraph">스냅샷을 나열할 앱의 ID가 있어야 합니다. 필요한 경우 워크플로를 사용할 수 있습니다 <block ref="d96e127c1e0eb8087e951700668e3465" category="inline-link-macro-rx"></block> 를 눌러 응용 프로그램을 찾습니다.</block>
+  <block id="f09394ee48f57bbe80f0a951776c3439" category="section-title">스냅샷을 나열합니다</block>
+  <block id="02b00e5480497e1586ce1bf62bf8184a" category="paragraph">다음 REST API 호출을 수행하여 스냅샷을 나열합니다.</block>
+  <block id="f38ae0e099fa484b915fa7bab67ac4b2" category="cell">나열된 스냅샷을 소유하는 애플리케이션을 식별합니다.</block>
+  <block id="e2942a04780e223b215eb8b663cf5353" category="cell">카운트</block>
+  <block id="5aeb23b435f0d586a0493bb8c70b8fc5" category="cell">If(경우<block ref="1107fecd9982ff61044e33612f40fb9d" prefix=" " category="inline-code"></block> 스냅샷의 수는 응답의 메타데이터 섹션에 포함됩니다.</block>
+  <block id="f51493699b1a1513a7a2e95212bdc3da" category="section-title">curl 예: 앱의 모든 스냅샷을 반환합니다</block>
+  <block id="a6678bfaa94621c04bacbb0514f6d9d4" category="section-title">curl 예: 앱과 카운트에 대한 모든 스냅샷을 반환합니다</block>
+  <block id="55c34d696f9301dcae31350ec87093ac" category="summary">스냅샷에서 새 애플리케이션을 클론 복제하여 생성할 수 있습니다.</block>
+  <block id="6c2edaf69733280351ebbe36a83562ae" category="doc">스냅샷에서 앱을 클론 복제합니다</block>
+  <block id="38395f100e712c841ca6c8a613f86abc" category="list-text">앱 스냅샷이 사용됩니다</block>
+  <block id="da88fe405a2037d8a9476bbfc8f6cf7f" category="section-title">사용할 스냅샷을 선택합니다</block>
+  <block id="176ae10d2b65c2e741fef4d23fc66fe5" category="paragraph">워크플로우를 수행합니다 <block ref="ec07e92ba8186e37075c19b8ee786603" category="inline-link-macro-rx"></block> 을 클릭하고 사용할 스냅샷을 선택합니다.</block>
+  <block id="601c2032f11a3d99c3889b1faf260874" category="section-title">curl 예: 스냅샷에서 앱을 복제합니다</block>
+  <block id="e13362bfbdde066993001bf62101c347" category="summary">실패한 상태의 백업 또는 스냅샷이 있는 관리되는 앱을 제거할 수 없습니다. 이 경우 앱을 수동으로 제거할 수 있습니다.</block>
+  <block id="6a94b76b128da4767ce7885cb84ec799" category="doc">실패한 앱을 삭제합니다</block>
+  <block id="90c78af3e4fa9a4298b9bc66f86d06a6" category="paragraph">실패한 상태의 백업 또는 스냅샷이 있는 관리되는 앱을 제거할 수 없습니다. 이 경우 아래 설명된 워크플로를 사용하여 앱을 수동으로 제거할 수 있습니다.</block>
+  <block id="8b7796198eef86f78d17188652bd8260" category="section-title">삭제할 앱을 선택합니다</block>
+  <block id="82029d5fee8f7191d3a021c9db8b43ac" category="paragraph">워크플로우를 수행합니다 <block ref="d96e127c1e0eb8087e951700668e3465" category="inline-link-macro-rx"></block> 제거할 응용 프로그램을 선택합니다.</block>
+  <block id="c776475c27b1d7a554d7f110559479d9" category="section-title">앱의 기존 백업을 나열합니다</block>
+  <block id="03697ae46f1d2d1002ffcb19e1ebbd04" category="paragraph">워크플로우를 수행합니다 <block ref="e6b45b76c52a9dd27daf9fa3d915439e" category="inline-link-macro-rx"></block>.</block>
+  <block id="dcefcc8de5a7541a95d041f4943c300d" category="section-title">모든 백업을 삭제합니다</block>
+  <block id="198a14532624e3324770ded326a70a0d" category="paragraph">워크플로를 수행하여 모든 앱 백업을 삭제합니다 <block ref="4f0b12c4d7b6e38cbd2c51245afded1c" category="inline-link-macro-rx"></block> 를 선택합니다.</block>
+  <block id="dbda08e56067649f1ab59eea05bc44db" category="section-title">앱의 기존 스냅샷을 나열합니다</block>
+  <block id="431b5bf2b0c89bff5ce71c6d5a42c4be" category="paragraph">워크플로우를 수행합니다 <block ref="ec07e92ba8186e37075c19b8ee786603" category="inline-link-macro-rx"></block>.</block>
+  <block id="2d29043fd95ac713b9b4c9b91db9d11b" category="section-title">모든 스냅샷을 삭제합니다</block>
+  <block id="97153f849dc1e17ce221b1aecaa1b827" category="paragraph">워크플로우를 수행합니다 <block ref="9716569143d126579035607ebd1a1120" category="inline-link-macro-rx"></block> 를 선택합니다.</block>
+  <block id="af9ef9bb2e7c334105bad0aa17ad5d28" category="section-title">응용 프로그램을 제거합니다</block>
+  <block id="08a28b071946cc1515702440ff6582d8" category="paragraph">워크플로우를 수행합니다 <block ref="a7ef8d5c47daed312bb700c375f9019c" category="inline-link-macro-rx"></block> 를 눌러 응용 프로그램을 제거합니다.</block>
+  <block id="29d0525c4055c4b47d6c1f6b4681a4d4" category="summary">Astra 관리 클러스터에서 애플리케이션을 관리하는 과정에서 이러한 워크플로우를 사용할 수 있습니다.</block>
+  <block id="8f6291e033ff30c19e8b03e19a26f0f3" category="admonition">이러한 워크플로우는 NetApp이 언제든지 확장 및 개선할 수 있으므로 정기적으로 검토해야 합니다.</block>
+  <block id="6fd2337d24b1882caa5014a35282404b" category="section-title">일반 준비</block>
+  <block id="1b18b55a054bdd1b04a8c8f5c862bc4f" category="inline-link-macro">워크플로우 사용을 준비하십시오</block>
+  <block id="cbdeff17f21659aa95f18f7102990f97" category="paragraph">Astra 워크플로를 사용하기 전에 반드시 검토하십시오 <block ref="1d4e486ef41d26d87e2c5a1c939d4914" category="inline-link-macro-rx"></block>.</block>
+  <block id="ec34ea1038c99109c93f6776a16e2be8" category="section-title">워크플로 범주</block>
+  <block id="27a254eb05f2f4059b9d5170bcd8034f" category="paragraph">관리 워크플로는 원하는 항목을 쉽게 찾을 수 있도록 여러 범주로 구성됩니다.</block>
+  <block id="3adbdb3ac060038aa0e6e6c138ef9873" category="cell">범주</block>
+  <block id="eadfe8388f5ebf45cdfeff23f0e39899" category="cell">애플리케이션 제어</block>
+  <block id="9de4b07ae6319c45521f7ab9180fa62e" category="cell">이러한 워크플로를 통해 관리되는 응용 프로그램과 관리되지 않는 응용 프로그램을 제어할 수 있습니다. 앱을 나열하고 관리되는 앱을 만들고 제거할 수 있습니다.</block>
+  <block id="9c041cca5c70493333f8bd4912e37e70" category="cell">애플리케이션 보호</block>
+  <block id="166cbd4582aeac28601a128615e486a3" category="cell">이러한 워크플로우를 사용하여 스냅샷과 백업을 통해 관리되는 애플리케이션을 보호할 수 있습니다.</block>
+  <block id="6a627ba1141f45676a9b0d39e9f12cbe" category="cell">앱 클론 생성 및 복원</block>
+  <block id="dcacef3fb7dda1b3246ea19ce71d84fc" category="cell">이러한 워크플로에서는 관리되는 애플리케이션을 클론 복제 및 복원하는 방법을 설명합니다.</block>
+  <block id="db5eb84117d06047c97c9a0191b5fffe" category="cell">지원</block>
+  <block id="e24800f8fa54848c57ec9b63af6231d3" category="cell">일반 Kubernetes 환경뿐만 아니라 애플리케이션을 디버깅 및 지원하는 데 사용할 수 있는 몇 가지 워크플로우가 있습니다.</block>
+  <block id="015f8c34f52b6ef8a3361958660f5e88" category="section-title">추가 고려 사항</block>
+  <block id="f51006269ca36dd064b0504bccc2bab2" category="paragraph">관리 워크플로를 사용할 때는 몇 가지 추가 고려 사항이 있습니다.</block>
+  <block id="3dd9fa89c534831c942fd3c706deca44" category="section-title">앱 복제</block>
+  <block id="78997a84642061d9102d778722872a51" category="paragraph">애플리케이션 클론 생성 시 고려해야 할 몇 가지 사항은 다음과 같습니다. 아래 설명된 매개 변수는 JSON 입력의 일부입니다.</block>
+  <block id="a7eed35cf4f7cd555c34dd8d3e496a35" category="list-text">소스 클러스터 식별자입니다</block>
+  <block id="5b7d7363c3d7d36aacb94acf0c5c3971" category="list-text">의 값<block ref="6ea72d6fed899bc2f33c4b7246e5c4d1" prefix=" " category="inline-code"></block> 항상 원래 앱이 설치된 클러스터를 식별합니다.</block>
+  <block id="83226168f6703173a6f41521f74e5e6d" category="list-text">클러스터 식별자입니다</block>
+  <block id="766d0712a291d8165795e09add3367ff" category="list-text">의 값<block ref="e30ef139b9685b27f18c53d8eadbbdb5" prefix=" " category="inline-code"></block> 새 앱을 설치할 클러스터를 식별합니다.</block>
+  <block id="512b5d7fd1ded773db988e422913ed99" category="list-text">동일한 클러스터 내에서 클론을 생성할 때<block ref="e30ef139b9685b27f18c53d8eadbbdb5" prefix=" " category="inline-code"></block> 및<block ref="6ea72d6fed899bc2f33c4b7246e5c4d1" prefix=" " category="inline-code"></block> 값이 동일합니다.</block>
+  <block id="80401ca31e505d9762ac5fcfda80ae2b" category="list-text">클러스터 간에 클론을 생성할 때 두 값은 서로 다릅니다<block ref="e30ef139b9685b27f18c53d8eadbbdb5" prefix=" " category="inline-code"></block> 타겟 클러스터의 ID가 되어야 합니다.</block>
+  <block id="13d28e8dfc702e3456e0767dff9a128a" category="list-text">네임스페이스</block>
+  <block id="3f21870e9b4a671a888e440f450398fc" category="list-text">를 클릭합니다<block ref="89801e9e98979062e84647433a8ed3e9" prefix=" " category="inline-code"></block> 값은 원본 앱과 달라야 합니다. 또한 클론의 네임스페이스가 존재할 수 없으며 Astra에서 생성합니다.</block>
+  <block id="a283a1d894f9805dcaa0a49b701fdb84" category="list-text">백업 및 스냅샷</block>
+  <block id="97f3e02c94643c10592e0ad5805ec40c" category="list-text">을 사용하여 기존 백업 또는 스냅샷에서 애플리케이션을 복제할 수도 있습니다<block ref="95975894ad83aa619ab00b6b8d022ae6" prefix=" " category="inline-code"></block> 또는<block ref="b8c64b32c0262c06506b4c7cb2ed458b" prefix=" " category="inline-code"></block> 매개 변수. 백업 또는 스냅샷을 제공하지 않는 경우 먼저 애플리케이션의 백업을 생성한 다음 백업에서 클론을 생성합니다.</block>
+  <block id="d287ccc97c319b0bc115d2d1ff777c0c" category="section-title">앱을 복원하는 중입니다</block>
+  <block id="bc75de9e075d82274edd026fd05fd01f" category="paragraph">다음은 응용 프로그램을 복원할 때 고려해야 할 몇 가지 사항입니다.</block>
+  <block id="2d49337d583eac8056d564e348f43744" category="list-text">애플리케이션 복구는 클론 작업과 매우 유사합니다.</block>
+  <block id="af5cd1844721ca591969375d08152b0e" category="list-text">앱을 복구할 때는 백업 또는 스냅샷을 제공해야 합니다.</block>
+  <block id="31862872c35b9509755103831963a7ff" category="summary">일반 REST 및 클라우드 개념뿐 아니라 NetApp 클라우드 서비스 및 지원에 대한 자세한 정보를 얻고 도움을 받을 수 있는 추가 리소스가 있습니다.</block>
+  <block id="8cd58c89ff3d51a256ecfe3fe8bab20f" category="doc">추가 리소스</block>
+  <block id="3cce5f3eaf76e098ba8e28f7bbba3f92" category="section-title">아스트라</block>
+  <block id="fa73c4158a31e3bf65319a4cd45bd936" category="inline-link">Astra Control Center 23.10 설명서</block>
+  <block id="cf25307d6d273dfe8d210976eda82d18" category="list-text"><block ref="cf25307d6d273dfe8d210976eda82d18" category="inline-link-rx"></block></block>
+  <block id="01d5e4ec3cb4b0c1971b9e8a5199a107" category="paragraph">고객 구내에 구축된 Astra Control Center 소프트웨어의 현재 릴리스에 대한 문서입니다.</block>
+  <block id="ef22ff17624b3faeed227ce5c717eb5f" category="inline-link">Astra Control Service 문서</block>
+  <block id="a3fb339c1c586b61a4747f75e3e18873" category="list-text"><block ref="a3fb339c1c586b61a4747f75e3e18873" category="inline-link-rx"></block></block>
+  <block id="9533b0dcff191d66f9ea3fe447bffddc" category="paragraph">퍼블릭 클라우드에서 사용 가능한 Astra Control Service 소프트웨어의 현재 릴리스에 대한 문서입니다.</block>
+  <block id="14d9b10c6196045941347a9e85704b50" category="inline-link">Astra Trident 문서</block>
+  <block id="b886ef3e400bd69f357f6981475b14e1" category="list-text"><block ref="b886ef3e400bd69f357f6981475b14e1" category="inline-link-rx"></block></block>
+  <block id="5b9e0257ebcdde10e1d11e75a9a03336" category="paragraph">NetApp에서 관리하는 오픈 소스 스토리지 오케스트레이터인 Astra Trident 소프트웨어의 현재 릴리즈에 대한 문서입니다.</block>
+  <block id="c2c4dd027136447874b3a5d1dbac4ae0" category="inline-link">Astra 제품군 문서</block>
+  <block id="d718eacc67f8b74e62fa7298041adf60" category="list-text"><block ref="d718eacc67f8b74e62fa7298041adf60" category="inline-link-rx"></block></block>
+  <block id="2c3489a3234e45e6f5946c26c4cb7d5e" category="paragraph">온프레미스 및 퍼블릭 클라우드 구축을 위한 모든 Astra 설명서를 액세스할 수 있는 중앙 위치입니다.</block>
+  <block id="8f5cc6430613f1c12f36965050bb7197" category="inline-link">불화</block>
+  <block id="5f86a5c97c95f60e61c70ba77d7346ae" category="list-text"><block ref="5f86a5c97c95f60e61c70ba77d7346ae" category="inline-link-rx"></block></block>
+  <block id="0b5b4445b358715641cec74fe5aa74a5" category="paragraph">Astra Control 및 기타 NetApp 제품에 대한 커뮤니티 지원</block>
+  <block id="58bf8b302985815533fd451d770a1b0a" category="section-title">NetApp 클라우드 리소스</block>
+  <block id="1273c8a63109161e6fd1f18d6998523f" category="inline-link">NetApp BlueXP</block>
+  <block id="a3235da3acacf344734cc119c20ba900" category="list-text"><block ref="a3235da3acacf344734cc119c20ba900" category="inline-link-rx"></block></block>
+  <block id="4049649408c78f285cb012e2651847f4" category="paragraph">NetApp 클라우드 솔루션을 위한 중앙 사이트</block>
+  <block id="654f92d3e3cad866eb53b8787cc67444" category="inline-link">NetApp Cloud Central 콘솔</block>
+  <block id="1f45f670e1231774c60ec8b4cae95f3a" category="list-text"><block ref="1f45f670e1231774c60ec8b4cae95f3a" category="inline-link-rx"></block></block>
+  <block id="6b75881aaba9107ac80de75cbb548445" category="paragraph">NetApp Cloud Central 서비스 콘솔(로그인 포함)</block>
+  <block id="09ea0908fbfc4cde85bf416e35dc55c8" category="inline-link">NetApp 지원</block>
+  <block id="4e3ffaad45a8ae63f200119be8101498" category="list-text"><block ref="4e3ffaad45a8ae63f200119be8101498" category="inline-link-rx"></block></block>
+  <block id="3d32fc1a126e880a8ed715ad4b9c42f5" category="paragraph">문제 해결 도구, 문서 및 기술 지원 지원을 이용할 수 있습니다.</block>
+  <block id="30c6c6906b4bf69f566ac699b562cb7d" category="section-title">REST 및 클라우드 개념</block>
+  <block id="e9c4f861f257833ba2ec75155047b6ed" category="inline-link">학위 논문</block>
+  <block id="b9e9e4c00e500b7ab02ea023fdde7644" category="list-text">박사<block ref="f64b654d7799e22745330f1f41a344ae" category="inline-link-rx"></block> Roy Fielding</block>
+  <block id="fc0386108cb3bd212c4e2b1402e8cdc9" category="paragraph">이 책은 REST 응용 프로그램 개발 모델을 소개하고 설정했습니다.</block>
+  <block id="2a723769d08b0732d8563ffe6bdaee7d" category="inline-link">Auth0</block>
+  <block id="fa4c9b25eb1d8f275cec785023f608b2" category="list-text"><block ref="fa4c9b25eb1d8f275cec785023f608b2" category="inline-link-rx"></block></block>
+  <block id="28ee6d27c391b09083c6f956239a12ea" category="paragraph">웹 액세스를 위해 Astra 서비스에서 사용하는 인증 및 권한 부여 플랫폼 서비스입니다.</block>
+  <block id="fa862ec81357f8907a8b75f4d969c590" category="inline-link">RFC 편집기</block>
+  <block id="6763d4dfc2fa6c04b08ba1e1b7751f5f" category="list-text"><block ref="6763d4dfc2fa6c04b08ba1e1b7751f5f" category="inline-link-rx"></block></block>
+  <block id="ba793efaa4293b35388d140ee9308a68" category="paragraph">고유 번호가 지정된 RFC 문서의 모음으로 유지 관리되는 웹 및 인터넷 표준에 대한 신뢰할 수 있는 소스입니다.</block>
+  <block id="a64509d450efa26111a7b1e6db3baf74" category="summary">NetApp Astra Control Python SDK는 Astra Control 구축을 자동화하는 데 사용할 수 있는 오픈 소스 패키지입니다. 또한 이 패키지는 Astra Control REST API에 대해 학습하는 귀중한 리소스로서, 자신의 자동화 플랫폼을 구축하는 데 사용될 수 있습니다.</block>
+  <block id="0e8625d3981b9d26e0866da357d318c8" category="doc">NetApp Astra Control Python SDK</block>
+  <block id="20f4f585bd60497ac5129e3cac5ce9f3" category="admonition">간소화를 위해 NetApp Astra Control Python SDK를 나머지 페이지 전체에서 * SDK * 라고 부릅니다.</block>
+  <block id="583a49db5f92162fc0bd14c90e6dfd12" category="section-title">두 가지 관련 소프트웨어 도구</block>
+  <block id="6185cd9749993dbef93bbd9484213c5d" category="paragraph">SDK에는 Astra Control REST API에 액세스할 때 서로 다른 추상화 수준에서 작동하는 두 가지 서로 다른 관련 툴이 포함되어 있습니다.</block>
+  <block id="7a947a0e78de7f2a4b74b7420db98fc3" category="paragraph-title">Astra SDK</block>
+  <block id="ad7e7ea46900019430506e34b6c4ad49" category="paragraph">Astra SDK는 핵심 플랫폼 기능을 제공합니다. 기본 REST API 호출을 추상화하는 Python 클래스 집합이 포함되어 있습니다. 이 클래스는 앱, 백업, 스냅샷 및 클러스터를 포함한 다양한 Astra Control 리소스에 대한 관리 작업을 지원합니다.</block>
+  <block id="6dbbc40c6449ca3fda5f8c356b6b0376" category="paragraph">Astra SDK는 패키지의 한 부분으로, 단일 패키지로 제공됩니다<block ref="8e24221e5cfbad6149a14c48b4dd58f3" prefix=" " category="inline-code"></block> 파일. 이 파일을 사용자 환경으로 가져오고 클래스를 직접 사용할 수 있습니다.</block>
+  <block id="5e5df168638042d7a718b1e5462bfb24" category="admonition">NetApp Astra Control Python SDK * (또는 SDK)는 전체 패키지의 이름입니다. Astra SDK * 는 단일 파일의 핵심 Python 클래스를 나타냅니다<block ref="8e24221e5cfbad6149a14c48b4dd58f3" prefix=" " category="inline-code"></block>.</block>
+  <block id="042f2f95117cad397f19ae8bda1b2bbf" category="paragraph-title">툴킷 스크립트입니다</block>
+  <block id="56b26fd2ed2c36f5045eb36cf77c7948" category="paragraph">Astra SDK 파일 외에도,<block ref="60ad2d8ffdf3ae47e1d966e913600e87" prefix=" " category="inline-code"></block> 스크립트를 사용할 수도 있습니다. 이 스크립트는 Python 함수로 내부적으로 정의된 개별 관리 작업에 대한 액세스를 제공하여 높은 수준의 추상화로 작동합니다. 이 스크립트는 Astra SDK를 가져오고 필요에 따라 클래스를 호출합니다.</block>
+  <block id="c1fa54c7b9d3166a56b9afe8d178025e" category="section-title">액세스 방법</block>
+  <block id="caf8d9c274d92761873c194de7fd847e" category="paragraph">다음과 같은 방법으로 SDK에 액세스할 수 있습니다.</block>
+  <block id="f789019254e2d94578114761c04bb180" category="paragraph-title">Python 패키지</block>
+  <block id="0b0321c50e2a79cdce826f0c8f5f7f20" category="inline-link">Python 패키지 색인</block>
+  <block id="44dd27a5a91f4e2450789bd7e3f6c406" category="paragraph">SDK는 에서 확인할 수 있습니다<block ref="8410061c73ca21d204619a04c32c035c" category="inline-link-rx"></block> 라는 이름으로 * actoolkit * 를 사용합니다. 패키지에 버전 번호가 할당되며 필요에 따라 계속 업데이트됩니다. PIP* 패키지 관리 유틸리티를 사용하여 사용자 환경에 패키지를 설치해야 합니다.</block>
+  <block id="fa103d25b0ba58afb589f2477f97ed72" category="paragraph">astraSDK.py 클래스를 설치한 후에는 를 배치함으로써 활용할 수 있습니다<block ref="76849eda0e5f4a7733ff0b15b3732747" prefix=" " category="inline-code"></block> 있습니다. 또한,<block ref="66fd12d9ff1f201836f6985310abbadc" prefix=" " category="inline-code"></block> 는 명령 프롬프트에서 직접 호출할 수 있으며 와 동일합니다<block ref="60ad2d8ffdf3ae47e1d966e913600e87" prefix=" " category="inline-code"></block> <block ref="bf94e40b5d50dd994df430b6578d2c3d" prefix="(" category="inline-code"></block> 은 과 동일합니다<block ref="f8717a0559b654e2501fbd6d78c9ebda" prefix=" " category="inline-code"></block>)를 클릭합니다.</block>
+  <block id="cc255a90b5e22a79adcc253fd5643c0e" category="inline-link">PyPI: NetApp Astra Control Python SDK</block>
+  <block id="9b0e393771050d40b4c31aba2a4ced9d" category="paragraph">을 참조하십시오<block ref="42193bd5b0dd84ae5b9573e56d2978ff" category="inline-link-rx"></block> 를 참조하십시오.</block>
+  <block id="0c9b6306d32fc8f44ff469ab235c5104" category="paragraph-title">GitHub 소스 코드입니다</block>
+  <block id="e8c4206b0f47aa117169255eaa08c5eb" category="paragraph">SDK 소스 코드는 GitHub에서도 사용할 수 있습니다. 리포지토리에는 다음이 포함됩니다.</block>
+  <block id="674eb3a9ec8ac34ddaaf6ea44b7eb422" category="list-text"><block ref="8e24221e5cfbad6149a14c48b4dd58f3" prefix="" category="inline-code"></block> (Python 수업이 포함된 Astra SDK)</block>
+  <block id="f2af4f364548b21864e1b7b7bd176f6c" category="list-text"><block ref="60ad2d8ffdf3ae47e1d966e913600e87" prefix="" category="inline-code"></block> (상위 수준 기능 기반 스크립트)</block>
+  <block id="63eaa893bb8e1f738d6a4c1c1447da78" category="list-text">자세한 설치 요구 사항 및 지침</block>
+  <block id="463554d1311a014b3fde6d3323ae338f" category="list-text">설치 스크립트</block>
+  <block id="01d954fb2edbf283d121f0651b04de83" category="list-text">추가 문서</block>
+  <block id="c9a3d674846b5861ee3ca1771cb3fe5e" category="inline-link">GitHub:NetApp/NetApp-Astra-툴킷</block>
+  <block id="6a3e1686f161e74193cdf5b583396b8c" category="paragraph">를 클론 복제할 수 있습니다<block ref="722f7e844f39c6d237353116706890c9" category="inline-link-rx"></block> 로컬 환경에 리포지토리.</block>
+  <block id="6343ba741cd1ee396593580192d07224" category="section-title">설치 및 기본 요구 사항</block>
+  <block id="7e5ad59a792bdfb61631a29cbadd4216" category="paragraph">패키지 설치 및 사용 준비 과정에서 고려해야 할 몇 가지 옵션과 요구 사항이 있습니다.</block>
+  <block id="a2c5d7f1ae59d7e25522b6b34ea1f27f" category="paragraph-title">설치 옵션 요약</block>
+  <block id="9fcb3e0ffb2078377dcce5ceb342f1b1" category="paragraph">다음 방법 중 하나로 SDK를 설치할 수 있습니다.</block>
+  <block id="addd50afdb87beb574080cc62fcaac55" category="inline-link">Docker:NetApp/Astra-툴킷</block>
+  <block id="afc927e48c3a27421eaa76491afcb73f" category="list-text">준비된 을 사용합니다<block ref="a7cb3b9c076603cec82f8f2444d22246" category="inline-link-rx"></block> 이미지 - 를 포함하여 필요한 모든 종속 항목이 설치되어 있습니다<block ref="66fd12d9ff1f201836f6985310abbadc" prefix=" " category="inline-code"></block></block>
+  <block id="8dc9da526ba6c16b80ab6196594c6d59" category="list-text">Pip을 사용하여 를 설치합니다<block ref="66fd12d9ff1f201836f6985310abbadc" prefix=" " category="inline-code"></block> PyPI에서 Python 환경으로 패키지를 만듭니다</block>
+  <block id="d2eba1db06d9a5fbe5780c6a0d3131b9" category="list-text">GitHub 리포지토리를 복제하고 Python 클라이언트 코드에 액세스할 수 있도록 두 개의 핵심 Python 파일을 복사/수정합니다</block>
+  <block id="acb730b2d5158050dc822b6dc8c932e2" category="paragraph">자세한 내용은 PyPI 및 GitHub 페이지를 참조하십시오.</block>
+  <block id="1737ce95b71a7983a78611220c00300c" category="paragraph-title">Astra Control 환경에 대한 요구 사항</block>
+  <block id="20cb526cb438c874dbc67eaf9ded63f0" category="paragraph">Astra SDK의 Python 클래스를 직접 사용하는지 또는 의 함수를 사용하는지 여부<block ref="60ad2d8ffdf3ae47e1d966e913600e87" prefix=" " category="inline-code"></block> 스크립트 - 궁극적으로 Astra Control 구축 시 REST API에 액세스합니다. 이 때문에 API 토큰과 함께 Astra 계정이 필요합니다. 을 참조하십시오 <block ref="6790e3b8b21e3717c59b764a5b68d086" category="inline-link-macro-rx"></block> 자세한 내용은 이 설명서의 * 시작하기 * 섹션의 다른 페이지를 참조하십시오.</block>
+  <block id="dfbe44cf1815fe1873dd8a7c434bcda9" category="paragraph-title">NetApp Astra Control Python SDK의 요구사항</block>
+  <block id="27b72a5b697b4b5014519a7f674fe0f9" category="paragraph">SDK에는 로컬 Python 환경과 관련된 몇 가지 사전 요구 사항이 있습니다. 예를 들어 Python 3.8 이상을 사용해야 합니다. 또한 필요한 여러 가지 Python 패키지가 있습니다. 자세한 내용은 GitHub 리포지토리 페이지 또는 PyPI 패키지 페이지를 참조하십시오.</block>
+  <block id="2c3632f4f9feb6a54026be6d9c946d20" category="section-title">유용한 리소스 요약</block>
+  <block id="74c118bd101940603c14c3d7326843a4" category="paragraph">다음은 시작하는 데 필요한 몇 가지 리소스입니다.</block>
+  <block id="420fbf00d0fa9a9d0a4c6d109b03b7ab" category="list-text"><block ref="420fbf00d0fa9a9d0a4c6d109b03b7ab" category="inline-link-rx"></block></block>
+  <block id="b455f4010eda9452a921d32bfc7e1318" category="list-text"><block ref="b455f4010eda9452a921d32bfc7e1318" category="inline-link-rx"></block></block>
+  <block id="e598386ca051245bd47f1531754638e2" category="list-text"><block ref="e598386ca051245bd47f1531754638e2" category="inline-link-rx"></block></block>
+  <block id="a5f871c981a398cb87374a1ff883bcca" category="summary">다음 스크립트를 사용하여 Astra 계정의 응용 프로그램을 나열할 수 있습니다.</block>
+  <block id="0dca49fc2e144253162b8cbd94b3b83c" category="admonition">을 참조하십시오 <block ref="471a805638f43cfd34206d9398385425" category="inline-link-macro-rx"></block> 필요한 JSON 입력 파일의 예</block>
+  <block id="c30daace746a4b0fbccf1758ed0282eb" category="summary">Python은 데이터 센터 자동화를 위한 인기 있는 개발 언어입니다. Python의 기본 기능과 여러 가지 공통 패키지를 함께 사용하기 전에 환경 및 필요한 입력 파일을 준비해야 합니다.</block>
+  <block id="a048c98daf24dc4c378ae4a226190097" category="admonition">Python을 사용하여 Astra Control REST API에 직접 액세스하는 것 외에도 NetApp은 API를 추상화하고 일부 복잡성을 제거하는 툴킷 패키지도 제공합니다. 을 참조하십시오 <block ref="d09002f98f3f10539db2caafc83b3213" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="0998ed5beee28345ae02fc586e2414f2" category="section-title">환경을 준비합니다</block>
+  <block id="eacdf05a2e0f975530592f3afa7c5858" category="paragraph">Python 스크립트를 실행하기 위한 기본 구성 요구 사항은 아래에 설명되어 있습니다.</block>
+  <block id="3c91a74236fab100f024452f6df13b5e" category="paragraph-title">Python 3</block>
+  <block id="5d4e91ee0c02874831683e91598ba067" category="paragraph">최신 버전의 Python 3이 설치되어 있어야 합니다.</block>
+  <block id="56fc4201e750acc72a0afd74dd68fbf7" category="paragraph-title">추가 라이브러리</block>
+  <block id="eac991115911389530678363913a1115" category="paragraph">Requests* 및 * urlllllib3* 라이브러리가 설치되어 있어야 합니다. PIP 또는 다른 Python 관리 도구를 환경에 맞게 사용할 수 있습니다.</block>
+  <block id="7a7bc312cecb8df7c0104f60400498da" category="paragraph-title">네트워크 액세스</block>
+  <block id="67a1ee90ebb7f60d74dc1baee961de03" category="paragraph">스크립트가 실행되는 워크스테이션에는 네트워크 액세스 권한이 있어야 하며 Astra Control에 연결할 수 있어야 합니다. Astra Control Service를 사용할 때는 인터넷에 연결되어 있어야 하며 에 있는 서비스에 연결할 수 있어야 합니다<block ref="c3cd4b6e8352817aeaab7114fc20ee4d" prefix=" " category="inline-code"></block>.</block>
+  <block id="479ddc3e49067c67012525e145d88610" category="paragraph-title">ID 정보</block>
+  <block id="6e567afb3c0582569592264335e77063" category="inline-link-macro">API 토큰을 가져옵니다</block>
+  <block id="ddeb9b8a16dddd591affefce272eca3b" category="paragraph">계정 ID와 API 토큰을 가진 유효한 Astra 계정이 필요합니다. 을 참조하십시오 <block ref="949977ec887dbf77cf703083221524dc" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="4b8e18b7aa4e59cfa3e050e47541b237" category="section-title">JSON 입력 파일을 생성합니다</block>
+  <block id="28d986906a20a82d756066c923b70105" category="paragraph">Python 스크립트는 JSON 입력 파일에 포함된 구성 정보에 의존합니다. 샘플 파일은 아래에 제공됩니다.</block>
+  <block id="b16c2ac3d45f78db4d3ebfb08672cd50" category="admonition">환경에 맞게 샘플을 업데이트해야 합니다.</block>
+  <block id="332b0c66434f09b3a45336c87ac0af07" category="paragraph">다음 파일에는 API 토큰과 Astra 계정이 포함되어 있습니다. 를 사용하여 이 파일을 Python 스크립트로 전달해야 합니다<block ref="20f011826070657b0f0092278d65ec74" prefix=" " category="inline-code"></block> (또는<block ref="9c157254ffeac0b068860f6730a52e55" prefix=" " category="inline-code"></block>) CLI 매개 변수입니다.</block>
+  <block id="d803102aaa79040d7acdf0fdfaf7f156" category="summary">Astra Control REST API를 통해 제공되는 리소스에 액세스하여 Astra 구축을 자동화할 수 있습니다. 각 리소스는 하나 이상의 끝점을 통해 사용할 수 있습니다. 이 페이지에는 자동화 배포의 일부로 사용할 수 있는 REST 리소스에 대한 소개가 나와 있습니다.</block>
+  <block id="599887dba3179dd0daaa4b5d587aa0a0" category="doc">리소스 및 엔드포인트</block>
+  <block id="2cb4d33cb32e61ac40dcce4208d54e3c" category="paragraph">Astra Control REST API를 통해 제공되는 리소스에 액세스하여 Astra 구축을 자동화할 수 있습니다. 각 리소스는 하나 이상의 끝점을 통해 사용할 수 있습니다. 다음은 자동화 배포의 일부로 사용할 수 있는 REST 리소스에 대한 소개입니다.</block>
+  <block id="916bff7b68625feaff0fa92152a8c4f0" category="inline-link-macro">URL 형식</block>
+  <block id="11c9923ccf1bdb99c76f391a24f9925f" category="inline-link-macro">온라인 API 참조입니다</block>
+  <block id="b7ca8ec82a5eaa56c4cd485d10d4f8ff" category="admonition">Astra Control 리소스에 액세스하는 데 사용되는 경로 및 전체 URL의 형식은 여러 값을 기반으로 합니다. 을 참조하십시오 <block ref="d30352e41f8ff3b0c022e188e6d650e9" category="inline-link-macro-rx"></block> 를 참조하십시오. 도 참조하십시오 <block ref="bc3e5681b34d05fe80cb8ba4dac9f8c1" category="inline-link-macro-rx"></block> Astra 리소스 및 엔드포인트 사용에 대한 자세한 내용은</block>
+  <block id="94076f0e9f9b57b9bc636dff06dec4be" category="section-title">Astra Control REST 리소스 요약</block>
+  <block id="0f879b71f480ca631ac007cea8270eb9" category="paragraph">Astra Control REST API에서 제공하는 기본 리소스 끝점은 세 가지 범주로 구성됩니다. 각 리소스는 명시된 경우를 제외하고 CRUD 작업의 전체 세트(생성, 읽기, 업데이트, 삭제)로 액세스할 수 있습니다.</block>
+  <block id="80bcbd8aa7db0b3dfcedfd4388c73c17" category="paragraph">릴리즈 * 열에는 리소스가 처음 도입되었을 때 Astra 릴리즈가 표시됩니다. 이 필드는 REST API에 가장 최근에 추가된 리소스에 대해 굵게 표시됩니다.</block>
+  <block id="7dbea29c80effd84223267932eaa1d82" category="section-title">핵심 리소스</block>
+  <block id="5503f539f2ed18a2040c3adee6743b18" category="paragraph">핵심 리소스 엔드포인트는 Astra 런타임 환경을 설정하고 유지하는 데 필요한 기본 서비스를 제공합니다.</block>
+  <block id="be8545ae7ab0276e15898aae7acfbd7a" category="cell">리소스</block>
+  <block id="b8e7b465df7c5979dc731d06e84ce2cf" category="cell">놓습니다</block>
+  <block id="08bd40c7543007ad06e4fce31618f6ec" category="cell">계정</block>
+  <block id="b9afcd2399096c529c7bdb5fde05df0e" category="cell">21.12</block>
+  <block id="39a70d60ad1f39618d1dd601b341a2f6" category="cell">계정 리소스를 사용하여 멀티테넌트 Astra Control 배포 환경 내에서 격리된 테넌트를 관리할 수 있습니다.</block>
+  <block id="4ace64fe7e8d8a82871a5ef9df9dc6a4" category="cell">ASUP</block>
+  <block id="8ff5110ebae476ca35aeb20b14a75693" category="cell">21.08</block>
+  <block id="c42aa22ce7e41e552d950420b7f9261a" category="cell">ASUP 리소스는 NetApp 지원에 전달된 AutoSupport 번들을 나타냅니다.</block>
+  <block id="eb0f48a107df1a0f343d4cd513b555e6" category="cell">인증서</block>
+  <block id="9d5b1c42f951723db7dbb51b14e6251a" category="cell">22.08</block>
+  <block id="3fe0021542d501c59073fddce2d62709" category="cell">인증서 리소스는 보내는 연결에 대한 강력한 인증에 사용되는 설치된 인증서를 나타냅니다.</block>
+  <block id="03bc142e6422dbb9b288ad2cabee08c7" category="cell">자격 증명</block>
+  <block id="af08b45fa44807ac1852671e6fc59d44" category="cell">21.04</block>
+  <block id="6a610191ab493ebeb9ee88ec2384254d" category="cell">자격 증명 리소스에는 Astra 사용자, 클러스터, 버킷 및 스토리지 백엔드와 함께 사용할 수 있는 보안 관련 정보가 포함되어 있습니다.</block>
+  <block id="654223e205de4e4d6e9760a2c9bbcc59" category="cell">소유 권한</block>
+  <block id="3f949e8f5c970921cc9c0ae857ee43ac" category="cell">사용 권한 리소스는 활성 라이센스 및 구독에 따라 계정에 사용할 수 있는 기능과 용량을 나타냅니다.</block>
+  <block id="a4ecfc70574394990cf17bd83df499f7" category="cell">이벤트</block>
+  <block id="41fe27488836be5a48654e2e7f9b9a3c" category="cell">이벤트 리소스는 알림으로 분류된 하위 집합을 포함하여 시스템에서 발생하는 모든 이벤트를 나타냅니다.</block>
+  <block id="b9ab083ebcf27029a022bf2e308555ab" category="cell">실행 후크</block>
+  <block id="54d57faf98d4bfad6eed40ece793dce5" category="cell">실행 후크 리소스는 관리되는 앱의 스냅샷이 수행되기 전이나 후에 실행할 수 있는 사용자 정의 스크립트를 나타냅니다.</block>
+  <block id="21021ea0e52be8e9c599f4dff41e5be0" category="cell">피처</block>
+  <block id="387f4c62cef9b23f6940608d7fd4518c" category="cell">기능 리소스는 시스템에서 해당 기능이 활성화 또는 비활성화되었는지 확인하기 위해 쿼리할 수 있는 선택한 Astra 기능을 나타냅니다. 액세스는 읽기 전용으로 제한됩니다.</block>
+  <block id="03937134cedab9078be39a77ee3a48a0" category="cell">그룹</block>
+  <block id="a744e9bf981f07cf1f6ae31ed0df70b1" category="cell">그룹 리소스는 Astra 그룹 및 관련 리소스를 나타냅니다. 현재 릴리즈에서는 LDAP 그룹만 지원됩니다.</block>
+  <block id="f42562a6ae551c35216254ce200afcc8" category="cell">후크 소스</block>
+  <block id="fba14cda608976c44a49d623666f37c7" category="cell">후크 소스 리소스는 실행 후크와 함께 사용되는 실제 소스 코드를 나타냅니다. 소스 코드를 실행 컨트롤과 분리하면 스크립트를 공유할 수 있도록 하는 등 여러 가지 이점이 있습니다.</block>
+  <block id="f156c7862a93e81ca10ba4bc4349824d" category="cell">LDAP 그룹</block>
+  <block id="b2753ac117117258ce5ba22aebd3a8a8" category="cell">22.1</block>
+  <block id="8a958fceac1f74e78832d8498767ce1f" category="cell">구성된 LDAP 서버 내의 그룹을 나열할 수 있습니다. LDAP 그룹에 대한 액세스는 읽기 전용입니다.</block>
+  <block id="30b31a74662fc368bd562efd0f43adc2" category="cell">LDAP 사용자입니다</block>
+  <block id="c4340906de504057557c6bb8611b0ab5" category="cell">22.11</block>
+  <block id="0d0a6d61fee1311a1ba8a542e2bb5623" category="cell">구성된 LDAP 서버 내의 사용자를 나열할 수 있습니다. LDAP 사용자에 대한 액세스는 읽기 전용입니다.</block>
+  <block id="794df3791a8c800841516007427a2aa3" category="cell">라이센스</block>
+  <block id="b2d55dc4fec3ba025999ca224e38960b" category="cell">라이센스 리소스는 Astra 계정에 사용할 수 있는 라이센스를 나타냅니다.</block>
+  <block id="96d008db67fc0b5551a926842bbb6a71" category="cell">통지</block>
+  <block id="c4f95a0bc4f1a90ec9fa6c084868ffe3" category="cell">알림 리소스는 알림 대상이 있는 Astra 이벤트를 나타냅니다. 액세스 권한은 사용자별로 제공됩니다.</block>
+  <block id="209802fb858e2c83205027dbbb5d9e6c" category="cell">패키지</block>
+  <block id="e764fe6b8f8825a307a87cedbef45678" category="cell">22.04</block>
+  <block id="d340d1aca9540d03d5dbc3a841480388" category="cell">패키지 리소스는 패키지 정의의 등록 및 액세스를 제공합니다. 소프트웨어 패키지는 파일, 이미지 및 기타 아티팩트를 포함한 다양한 구성 요소로 구성됩니다.</block>
+  <block id="ed5dea09095f671b801bee34ea28a319" category="cell">권한</block>
+  <block id="5a31da03b445627c9d11d99efb7cc803" category="cell">23.06</block>
+  <block id="22a15af82a20adf60996d549baa48d24" category="cell">권한 리소스는 시스템 내의 작업과 관련된 권한을 나타냅니다. API는 권한에 대한 읽기 전용 액세스를 제공합니다.</block>
+  <block id="bbbabdbe1b262f75d99d62880b953be1" category="cell">역할</block>
+  <block id="8fe5430b97accfa7b33d3c5887f90718" category="cell">역할 리소스는 시스템에서 사용 가능한 역할을 나타냅니다. API는 역할에 대한 읽기 전용 액세스를 제공합니다.</block>
+  <block id="fd2bd51169cf1622d8afc842b6c7fae9" category="cell">역할 바인딩</block>
+  <block id="6ebaa723a81c40b3c1242f8bad10ff34" category="cell">역할 바인딩 리소스는 특정 사용자 쌍과 계정 간의 관계를 나타냅니다. 두 역할 간의 연결 외에도 특정 역할을 통해 각 역할에 대한 권한 집합이 지정됩니다.</block>
+  <block id="51ac4bf63a0c6a9cefa7ba69b4154ef1" category="cell">설정</block>
+  <block id="939b4310fe5592716c602cf48793e84f" category="cell">설정 리소스는 특정 Astra 계정의 기능을 설명하는 키-값 쌍의 모음을 나타냅니다.</block>
+  <block id="787ad0b7a17de4ad6b1711bbf8d79fcb" category="cell">구독</block>
+  <block id="f1cf7121547bd4912f3ebf1b8e483b5a" category="cell">서브스크립션 리소스는 Astra 계정에 대한 활성 서브스크립션을 나타냅니다.</block>
+  <block id="eaeb30f9f18e0c50b178676f3eaef45f" category="cell">작업</block>
+  <block id="84268dabdb01cddab9ea60b2f9acdbf3" category="cell">작업 자원은 관리되는 작업에 대한 읽기 전용 액세스를 제공하며 내부 장기 실행 작업의 상태를 표시하는 데 사용할 수 있습니다.</block>
+  <block id="459a6f79ad9b13cbcb5f692d2cc7a94d" category="cell">토큰</block>
+  <block id="de89d8750ec160e779ccfc4acb253798" category="cell">토큰 리소스는 Astra Control REST API에 프로그래밍 방식으로 액세스하는 데 사용할 수 있는 토큰을 나타냅니다.</block>
+  <block id="3d74270bce6df5c461068acd3992d1bd" category="cell">읽지 않은 알림</block>
+  <block id="0bfed6a24fda71fcefed59052aa8b04d" category="cell">읽지 않은 알림 리소스는 특정 사용자에게 할당되었지만 아직 읽지 않은 알림을 나타냅니다.</block>
+  <block id="f683581d3e75f05f9d9215f9b4696cef" category="cell">업그레이드</block>
+  <block id="2d90c29fa077bbff5b5b4c8a523efa88" category="cell">업그레이드 리소스를 통해 소프트웨어 구성 요소에 액세스하고 업그레이드를 시작할 수 있습니다.</block>
+  <block id="8f9bfe9d1345237cb3b2b205864da075" category="cell">사용자</block>
+  <block id="6335f12cd32772f1f765a1aadeaffd96" category="cell">사용자 리소스는 정의된 역할에 따라 시스템에 액세스할 수 있는 Astra 사용자를 나타냅니다.</block>
+  <block id="cc32566cda71be962f99357b3002c8db" category="section-title">관리되는 애플리케이션 리소스</block>
+  <block id="9e9335e3f4a9b4abe338f2fa5fec0162" category="paragraph">관리 애플리케이션 리소스 엔드포인트는 관리되는 Kubernetes 애플리케이션에 대한 액세스를 제공합니다.</block>
+  <block id="79018ac7f72b136dcb6a5f9e125d4c2b" category="cell">애플리케이션 자산</block>
+  <block id="f63ec399edbf672707e34b98cb969ccd" category="cell">애플리케이션 자산 리소스는 Astra 애플리케이션을 관리하는 데 필요한 상태 정보의 내부 컬렉션을 나타냅니다.</block>
+  <block id="639d7e9624e068b9cb919e6476673916" category="cell">애플리케이션 백업</block>
+  <block id="e92acef3d98e8a64572a05792290f27b" category="cell">애플리케이션 백업 리소스는 관리되는 애플리케이션의 백업을 나타냅니다.</block>
+  <block id="1fd2b9909603c282becde555a00d5699" category="cell">애플리케이션 스냅샷</block>
+  <block id="73150caf4eee48175bcbbee6e9bdf201" category="cell">애플리케이션 스냅샷 리소스는 관리되는 애플리케이션의 스냅샷을 나타냅니다.</block>
+  <block id="9f9b94351efdd20bfec97ae027bdd1de" category="cell">실행 후크 재정의</block>
+  <block id="d20b671eee65b07689030c1a810243c7" category="cell">실행 후크 재정의 리소스를 사용하면 필요에 따라 특정 애플리케이션에 대해 사전 로드된 NetApp 기본 실행 후크를 비활성화할 수 있습니다.</block>
+  <block id="25f7347236b51a5eae4ba01a7862cb55" category="cell">스케줄</block>
+  <block id="91fd88ee3861a8eb1aa5fb75a5577d89" category="cell">스케줄 리소스는 데이터 보호 정책의 일부로 관리되는 애플리케이션에 대해 예약된 데이터 보호 작업을 나타냅니다.</block>
+  <block id="67c58d2de17edb43efeda54f12292dd2" category="section-title">토폴로지 리소스</block>
+  <block id="2570c360375a393547ef6c0be287059b" category="paragraph">토폴로지 리소스 엔드포인트는 관리되지 않는 애플리케이션과 스토리지 리소스에 대한 액세스를 제공합니다.</block>
+  <block id="0719b5ff43e464ec0bd72e395c7e19f5" category="cell">API 리소스</block>
+  <block id="5fe3f274f4d0554c8f2f5f2bb017e1a6" category="cell">API 리소스 엔드포인트는 특정 관리 클러스터의 Kubernetes 리소스에 대한 읽기 전용 액세스를 제공합니다.</block>
+  <block id="ac863f346e618f9a959b5c95d5d28941" category="cell">애플리케이션</block>
+  <block id="e43da2c91ef5f1040a302b6b10917893" category="cell">앱 리소스는 Astra에서 관리하지 않는 애플리케이션을 포함한 모든 Kubernetes 애플리케이션을 나타냅니다.</block>
+  <block id="c600ce546bf9ac67939481d537d10403" category="cell">AppMirror</block>
+  <block id="2ea0c70486ac42aa9093e842d4d23473" category="cell">AppMirror 리소스는 애플리케이션 미러링 관계를 관리할 수 있도록 AppMirror 리소스를 나타냅니다.</block>
+  <block id="30edf70db68aa84f05d3e72326807b0c" category="cell">버킷</block>
+  <block id="6252662cb4947c8a0051b73da80307e9" category="cell">버킷 리소스는 Astra에서 관리하는 애플리케이션의 백업을 저장하는 데 사용되는 S3 클라우드 버킷을 나타냅니다.</block>
+  <block id="c8e2277ecfb1427838c488c217f99466" category="cell">클라우드</block>
+  <block id="e44f381ea37820094446c414c36db5ca" category="cell">클라우드 리소스는 클러스터 및 애플리케이션을 관리하기 위해 Astra 클라이언트가 연결할 수 있는 클라우드를 나타냅니다.</block>
+  <block id="249694a485fc5d3289c38986b4f8e887" category="cell">클러스터</block>
+  <block id="8826893c737aedf5a5169a74fb17ac54" category="cell">클러스터 리소스는 Kubernetes에서 관리되지 않는 Kubernetes 클러스터를 나타냅니다.</block>
+  <block id="db6b0e60fc01fe1efd233929dea252ca" category="cell">클러스터 노드</block>
+  <block id="46f255d802b6381149870692736dad56" category="cell">클러스터 노드 리소스는 Kubernetes 클러스터 내의 개별 노드에 액세스할 수 있도록 허용하여 추가 해결책을 제공합니다.</block>
+  <block id="f8ae2befc6a1cee31f421d5496ea6aeb" category="cell">관리형 클러스터</block>
+  <block id="9cfbb01459b058e1710e14a0720bc3a3" category="cell">관리 클러스터 리소스는 현재 Kubernetes에서 관리되는 Kubernetes 클러스터를 나타냅니다.</block>
+  <block id="b3ba0fe968ce39dcfc6fe8cc0f1b02da" category="cell">네임스페이스</block>
+  <block id="08dafbbeceed7e340c9625fd30927d83" category="cell">네임스페이스 리소스는 Kubernetes 클러스터 내에서 사용되는 네임스페이스에 대한 액세스를 제공합니다.</block>
+  <block id="6c5e678cf147ef415c2e584ba561bce7" category="cell">스토리지 백엔드</block>
+  <block id="4c5c5ddf14933aa945693ada812ede98" category="cell">스토리지 백엔드 리소스는 Astra 관리 클러스터 및 애플리케이션에서 사용할 수 있는 스토리지 서비스 공급자를 나타냅니다.</block>
+  <block id="dd8c5eff0fd4dd0b3760e41db59bfb3a" category="cell">스토리지 클래스</block>
+  <block id="8fb50be09f59469582a9c05b97f8517c" category="cell">스토리지 클래스 리소스는 특정 관리 대상 클러스터에서 발견되어 사용할 수 있는 다양한 클래스 또는 스토리지 유형을 나타냅니다.</block>
+  <block id="bd7a9717d29c5ddcab1bc175eda1e298" category="cell">볼륨</block>
+  <block id="d0600f0c4c9b294b53d39320b3945b84" category="cell">볼륨 리소스는 관리 애플리케이션과 관련된 Kubernetes 스토리지 볼륨을 나타냅니다.</block>
+  <block id="a3033e8e82a579c4e34115e2186d13ad" category="section-title">추가 리소스 및 엔드포인트</block>
+  <block id="4ded71dc03234200c0b0b124900cea7d" category="paragraph">Astra 구축을 지원하는 데 사용할 수 있는 몇 가지 추가 리소스와 엔드포인트가 있습니다.</block>
+  <block id="55fcf9a6a46c69408785dcd2e3a82522" category="admonition">이러한 리소스 및 엔드포인트는 현재 Astra Control REST API 참조 설명서에 포함되어 있지 않습니다.</block>
+  <block id="34b4714329fbd5b24fd78ba32d5a5722" category="list-text">OpenAPI를 참조하십시오</block>
+  <block id="3568b4ed2338901078928983e029bbba" category="list-text">OpenAPI 엔드포인트는 현재 OpenAPI JSON 문서 및 기타 관련 리소스에 대한 액세스를 제공합니다.</block>
+  <block id="4f48af1c326e720124a79cc1f9216ecb" category="list-text">OpenMetrics</block>
+  <block id="27ee1c661b70f7b369179a81dd12721d" category="list-text">OpenMetrics 엔드포인트는 OpenMetrics 리소스를 통해 계정 메트릭에 액세스할 수 있도록 합니다. Astra Control Center 배포 모델을 통해 지원을 받을 수 있습니다.</block>
+  <block id="ad60c6f0b038daedb3b46ea65cd82bc1" category="summary">Astra Control REST API는 HTTP 및 관련 매개 변수를 사용하여 리소스 인스턴스 및 컬렉션에 대한 작업을 수행합니다.</block>
+  <block id="7ab91fd48b58ce1ea4cada1f1a4e1808" category="doc">HTTP 세부 정보</block>
+  <block id="e4c8251a9c6d357d3aa4b05293542914" category="paragraph">Astra Control REST API는 HTTP 및 관련 매개 변수를 사용하여 리소스 인스턴스 및 컬렉션에 대한 작업을 수행합니다. HTTP 구현에 대한 자세한 내용은 아래에 나와 있습니다.</block>
+  <block id="deaf360f123e9392f769c7ceb4e01747" category="section-title">API 트랜잭션 및 CRUD 모델</block>
+  <block id="01b7ef875c4a217845bac8e7ae38175b" category="paragraph">Astra Control REST API는 잘 정의된 작업과 상태 전환을 통해 트랜잭션 모델을 구현합니다.</block>
+  <block id="fc068ae597c9019f5d61b19badc39991" category="paragraph-title">요청 및 응답 API 트랜잭션</block>
+  <block id="1f5760bedf7c68291dfd4d306c189bc8" category="paragraph">모든 REST API 호출은 Astra 서비스에 대한 HTTP 요청으로 수행됩니다. 각 요청은 연결된 응답을 클라이언트에 다시 생성합니다. 이 요청 응답 쌍은 API 트랜잭션으로 간주될 수 있습니다.</block>
+  <block id="54ba5d4469f49d79d837dd2472a96c36" category="paragraph-title">CRUD 운영 모델 지원</block>
+  <block id="c015cb2c04ac629966b40f1d6b58b583" category="paragraph">Astra Control REST API를 통해 사용 가능한 각 리소스 인스턴스 및 컬렉션은 * CRUD * 모델을 기반으로 액세스합니다. 4개의 작업이 있으며, 각 작업은 단일 HTTP 메서드에 매핑됩니다. 다음과 같은 작업이 포함됩니다.</block>
+  <block id="686e697538050e4664636337cc3b834f" category="list-text">생성</block>
+  <block id="7a1a5f3e79fdc91edf2f5ead9d66abb4" category="list-text">읽기</block>
+  <block id="06933067aafd48425d67bcb01bba5cb6" category="list-text">업데이트</block>
+  <block id="f2a6c498fb90ee345d997f888fce3b18" category="list-text">삭제</block>
+  <block id="943f70de346a2442881b356af65be85e" category="paragraph">일부 Astra 리소스의 경우 이러한 작업의 일부만 지원됩니다. 를 검토해야 합니다 <block ref="bc3e5681b34d05fe80cb8ba4dac9f8c1" category="inline-link-macro-rx"></block> 특정 API 호출에 대한 자세한 내용은 를 참조하십시오.</block>
+  <block id="957a8c35c28e967701ff975f1d7182d5" category="section-title">HTTP 메서드</block>
+  <block id="63d1169901437c6f9acfc445cee3a4ba" category="paragraph">API에서 지원하는 HTTP 메서드 또는 동사는 아래 표에 나와 있습니다.</block>
+  <block id="4c3880bb027f159e801041b1021e88e8" category="cell">방법</block>
+  <block id="8ecfde6cfb333d8f81de0672a75b159c" category="cell">CRUD</block>
+  <block id="79666eb3555d2ff3385526690b29f173" category="cell">리소스 인스턴스 또는 컬렉션의 개체 속성을 검색합니다. 이 작업은 컬렉션과 함께 사용할 때 * list * 연산으로 간주됩니다.</block>
+  <block id="109ca1b43f20cf704cb82d1e60d1dfd5" category="cell">입력 매개 변수를 기반으로 새 리소스 인스턴스를 만듭니다. 장기 URL은 에서 반환됩니다<block ref="ce5bf551379459c1c61d2a204061c455" prefix=" " category="inline-code"></block> 응답 헤더.</block>
+  <block id="8fe6ec01587dacf444e7eeb72caaed1b" category="cell">제공된 JSON 요청 본문으로 전체 리소스 인스턴스를 업데이트합니다. 사용자가 수정할 수 없는 키 값은 보존됩니다.</block>
+  <block id="eef129331314d2c9f4c4a5b0fdde3c7e" category="cell">기존 리소스 인스턴스를 삭제합니다.</block>
+  <block id="61967c09828f8562a1a95fc9f6fd0151" category="section-title">요청 및 응답 헤더</block>
+  <block id="beeda4a7ebc8ea202e9ed1791403ab32" category="paragraph">다음 표는 Astra Control REST API와 함께 사용되는 HTTP 헤더를 요약한 것입니다.</block>
+  <block id="b0e56909c3a57b0d8dbf0222bd347ceb" category="inline-link">RFC 7232</block>
+  <block id="29e389ad4bb7b567cc956b0b4089f88e" category="inline-link">RFC 7233</block>
+  <block id="443369a4b9d28a4c4d185bde530f0a78" category="admonition">을 참조하십시오<block ref="3f1bb67bc2b98a20cf2c87c4fe0c3ca6" category="inline-link-rx"></block> 및<block ref="085309009337d32266cee2ab4ba9f174" category="inline-link-rx"></block> 를 참조하십시오.</block>
+  <block id="81098f701c45e252a078b3eee62f0dab" category="cell">사용 참고 사항</block>
+  <block id="c4408d335012a56ff58937d78050efad" category="cell">수락</block>
+  <block id="15c2d85f1fae22a3c3a0594510a1f611" category="cell">요청하십시오</block>
+  <block id="f230b5adb8a23c24f7900d2a94c7f069" category="cell">값이 " * / * "이거나 제공되지 않은 경우<block ref="d1f5a9d446c6cec2cf63545e8163e585" prefix=" " category="inline-code"></block> Content-Type 응답 헤더로 반환됩니다. 값이 Astra 리소스 미디어 유형으로 설정되어 있으면 Content-Type 헤더에서 동일한 미디어 유형이 반환됩니다.</block>
+  <block id="9cd8a2455b1839ff98ef70c05b9b5983" category="cell">권한 부여</block>
+  <block id="59e52e38bb9acc4d18bd31669b92507e" category="cell">사용자에 대한 API 키가 있는 베어러 토큰.</block>
+  <block id="dc105ac52c237f9f09c74b0767f64f74" category="cell">Content-Type(콘텐츠 유형)</block>
+  <block id="d64ed3e9c10229648e069f56e32f4c8e" category="cell">응답</block>
+  <block id="440093e664bc9325d3ee55442e0e1a2c" category="cell">에 따라 반환됩니다<block ref="c4408d335012a56ff58937d78050efad" prefix=" " category="inline-code"></block> 요청 헤더.</block>
+  <block id="16ddf21b3f21fcb2433e28cd2e3b33d8" category="cell">ETag</block>
+  <block id="7cb86e69c4338a43e1a5427a78eb80a7" category="cell">RFC 7232에 정의된 대로 에 포함됩니다. 값은 전체 JSON 리소스에 대한 MD5 값의 16진수 표현입니다.</block>
+  <block id="71e1f368d893f92df0ad4a838a3bbbd9" category="cell">일치하는 경우</block>
+  <block id="556a98dd71f4adebd0bbb3b105ab8ddd" category="cell">3.1 RFC 7232절에 설명된 대로 구현된 전제 조건 요청 헤더와 * PUT * 요청 지원.</block>
+  <block id="3c092637f114ffbf533ef4426b84a1bd" category="cell">If-Modified-Since</block>
+  <block id="9e69ea9561f904c53fa87d91042d2982" category="cell">섹션 3.4 RFC 7232에 설명된 대로 구현된 전제 조건 요청 헤더와 * PUT * 요청 지원.</block>
+  <block id="ea7192f5dc601974605b32a2334c1769" category="cell">수정되지 않은 경우 - 이후</block>
+  <block id="ce5bf551379459c1c61d2a204061c455" category="cell">위치</block>
+  <block id="cea5f66f37995fb196323018a31600fc" category="cell">새로 만든 리소스의 전체 URL을 포함합니다.</block>
+  <block id="6e2102ce7d7573c8b221194a86f7a48b" category="section-title">쿼리 매개 변수</block>
+  <block id="3d9217d4e4ef94c56689e548b5186591" category="inline-link-macro">컬렉션 작업</block>
+  <block id="8d5b3dceacc1264c4bb5aed273137b7a" category="paragraph">다음 쿼리 매개 변수를 리소스 모음과 함께 사용할 수 있습니다. 을 참조하십시오 <block ref="a72643cb6a22061c1930f2e30db11319" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="ce73e1ed10f91fd167ae3d5803ce8dff" category="cell">쿼리 매개 변수입니다</block>
+  <block id="4d0d3b0c69167fef7204e14c4e946c15" category="cell">컬렉션을 읽을 때 반환되어야 하는 필드를 포함합니다.</block>
+  <block id="c6960e489ca14167f9bd9ace657e6790" category="cell">컬렉션을 읽을 때 반환할 리소스에 대해 일치해야 하는 필드를 나타냅니다.</block>
+  <block id="4294376261299ba2cafafdb77ca4deeb" category="cell">주문</block>
+  <block id="cef5a79ac183c2043267cf9b8a6fde0b" category="cell">컬렉션을 읽을 때 반환되는 리소스의 정렬 순서를 결정합니다.</block>
+  <block id="aa9f73eea60a006820d0f8768bc8a3fc" category="cell">제한</block>
+  <block id="0233c5525461d7223c11d45dc1c590ab" category="cell">컬렉션을 읽을 때 반환되는 최대 리소스 수를 제한합니다.</block>
+  <block id="08b43519a7e36ee4c6c5615d1663bcfd" category="cell">건너뛰기</block>
+  <block id="58eeca9906af37123daca426979fbe90" category="cell">컬렉션을 읽을 때 전달하고 건너뛸 리소스 수를 설정합니다.</block>
+  <block id="16bd6f56e0279353c2bf47e3b1d13c41" category="cell">메타데이터 개체에서 총 리소스 수를 반환해야 하는지 여부를 나타냅니다.</block>
+  <block id="2974f783f17d54a41f4040c8daa90545" category="section-title">HTTP 상태 코드입니다</block>
+  <block id="175b29f6f8dd1aa8a166427b6bcd061c" category="paragraph">Astra Control REST API에서 사용하는 HTTP 상태 코드는 아래와 같다.</block>
+  <block id="68f3bee395b27d2cbfdf4b021846dcca" category="inline-link-macro">진단 및 지원</block>
+  <block id="d9a8eedd670f58ed76d5ae881e6d4469" category="admonition">Astra Control REST API는 HTTP API * 표준에 대한 * Problem Details도 사용합니다. 을 참조하십시오 <block ref="e560597744bc7b2711ae89c683c4035f" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="ca0dbad92a874b2f69b549293387925e" category="cell">코드</block>
+  <block id="7277de5f2ed6f17c61f1f25594591a82" category="cell">의미</block>
+  <block id="3644a684f98ea8fe223c713b77189a77" category="cell">200</block>
+  <block id="e0aa021e21dddbd6d8cecec71e9cf564" category="cell">좋습니다</block>
+  <block id="ebe8cd0cd7287699e570e52e72202209" category="cell">새 리소스 인스턴스를 만들지 않는 호출의 성공 여부를 나타냅니다.</block>
+  <block id="757b505cfd34c64c85ca5b5690ee5293" category="cell">201</block>
+  <block id="0eceeb45861f9585dd7a97a3e36f85c6" category="cell">작성됨</block>
+  <block id="257e32e339ab2841c4fa5590926cbb5d" category="cell">객체가 성공적으로 생성되고 위치 응답 헤더에 객체의 고유 식별자가 포함됩니다.</block>
+  <block id="274ad4786c3abca69fa097b85867d9a4" category="cell">204</block>
+  <block id="8386bf720b8b55126f9551c6678647f9" category="cell">콘텐츠가 없습니다</block>
+  <block id="aae60f64e8a8cfaba50bb2292348bc3c" category="cell">반환된 콘텐츠가 없지만 요청이 성공했습니다.</block>
+  <block id="18d8042386b79e2c279fd162df0205c8" category="cell">400</block>
+  <block id="0fc30646d5cf22910283967bf24ebf66" category="cell">잘못된 요청입니다</block>
+  <block id="d61713af1a9c56d51f7fb3873bed7e92" category="cell">요청 입력이 인식되지 않거나 부적절합니다.</block>
+  <block id="816b112c6105b3ebd537828a39af4818" category="cell">401</block>
+  <block id="e06d1ba70f1331e9f9a113cc2f887d3f" category="cell">권한이 없습니다</block>
+  <block id="046b13999cd7e3b5a519e3f6c564f5b9" category="cell">사용자에게 권한이 없으며 인증이 필요합니다.</block>
+  <block id="bbf94b34eb32268ada57a3be5062fe7d" category="cell">403</block>
+  <block id="722969577a96ca3953e84e3d949dee81" category="cell">금지됨</block>
+  <block id="8df9e8f24b204c91ad0a9031f9c09a16" category="cell">인증 오류로 인해 액세스가 거부되었습니다.</block>
+  <block id="4f4adcbf8c6f66dcfc8a3282ac2bf10a" category="cell">404</block>
+  <block id="9e076f5885f5cc16a4b5aeb8de4adff5" category="cell">찾을 수 없습니다</block>
+  <block id="24ff0a9484d837d82e7f8f8218e196b6" category="cell">요청에서 참조되는 리소스가 없습니다.</block>
+  <block id="a96b65a721e561e1e3de768ac819ffbb" category="cell">409</block>
+  <block id="f1d4ac54357cc0932f385d56814ba7e4" category="cell">충돌</block>
+  <block id="47a99fc0005eeb289896eda4eb4b708a" category="cell">개체가 이미 있으므로 개체를 만들지 못했습니다.</block>
+  <block id="cee631121c2ec9232f3a2f028ad5c89b" category="cell">500입니다</block>
+  <block id="8f8913c1f755436db84ae169e37c61f9" category="cell">내부 오류입니다</block>
+  <block id="03f0e0f686ebd5f796ca9febd1723676" category="cell">서버에서 일반적인 내부 오류가 발생했습니다.</block>
+  <block id="285e19f20beded7d215102b49d5c09a0" category="cell">503</block>
+  <block id="9ed1d9418efab93ff8b4b1793913fabe" category="cell">서비스를 사용할 수 없습니다</block>
+  <block id="a6613dcc5c4d971acabeae88baf14cb7" category="cell">어떤 이유로 요청을 처리할 준비가 되지 않았습니다.</block>
+  <block id="28f2e38e559165835d242a67c869c1fb" category="summary">Astra Control REST API는 리소스 인스턴스 및 리소스 인스턴스 컬렉션에 대한 액세스를 제공합니다.</block>
+  <block id="0ef9d205b3c12ed04d4b22391e87afc8" category="doc">리소스 및 컬렉션</block>
+  <block id="a1da6a69dc3621a153be0d63ad955397" category="admonition">개념적으로 REST * 리소스 * 는 OOP(개체 지향 프로그래밍) 언어 및 시스템에 정의된 * 개체 * 와 유사합니다. 때때로 이러한 용어는 서로 바꿔서 사용할 수 있습니다. 그러나 일반적으로 "리소스"는 외부 REST API의 컨텍스트에서 사용하는 반면 "개체"는 서버에 저장된 해당 상태 저장 인스턴스 데이터에 사용됩니다.</block>
+  <block id="10522d991ba47cf052332e37b93638f3" category="section-title">Astra 리소스의 속성</block>
+  <block id="c4613329138e41e46eb20ecf28914817" category="paragraph">Astra Control REST API는 RESTful 설계 원칙을 준수합니다. 각 Astra 리소스 인스턴스는 잘 정의된 리소스 유형을 기반으로 생성됩니다. 같은 형식의 리소스 인스턴스 집합을 * 컬렉션 * 이라고 합니다. API 호출은 개별 리소스 또는 리소스 모음에 대해 작동합니다.</block>
+  <block id="b6af2b8fdca63591236d48930018b8db" category="paragraph-title">리소스 유형</block>
+  <block id="f501980961d6c7a1f8d0f73eb1998d2d" category="paragraph">Astra Control REST API에 포함된 리소스 유형은 다음과 같은 특성을 갖습니다.</block>
+  <block id="1462bc4396a7f92c2a40fdb70353c11b" category="list-text">모든 리소스 유형은 스키마(일반적으로 JSON)를 사용하여 정의됩니다.</block>
+  <block id="6a7693b24adc0a8f49972d3c9fa44aa7" category="list-text">모든 리소스 스키마에는 리소스 유형과 버전이 포함됩니다</block>
+  <block id="3a5bb03daf09a5f9ee7c38abedb79438" category="list-text">리소스 유형은 전역적으로 고유합니다</block>
+  <block id="515fc3276bd3187a4917ddf7d57db2be" category="paragraph-title">리소스 인스턴스</block>
+  <block id="a520c7cb73d88575fc93ad35b53894ab" category="paragraph">Astra Control REST API를 통해 사용 가능한 리소스 인스턴스의 특징은 다음과 같습니다.</block>
+  <block id="ad12b03bd967f6232973db6e1e8d54e8" category="list-text">리소스 인스턴스는 단일 리소스 유형에 따라 만들어집니다</block>
+  <block id="a8ae0ec6707984a7a25ae5d6d872a26e" category="list-text">리소스 유형은 미디어 유형 값을 사용하여 표시됩니다</block>
+  <block id="32add7a750dbbb025d0ec6c3b8058890" category="list-text">인스턴스는 Astra 서비스에서 유지 관리하는 상태 저장 데이터로 구성됩니다</block>
+  <block id="e53d478a862931c0d5d839bc35228be1" category="list-text">각 인스턴스는 고유하고 오래 지속되는 URL을 통해 액세스할 수 있습니다</block>
+  <block id="60c8f94b742e229bdac6f65b26abd188" category="list-text">리소스 인스턴스에 둘 이상의 표현이 있을 수 있는 경우 다양한 미디어 유형을 사용하여 원하는 표현을 요청할 수 있습니다</block>
+  <block id="c63467857ced87bca573cc84332ea38e" category="paragraph-title">리소스 컬렉션</block>
+  <block id="5edbe2734dc4b7c3185c8a5192c5e940" category="paragraph">Astra Control REST API를 통해 사용 가능한 리소스 수집에는 다음과 같은 특성이 있습니다.</block>
+  <block id="4ed370961773751cbf665ad3ec9bbe7d" category="list-text">단일 리소스 형식의 리소스 인스턴스 집합을 컬렉션이라고 합니다</block>
+  <block id="8bb3319f4df785fb5e6ac6a323cc692e" category="list-text">리소스 컬렉션에는 고유하고 오래 지속되는 URL이 있습니다</block>
+  <block id="55920bcaefa36a6964fdc7020a835d5f" category="paragraph-title">인스턴스 식별자</block>
+  <block id="7b37fb297bfca9ad91bb761c9ecdb3e0" category="paragraph">모든 리소스 인스턴스는 만들 때 식별자가 할당됩니다. 이 식별자는 128비트 UIDv4 값입니다. 할당된 UUIDv4 값은 전역적으로 고유하며 변경할 수 없습니다. 새 인스턴스를 만드는 API 호출을 실행하면 관련 ID가 있는 URL이 의 호출자에게 반환됩니다<block ref="ce5bf551379459c1c61d2a204061c455" prefix=" " category="inline-code"></block> HTTP 응답의 헤더입니다. 식별자를 추출하여 리소스 인스턴스를 참조할 때 후속 호출에 사용할 수 있습니다.</block>
+  <block id="bf5096ce255d57836c10f7a02fbd117d" category="admonition">리소스 식별자는 컬렉션에 사용되는 기본 키입니다.</block>
+  <block id="052550c93dde25614a02e3e525606762" category="section-title">Astra 리소스의 공통 구조</block>
+  <block id="1e34169f9f85961a4918c2a3ec12335c" category="paragraph">모든 Astra Control 리소스는 공통 구조를 사용하여 정의됩니다.</block>
+  <block id="2ed6f74fc82a2206a6fa7ea55363656c" category="paragraph-title">공통 데이터</block>
+  <block id="d691a99f89ba35430c2ae2930698e2f3" category="paragraph">모든 Astra 리소스에는 다음 표에 나와 있는 키 값이 포함되어 있습니다.</block>
+  <block id="897356954c2cd3d41b221e3f24f99bba" category="cell">키</block>
+  <block id="599dcce2998a6b40b1e38e8c6006cb0a" category="cell">유형</block>
+  <block id="531bacc74686bf6c0c3c06dc14ba8ac4" category="cell">자원 유형 * 이라고 하는 전역적으로 고유한 자원 유형입니다.</block>
+  <block id="2af72f100c356273d46284f6fd1dfc08" category="cell">버전</block>
+  <block id="e8677f33e0fa58029ec381a961def5e0" category="cell">리소스 버전*이라고 하는 버전 식별자입니다.</block>
+  <block id="b80bb7740288fda1f201890375a60c8f" category="cell">ID입니다</block>
+  <block id="679eeb2f006a684ca3bde51d5ee04c65" category="cell">리소스 식별자 * 라고 하는 전역 고유 식별자입니다.</block>
+  <block id="9f81f3c07476a0d97f6793673dd8e475" category="cell">메타데이터</block>
+  <block id="e4cf899c2773024506ffc1cf5118b130" category="cell">사용자 및 시스템 레이블을 비롯한 다양한 정보를 포함하는 JSON 개체입니다.</block>
+  <block id="647f6448e005296f7ac5b882aa71a868" category="paragraph-title">메타데이터 개체입니다</block>
+  <block id="743dff21ad3d768ffb79a4dc0d853b4a" category="paragraph">각 Astra 리소스에 포함된 메타데이터 JSON 개체에는 다음 표에 나와 있는 키 값이 포함됩니다.</block>
+  <block id="42cecfeff00cc916fef4f64e7b921079" category="cell">라벨</block>
+  <block id="d7aefd81a0396b4a6170af899b6ba156" category="cell">리소스와 연결된 클라이언트 지정 레이블의 JSON 배열입니다.</block>
+  <block id="b3473b191865b146062fdca327dc1e0f" category="cell">CreationTimestamp 를 클릭합니다</block>
+  <block id="d53343f1e86eb9c74de3507e65e51df0" category="cell">JSON 문자열에는 리소스가 생성된 시점을 나타내는 타임스탬프가 포함되어 있습니다.</block>
+  <block id="f30264e4e420a038d09448da6fd0a440" category="cell">modificationTimestamp</block>
+  <block id="a2a12fff7c0c1ad7aa7d6ec9894d7dfd" category="cell">ISO-8601 형식의 타임 스탬프가 포함된 JSON 문자열로, 리소스가 마지막으로 변경된 시기를 나타냅니다.</block>
+  <block id="34998857f537140306898d54d4b970dc" category="cell">생성 시</block>
+  <block id="af7c4c7bd30238dcb53e639cf7a50996" category="cell">리소스를 생성한 사용자 ID의 UUIDv4 식별자가 포함된 JSON 문자열입니다. 내부 시스템 구성 요소에 의해 리소스가 생성되었고 생성 엔티티와 연관된 UUID가 없는 경우 * null * UUID가 사용됩니다.</block>
+  <block id="6cb8b958a36383ed1b7bacc626d0a5dd" category="paragraph-title">리소스 상태입니다</block>
+  <block id="b7aa38141b9dd3f7e78cd09e7f60ce0c" category="paragraph">선택한 자원 A<block ref="9ed39e2ea931586b6a985a6942ef573e" prefix=" " category="inline-code"></block> 수명 주기 전환을 조율하고 액세스를 제어하는 데 사용되는 값입니다.</block>
+  <block id="ce44f3c6e8850cf4a69ccd2da1d186c8" category="summary">REST(Representational State Transfer)는 분산된 웹 애플리케이션을 만드는 스타일입니다. 웹 서비스 API 설계에 적용할 경우 서버 기반 리소스를 노출하고 상태를 관리하기 위한 주요 기술 및 모범 사례 집합을 설정합니다.</block>
+  <block id="c0471368cdc5da09455ecd80f16c96c7" category="doc">REST 웹 서비스</block>
+  <block id="8af1f604c2ddb0ae53e02227ab1ca1da" category="paragraph">REST(Representational State Transfer)는 분산된 웹 애플리케이션을 만드는 스타일입니다. 웹 서비스 API 설계에 적용할 경우 서버 기반 리소스를 노출하고 상태를 관리하기 위한 주요 기술 및 모범 사례 집합을 설정합니다. REST는 애플리케이션 개발을 위한 일관된 기반을 제공하지만 각 API의 세부 사항은 특정 설계 선택에 따라 달라질 수 있습니다. 라이브 구축과 함께 사용하기 전에 Astra Control REST API의 특성을 알고 있어야 합니다.</block>
+  <block id="b0fcdfb2c58efafaace08609d3e95f6d" category="section-title">리소스 및 상태 표시</block>
+  <block id="d2d07b32aecf22c6a25dc91e4b898e5e" category="paragraph">리소스는 웹 기반 시스템의 기본 구성 요소입니다. REST 웹 서비스 응용 프로그램을 만들 때 초기 설계 작업은 다음과 같습니다.</block>
+  <block id="c73e999111ecc4cc9c48709542105db9" category="list-text">시스템 또는 서버 기반 리소스 식별</block>
+  <block id="0400993c35912a6c4e281a903a66400e" category="paragraph">모든 시스템은 리소스를 사용하고 유지합니다. 리소스는 파일, 비즈니스 트랜잭션, 프로세스 또는 관리 엔티티가 될 수 있습니다. REST 웹 서비스를 기반으로 애플리케이션을 설계하는 첫 번째 작업 중 하나는 리소스를 식별하는 것입니다.</block>
+  <block id="082f61fd927dc840d6a4c2daa3a8d76d" category="list-text">자원 상태 및 연관된 상태 작업의 정의</block>
+  <block id="5f4e63d9846190edae863ef33879f410" category="paragraph">리소스는 항상 한정된 수의 상태 중 하나에 있습니다. 상태 변경에 영향을 주는 데 사용되는 상태 및 관련 작업을 명확하게 정의해야 합니다.</block>
+  <block id="6e9ee433459bf14a5380c1e7371232a9" category="section-title">URI 끝점</block>
+  <block id="64c51063277c11a48be48ec3446f5087" category="paragraph">모든 REST 리소스는 잘 정의된 주소 지정 체계를 사용하여 정의되고 사용 가능해야 합니다.  리소스가 있고 식별된 끝점은 URI(Uniform Resource Identifier)를 사용합니다. URI는 네트워크의 각 리소스에 대해 고유한 이름을 만들기 위한 일반 프레임워크를 제공합니다. URL(Uniform Resource Locator)은 리소스를 식별하고 액세스하기 위해 웹 서비스와 함께 사용되는 URI 유형입니다. 일반적으로 리소스는 파일 디렉터리와 비슷한 계층적 구조로 표시됩니다.</block>
+  <block id="34d23bd6dd51b3238872241264de74bf" category="section-title">HTTP 메시지</block>
+  <block id="19f05b47f4b958662678fc11fd0ce414" category="paragraph">HTTP(Hypertext Transfer Protocol)는 웹 서비스 클라이언트 및 서버가 리소스에 대한 요청 및 응답 메시지를 교환하기 위해 사용하는 프로토콜입니다. 웹 서비스 응용 프로그램 설계의 일환으로 HTTP 메서드는 리소스 및 해당 상태 관리 작업에 매핑됩니다. HTTP는 상태 비저장 입니다. 따라서 관련 요청 및 응답 집합을 하나의 트랜잭션으로 연결하려면 요청 및 응답 데이터 플로우와 함께 전달된 HTTP 헤더에 추가 정보가 포함되어야 합니다.</block>
+  <block id="bd4c8bbdccbcb7826a3bc4ae421c0604" category="section-title">JSON 형식</block>
+  <block id="352836aad17f0db4217873eb0a9524b3" category="paragraph">정보는 여러 가지 방법으로 웹 서비스 클라이언트와 서버 간에 구조화되고 전송될 수 있지만 가장 일반적인 옵션은 JSON(JavaScript Object Notation)입니다. JSON은 단순 데이터 구조를 일반 텍스트로 나타내는 업계 표준이며 리소스를 설명하는 상태 정보를 전송하는 데 사용됩니다. Astra Control REST API는 JSON을 사용하여 각 HTTP 요청 및 응답의 본문으로 전송되는 데이터를 포맷합니다.</block>
+  <block id="94fd56b370187429c8fbd312f50f5c1b" category="summary">REST API를 통해 리소스 인스턴스 또는 컬렉션에 액세스하는 데 사용되는 URL의 일반 구조는 여러 값으로 구성됩니다. 이 구조체는 기본 개체 모델 및 시스템 설계를 반영합니다.</block>
+  <block id="6e84a7dae5ae82dd22a0ec6f456dbc8d" category="paragraph-title">root로 계정을 지정합니다</block>
+  <block id="e166d573b25ce4160633b91145d1eae5" category="paragraph">모든 REST 끝점에 대한 리소스 경로의 루트는 Astra 계정입니다. 따라서 URL의 모든 경로는 로 시작합니다<block ref="773211dffefd6ff22a8717595591ca91" prefix=" " category="inline-code"></block> 위치<block ref="8a089c2a7e6c77be2e2e68c5c366f460" prefix=" " category="inline-code"></block> 계정에 대한 고유한 UUIDv4 값입니다. 내부 구조 모든 리소스 액세스가 특정 계정을 기반으로 하는 설계를 반영합니다.</block>
+  <block id="faf17fd8415851163c880ffe0eee8b37" category="paragraph-title">끝점 리소스 범주입니다</block>
+  <block id="c96943fca3fb4769805adeaadbfa2a4c" category="paragraph">Astra 리소스 끝점은 세 가지 범주로 나뉩니다.</block>
+  <block id="f5eee40efb177a56f7f47f4e9ae88fc0" category="list-text">코어 <block ref="ae20cee98ae962b39919c99c9fa7e1c8" prefix="(" category="inline-code"></block>)</block>
+  <block id="e82590686de294a35499703d86b3864d" category="list-text">관리형 애플리케이션 <block ref="7466713d447629f279c035593d0e5915" prefix="(" category="inline-code"></block>)</block>
+  <block id="339ca9edd021d342e12ce488d3083b7b" category="list-text">토폴로지 <block ref="bdb7ca6d76afde60f0988ada498ba87f" prefix="(" category="inline-code"></block>)</block>
+  <block id="ddcf50c29294d4414f3f7c1bbc892cb5" category="inline-link-macro">리소스</block>
+  <block id="2598572d1690c4e8c484f3411842c6ed" category="paragraph">을 참조하십시오 <block ref="f79c22f30a5c9f960ce998adee5739fa" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="1a13e0be61ce3aab0376745ec89773a0" category="paragraph-title">카테고리 버전</block>
+  <block id="807911da3f02747e900f1cbb28978d93" category="paragraph">세 가지 리소스 범주 각각에는 액세스한 리소스의 버전을 제어하는 전역 버전이 있습니다. 규칙 및 정의에 따라 리소스 범주의 새로운 주 버전(예: 에서)으로 이동합니다<block ref="28a2a7dc609f4cccc18847065506737d" prefix=" " category="inline-code"></block> 를 선택합니다<block ref="88ea36c8fc61681c48dea9b12e9a2fb8" prefix=" " category="inline-code"></block>)는 API의 변경 사항을 깨는 방법을 소개합니다.</block>
+  <block id="b59579c5294990b3465d2a6e5a853fc0" category="paragraph-title">리소스 인스턴스 또는 컬렉션입니다</block>
+  <block id="a759694558fdad138d8e71cc88a58b5b" category="paragraph">리소스 인스턴스 또는 컬렉션 액세스 여부에 따라 경로에서 리소스 형식과 식별자의 조합을 사용할 수 있습니다.</block>
+  <block id="0a52730597fb4ffa01fc117d9e71e3a9" category="list-title">예</block>
+  <block id="2fc537b9f7b2c95f698a1e045c1ca8c7" category="list-text">리소스 경로입니다</block>
+  <block id="4c1c10477ca13145352fd9a92f9744f6" category="paragraph">위에서 설명한 구조를 기반으로 엔드포인트에 대한 일반적인 경로는 다음과 같습니다.<block ref="12662cf5431171146c880e7742535780" prefix=" " category="inline-code"></block>.</block>
+  <block id="8a95104150e07b745de96037e7eb15b4" category="list-text">URL을 완료합니다</block>
+  <block id="d01376790c7b0b81f92f0a93fe0d3fad" category="paragraph">해당 끝점의 전체 URL은 다음과 같습니다.<block ref="889041d0c093d3ff7a84829871523416" prefix=" " category="inline-code"></block>.</block>
+  <block id="b844ee2db8fd78557f753d0c04015c4a" category="summary">Astra Control은 Kubernetes 애플리케이션에 데이터 라이프사이클 관리를 제공하는 NetApp 소프트웨어 제품입니다. 환경에 따라 두 가지 구축 모델을 사용할 수 있습니다. Astra Control Center와 Astra Control Service는 릴리즈에 따라 동일한 REST API를 공유합니다. REST API 및 기타 관련 자동화 기술을 사용하여 Astra Control 배포를 관리할 수 있습니다.</block>
+  <block id="1a0ca7f0a5aea880c24d544b4655d6ed" category="doc">Astra Control Automation 설명서</block>
+  <block id="7128d9d8a839786105f002007172fbe5" category="summary">NetApp은 새로운 기능, 개선 사항 및 버그 수정을 제공하기 위해 Astra Control REST API를 정기적으로 업데이트합니다.</block>
+  <block id="c93cc787737ceea532bea714170e32cf" category="doc">Astra Control REST API의 새로운 기능</block>
+  <block id="6881779f2ae76c74d15a56eaefcccd8b" category="section-title">2023년 11월 7일(23.10)</block>
+  <block id="c5f7bfd0f88ba662f205c76fa84795d3" category="paragraph">Astra Control Service와 Astra Control Center가 23.10 릴리즈로 업데이트되었습니다. 새로운 기능을 지원하기 위해 REST API에는 선별적으로 향상된 기능이 있습니다.</block>
+  <block id="aa6c06174da3e56927ecff87b8b59d97" category="section-title">확장된 저장소 백엔드</block>
+  <block id="59c699c319c0ae768cb1a82b07028dff" category="paragraph">에 대한 백업 및 복원 작업을 활성화할 수 있습니다<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block> 스토리지 백엔드</block>
+  <block id="615193f2c37d9fd054a61bf78b73ad01" category="section-title">변경 불가능한 백업</block>
+  <block id="621ca655e0daef2645ca8111b3c531cc" category="paragraph">이제 Astra Control은 맬웨어 및 기타 위협에 대한 추가 보안 계층으로 변경 불가능한 읽기 전용 백업을 지원합니다.</block>
+  <block id="74e32fa10752727786230542db6f5350" category="section-title">실행 후크에 대한 제어 기능 향상</block>
+  <block id="2f2999f047197765442c0c74117bb5be" category="paragraph">이 릴리스부터는 추가 보안을 위해 실행 후크 기능을 사용하거나 사용하지 않도록 설정할 수 있습니다(기본적으로 비활성화되어 있음). Astra Control과 함께 사용할 실행 후크를 아직 생성하지 않은 경우, 후크 생성을 시작하려면 실행 후크 기능을 활성화해야 한다. 이 릴리스 이전에 실행 후크를 만든 경우 실행 후크 기능은 계속 사용할 수 있으며 평소처럼 후크를 사용할 수 있습니다.</block>
+  <block id="7b36f358be6830020f92c7a96bc9ebb7" category="section-title">2023년 7월 27일(23.07)</block>
+  <block id="32b0cbc34ea58967e6c353f6c878e408" category="paragraph">이 릴리스에는 REST API에 대한 선택적 개선 사항이 포함되어 있습니다. Astra Control Service와 Astra Control Center는 모두 23.07 릴리스로 업데이트되었습니다.</block>
+  <block id="be9971554f6f1c3ebcb04b3c2ef0dd72" category="section-title">클론 및 복제 작업</block>
+  <block id="3ea32f614af63c14a7b957de0a796445" category="paragraph">이제 클론 작업은 라이브 클론만 지원합니다(관리되는 애플리케이션의 현재 상태). 스냅샷 또는 백업에서 클론을 생성하려면 복구 작업을 사용해야 합니다. 또한 동일한 Kubernetes 클러스터 내의 ONTAP 스토리지 백엔드 간에 애플리케이션을 복제할 수도 있습니다.</block>
+  <block id="7fdbac7d23ca41d2cef806f176e51840" category="paragraph">이제 Astra Control Center에서 다음과 같은 추가 스토리지 백엔드를 사용할 수 있습니다.</block>
+  <block id="94466e32e364f329d0be558873e8c904" category="list-text">스트레치 구성의 NetApp MetroCluster</block>
+  <block id="cd27a1715aac859bc2a48a86ed2000c0" category="inline-link">롱혼</block>
+  <block id="1d64e26fe87f8846d60010aa3270a37f" category="list-text"><block ref="1752f949f63eb1f41cea70be24a2a732" category="inline-link-rx"></block> 1.5.0 이상</block>
+  <block id="e6ae92bcba1e3a36ef0b12b0f1ed5c53" category="section-title">새 실행 후크 유형입니다</block>
+  <block id="00b87f63b5ab2f631053ae22c2cbadbd" category="paragraph">새로운 실행 후크 유형 * 사후 페일오버 * 는 Astra Control Center에서 사용할 수 있습니다.</block>
+  <block id="33bb807546f543c0b9c58cf7b7e62a4c" category="section-title">2023년 6월 27일(23.06)</block>
+  <block id="05b8695ac535480ad4f4cf9e5bd4ecd2" category="paragraph">이 릴리스에는 REST API에 대한 선택적 업데이트가 포함되어 있습니다.</block>
+  <block id="21e74b3c28d006317f38a2bc8eb1da3b" category="section-title">Azure 마켓플레이스 를 참조하십시오</block>
+  <block id="31553f2d81caf3af40330c67fcb7b3d6" category="inline-link">대금 청구를 설정합니다</block>
+  <block id="58e46bdad56d44447c43649a3b5b4f7b" category="paragraph">Azure Marketplace 구독은 이제 분당 요금이 아닌 시간당 청구됩니다. 도 참조하십시오<block ref="633dc17422f08a9c882e1f52f9a90b82" category="inline-link-rx"></block>.</block>
+  <block id="8e926a216f6adb19574523270dec9729" category="section-title">재정적 최적화</block>
+  <block id="a73241b184629bdaef0ee68446abeb15" category="paragraph">플래그를 사용하여 restic 백업에 대한 성능 최적화를 설정할 수 있습니다<block ref="6fb6e873ef6d6ac86ac763f089d95fa1" prefix=" " category="inline-code"></block> 새로운<block ref="4e513e9fe169e7733cdfe334575b2dec" prefix=" " category="inline-code"></block> 설정 API 리소스. 를 로 설정한 경우<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block>, 번호<block ref="47964ec30dfb028cc802262834e3577b" prefix=" " category="inline-code"></block> 대용량 볼륨을 Azure 컨테이너에 백업할 때는 이러한 재정적 사용이 증가합니다. 1TB ~ 4TB의 볼륨에 128개의 연결이 사용됩니다. 4TB보다 큰 볼륨의 경우 512개의 백엔드 접속이 사용됩니다.</block>
+  <block id="162c594ec970f3cd4eb2f6d6d2311381" category="section-title">2023년 5월 30일(23.05)</block>
+  <block id="a1dba4846637919a02bf180b636f6229" category="section-title">선택적 복원 작업</block>
+  <block id="3ecf6cf3aaad58d22b055973cbbae0d4" category="paragraph">복원 또는 클론 복제 작업 중에 대상 스토리지 클래스를 선택할 수 있습니다.</block>
+  <block id="2d895ac3837ac459cbcdcd76339d84cd" category="section-title">자가 관리 클러스터에 동적 ANF 풀 사용</block>
+  <block id="5917ef890e9d60f9bf3cc41a2723766a" category="inline-link-macro">동적 ANF 풀을 설정합니다</block>
+  <block id="10331a659c4281dea77fa4165e988593" category="paragraph">ANF 스토리지 백엔드가 있는 전용 사내 클러스터에서 관리되는 앱을 백업할 때 이제 구독 ID를 제공하여 동적 ANF 풀 기능을 활성화할 수 있습니다. 을 참조하십시오 <block ref="0d6a3e3d7740d3989d225fce5dc1ad21" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="cdfde9b3972928d07d0aa9787e6589c3" category="section-title">2023년 4월 25일(23.04)</block>
+  <block id="8887f1f9ab842379c67e5e32f8dc87e0" category="paragraph">복원 작업 중에 응용 프로그램 리소스를 선택적으로 포함하거나 제외할 수 있습니다. 이 작업은 특정 네임스페이스, 이름, 레이블 또는 GroupVersionKind 값을 기반으로 하는 필터 규칙을 사용하여 수행됩니다.</block>
+  <block id="fc39be20ea823e1b9e3d3a96c1cc1c4d" category="section-title">데이터 전용 애플리케이션 지원</block>
+  <block id="060c77065349f3e6f9b971248729bf60" category="paragraph">애플리케이션 관리 지원이 데이터 전용 애플리케이션으로 확장되었습니다.</block>
+  <block id="14f03db07d2c880fafbf7c4fdb9955bd" category="section-title">2023년 1월 17일(23.01)</block>
+  <block id="055a27c4d72ac10e8bf363a70b1218a0" category="paragraph">이 릴리스에는 REST API에 대한 사소한 업데이트가 포함되어 있습니다.</block>
+  <block id="fd681e19859abac8a0d1df0703c54996" category="section-title">필터가 포함된 향상된 실행 후크 기능</block>
+  <block id="03612c2b7f26bb15fe2a8f56732f28ad" category="paragraph">실행 후크를 사용할 때 후크가 일치시킬 컨테이너를 제어하기 위해 필터를 추가할 수 있습니다. 단일 실행 후크에 대해 여러 개의 필터를 만들면 논리적 필터 및 연산자와 결합됩니다. 실행 후크당 최대 10개의 활성 필터를 정의할 수 있습니다.</block>
+  <block id="15a49e5e6108a59bc58f9d168370a19c" category="section-title">2022년 11월 22일(22.11)</block>
+  <block id="b112e3f1b397445fd5281d9bc6e09d81" category="paragraph">이 릴리즈에는 REST API의 확장 및 업데이트와 함께 향상된 네임스페이스 및 LDAP 지원이 포함되어 있습니다.</block>
+  <block id="b2e7eefe39dff61bfe224d948a6b01f1" category="section-title">새로운 고급 Astra 리소스</block>
+  <block id="362493a327267b53126ff3dc516912f1" category="paragraph">네 가지 새로운 리소스 유형이 추가되었습니다. * apiResource *, * ldapGroup *, * ldapUser * 및 * task *. 또한 기존 리소스 및 끝점이 여러 개 개선되었습니다.</block>
+  <block id="ce5c5948d95c8c0472c3d2c6db6c64e6" category="section-title">장기 실행 작업에 대한 모니터링 지원</block>
+  <block id="cfd316fdb1b0f0dd74ee9e58b9a1ae05" category="paragraph">새 작업 끝점은 관리되는 작업 자원에 대한 액세스를 제공하며 내부 장기 실행 작업의 상태를 표시하는 데 사용할 수 있습니다.</block>
+  <block id="f88c78ad03f7bf32e58a6534422c4cea" category="section-title">향상된 네임스페이스 사용 시나리오</block>
+  <block id="e35b7828f5b71b8b6d16647255e840dd" category="paragraph">네임스페이스가 한정된 리소스와 관련된 클러스터 리소스뿐만 아니라 여러 네임스페이스에 걸쳐 있는 앱에 대한 지원이 추가되었습니다.</block>
+  <block id="60243a7b387f61994d5b2632eb94cf9d" category="section-title">클라우드 구독 확장</block>
+  <block id="c729dff676f642454774aef7f9101d2d" category="paragraph">이제 각 클라우드 공급자에 대해 여러 계정 구독을 추가할 수 있습니다.</block>
+  <block id="25742c79c197ce7f0982652ead3bd964" category="section-title">추가 워크플로</block>
+  <block id="3037de0d7a975b284e2a80d0ff32a9cc" category="inline-link-macro">인프라 워크플로우</block>
+  <block id="a0aa3c13c7e155cdac2e684ed97bd329" category="inline-link-macro">관리 워크플로</block>
+  <block id="7494e7f70b31d89664784c20229e8098" category="paragraph">Astra Control REST API를 나타내는 추가적인 워크플로우가 추가되었습니다. 을 참조하십시오 <block ref="fc2071d838ca44c08fca8ef5c62f2e8e" category="inline-link-macro-rx"></block> 및 <block ref="b729850dc33cbcb91b47d13a137b85a8" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="30f60d67f457bb040dffde52197a54da" category="list-title">관련 정보</block>
+  <block id="569a55427c99b45390493d1af369acfb" category="inline-link">Astra Control Center 22.11: 새로운 기능</block>
+  <block id="a78735144e703e5a2560a00be64260aa" category="list-text"><block ref="a78735144e703e5a2560a00be64260aa" category="inline-link-rx"></block></block>
+  <block id="affab1573a02975db1b9ece3ebe809a2" category="section-title">2022년 8월 10일(22.08)</block>
+  <block id="0e7874b5c73e32ebc1ff07cc0f74f4d2" category="paragraph">이 릴리스는 REST API의 확장 및 업데이트뿐 아니라 향상된 보안 및 관리 기능도 포함합니다.</block>
+  <block id="a143d01f8afcfb8648ec6fb992293200" category="paragraph">인증서 *, * 그룹 * 및 * AppMirror * 의 세 가지 새로운 리소스 유형이 추가되었습니다. 또한 여러 기존 리소스의 버전이 업데이트되었습니다.</block>
+  <block id="a49c9c380ec2e13191e995f949a1c440" category="section-title">LDAP 인증</block>
+  <block id="7a75d31b87be9d056b6bda38eaa0ec04" category="inline-link-macro">LDAP 구성</block>
+  <block id="9ea80302c854cab54e3ed66f65694108" category="paragraph">선택적으로 Astra Control Center를 LDAP 서버와 통합하여 선택한 Astra 사용자를 인증하도록 구성할 수 있습니다. 을 참조하십시오 <block ref="4c601a7a96565855370b413505d72329" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="b79763fc13e85adccc94bdf927bdccb8" category="section-title">향상된 실행 후크</block>
+  <block id="ed2e31da39a5549d92b9ca0161d3b6e8" category="paragraph">실행 후크에 대한 지원이 Astra Control 21.12 릴리스와 함께 추가되었습니다. 기존의 사전 스냅샷 및 사후 스냅샷 실행 후크뿐만 아니라, 이제 22.08 릴리즈를 통해 다음과 같은 유형의 실행 후크를 구성할 수 있습니다.</block>
+  <block id="0a2055495a94f091655a2e4d421cffe2" category="list-text">사전 백업</block>
+  <block id="cf6e97e89c4b36c29252fcb7b0728d2f" category="list-text">백업 후</block>
+  <block id="349b93d2884e6ca3d41d0d9dab41dcd8" category="list-text">사후 복원</block>
+  <block id="255ac707ef7c398985c59f77208f8d50" category="paragraph">이제 Astra Control을 통해 여러 실행 후크에 동일한 스크립트를 사용할 수 있습니다.</block>
+  <block id="4d3f5aacbe703c00b43aa62f3955f464" category="section-title">SnapMirror를 사용한 애플리케이션 복제</block>
+  <block id="ecdbe161d2c7428016e927963a859b5c" category="paragraph">이제 NetApp SnapMirror 기술을 사용하여 클러스터 간에 데이터 및 애플리케이션 변경사항을 복제할 수 있습니다. 향상된 기능은 비즈니스 연속성 및 복구 기능을 개선하는 데 사용할 수 있습니다.</block>
+  <block id="98f2103877bfa21a7f924a8deb517cde" category="inline-link">Astra Control Center 22.08: 새로운 기능</block>
+  <block id="5f8305474bdca7e099ecf7bf3faee385" category="list-text"><block ref="5f8305474bdca7e099ecf7bf3faee385" category="inline-link-rx"></block></block>
+  <block id="638191aa40b01d59e16da3223262a2ae" category="section-title">2022년 4월 26일(22.04)</block>
+  <block id="4bde032aca792c950934ec7109889309" category="paragraph">패키지 * 와 * 업그레이드 * 의 두 가지 새로운 리소스 유형이 추가되었습니다. 또한 여러 기존 리소스의 버전이 업그레이드되었습니다.</block>
+  <block id="e34439ebb43a7db679d765747385c74b" category="section-title">네임스페이스 세분화를 통해 RBAC 강화</block>
+  <block id="2496b3f288a81c8c923f8c9c19fe6ed4" category="inline-link-macro">RBAC 보안</block>
+  <block id="ce130d685ca26589024445539bb4a112" category="paragraph">연결된 사용자에게 역할을 바인딩하는 경우 사용자가 액세스할 수 있는 네임스페이스를 제한할 수 있습니다. Role Binding API * 참조 및 를 참조하십시오 <block ref="7771c01373e5c08e3b1e2d74687ada1b" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="32a38a631a3c644b9305586dfbe4c946" category="section-title">버킷 제거</block>
+  <block id="abe9507eaf1545e513b2bda0f13294b6" category="paragraph">버킷이 더 이상 필요하지 않거나 제대로 작동하지 않을 경우 이를 제거할 수 있습니다.</block>
+  <block id="aa702244278ce9224bdf493dbd836fcf" category="section-title">Cloud Volumes ONTAP 지원</block>
+  <block id="e7bb002985d166e3cf6e1ddc4e4393b2" category="paragraph">이제 Cloud Volumes ONTAP가 스토리지 백엔드로 지원됩니다.</block>
+  <block id="2db9f7bc36bbde906d13641387315f23" category="section-title">추가 제품 개선 사항</block>
+  <block id="5fe6ed1138cf9586db6e448abda4c52c" category="paragraph">두 Astra Control 제품 구현에 대한 몇 가지 추가 개선 사항은 다음과 같습니다.</block>
+  <block id="268713e23997ec1f8e0973dd7e0f9dd0" category="list-text">Astra Control Center의 일반적인 침투입니다</block>
+  <block id="201f9ff2e7c358be8d5de91222827154" category="list-text">AKS의 프라이빗 클러스터</block>
+  <block id="c947068eab1ac219cdd1ae261b1673a0" category="list-text">Kubernetes 1.22 지원</block>
+  <block id="0afb329986521efa00ad1d41bb8a946f" category="list-text">VMware Tanzu 포트폴리오 지원</block>
+  <block id="f1ba17f787cb31c4e5cc9082051b3c0e" category="paragraph">Astra Control Center 및 Astra Control Service 문서 사이트에서 * 새로운 기능 * 페이지를 참조하십시오.</block>
+  <block id="3da4bc9c8aee9c6659e8c9b4fd3e11b1" category="inline-link">Astra Control Center 22.04: 새로운 기능</block>
+  <block id="8a79fee76756d9bc87c413d7f92be004" category="list-text"><block ref="8a79fee76756d9bc87c413d7f92be004" category="inline-link-rx"></block></block>
+  <block id="a1be4875b5bb7cb5ecf7bdcde9034c85" category="section-title">2021년 12월 14일(21.12)</block>
+  <block id="09709048ce6033b774d7c044c1d718a2" category="paragraph">이 릴리스에는 향후 릴리즈 업데이트를 통해 Astra Control의 발전을 더욱 잘 지원하기 위해 문서 구조의 변경 사항과 함께 REST API 확장이 포함되어 있습니다.</block>
+  <block id="ac36e7b65e4f6ad43be3f12f0d0799df" category="section-title">Astra Control의 각 릴리스에 대한 Astra 자동화 문서를 분리합니다</block>
+  <block id="9a96b1cd085b9e8e259f701ed2e8edbc" category="inline-link-macro">이전 버전의 Astra Control Automation 설명서</block>
+  <block id="b0d9341a86886d085ea7727cabd2ea40" category="inline-link">Astra 제어 자동화</block>
+  <block id="0a389878c5dc68edba73dd8e0e98c145" category="paragraph">Astra Control의 모든 릴리스에는 특정 릴리스의 기능에 맞게 향상되고 조정된 고유한 REST API가 포함되어 있습니다. Astra Control REST API의 각 릴리스에 대한 문서는 이제 관련 GitHub 콘텐츠 저장소와 함께 자체 전용 웹 사이트에서 제공됩니다. 주 문서 사이트입니다<block ref="528bb65c82e5ff834ab031d8d81cba09" category="inline-link-rx"></block> 항상 최신 릴리스에 대한 설명서를 포함합니다. 을 참조하십시오 <block ref="c9bb9dcf44e030eb56e66a1e24e585e6" category="inline-link-macro-rx"></block> 이전 릴리즈에 대한 자세한 내용은.</block>
+  <block id="ebafbad4787b0e1e6e07c722454234fb" category="section-title">REST 리소스 유형의 확장</block>
+  <block id="4d1c4b6bfa2aac0ebe38d861ab737e79" category="paragraph">REST 리소스 유형의 수는 실행 후크와 스토리지 백엔드에 중점을 두고 계속 확장됩니다. 새로운 리소스에는 계정, 실행 후크, 후크 소스, 실행 후크 재정의, 클러스터 노드, 관리 스토리지 백엔드, 네임스페이스, 스토리지 디바이스 및 스토리지 노드 을 참조하십시오 <block ref="f79c22f30a5c9f960ce998adee5739fa" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="736ac6ee210a91c2f1a6638cc6127fd4" category="paragraph">NetApp Astra Control Python SDK는 오픈 소스 패키지로서, Astra Control 환경을 위한 자동화 코드를 더욱 쉽게 개발할 수 있도록 지원합니다. 핵심 요소는 REST API 호출의 복잡성을 추상화하는 일련의 클래스가 포함된 Astra SDK입니다. 또한 Python 클래스를 래핑하고 추상화하여 특정 관리 작업을 실행하는 툴킷 스크립트가 있습니다. 을 참조하십시오 <block ref="d09002f98f3f10539db2caafc83b3213" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="153e30187d5d5a99d5aa26612af43f78" category="inline-link">Astra Control Center 21.12: 새로운 기능</block>
+  <block id="012c01c016d35f3bdc2e34a079b6cf0e" category="list-text"><block ref="012c01c016d35f3bdc2e34a079b6cf0e" category="inline-link-rx"></block></block>
+  <block id="b179356a4d80ff3c8707972005712b2f" category="section-title">2021년 8월 5일(21.08)</block>
+  <block id="adbf11dd6ee196fa62d94a4c1d8e03f2" category="paragraph">이 릴리스에는 새로운 Astra 배포 모델 및 REST API의 주요 확장이 포함되어 있습니다.</block>
+  <block id="95550f34187aaccfb0a17b770c43f0d6" category="section-title">Astra Control Center 배포 모델</block>
+  <block id="2ccd65a5a6a4e8a5f8ce16d83c39361b" category="paragraph">이 릴리즈에는 퍼블릭 클라우드 서비스로 제공되는 기존 Astra Control Service 오퍼링 외에도 Astra Control Center 온프레미스 구축 모델도 포함되어 있습니다. 사이트에 Astra Control Center를 설치하여 로컬 Kubernetes 환경을 관리할 수 있습니다. 두 Astra Control 배포 모델은 동일한 REST API를 공유하며, 설명서에 명시된 바와 같이 약간의 차이가 있습니다.</block>
+  <block id="e83314a43cc3f59ae86485142dc33671" category="paragraph">Astra Control REST API를 통해 액세스할 수 있는 리소스의 수가 크게 확장되었으며, 새로운 리소스 중 다수가 사내 Astra Control Center 오퍼링을 위한 기반을 제공하고 있습니다. 새로운 리소스에는 ASUP, 권한, 기능, 라이센스, 설정, 가입형, 버킷, 클라우드, 클러스터, 관리 클러스터, 스토리지 백엔드 및 스토리지 클래스 을 참조하십시오 <block ref="f79c22f30a5c9f960ce998adee5739fa" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="73297c42730cb1ade0a0a336f3012b8a" category="section-title">Astra 구축을 지원하는 추가 엔드포인트에는</block>
+  <block id="5f5312990235e82a209579a232929aef" category="paragraph">확장된 REST 리소스 외에도 Astra Control 구축을 지원하는 데 사용할 수 있는 여러 가지 새로운 API 엔드포인트가 있습니다.</block>
+  <block id="8cf4055911ae05ed7dc35f98a193f09e" category="list-text">OpenAPI 지원</block>
+  <block id="13c89442e2b2eedafc42714812ad8c6b" category="list-text">OpenMetrics 지원</block>
+  <block id="22221689a6b4fc342456938de9f79725" category="list-text">OpenMetrics 엔드포인트는 OpenMetrics 리소스를 통해 계정 메트릭에 액세스할 수 있습니다.</block>
+  <block id="b090a7e9d0299b1a0c16321ebfd1f755" category="section-title">2021년 4월 15일(21.04)</block>
+  <block id="40bde2f2e0e627e3fcf147169d6d315a" category="paragraph">이 릴리즈에는 다음과 같은 새로운 기능과 향상된 기능이 포함되어 있습니다.</block>
+  <block id="1b232d16c3766a50978710492ba942a2" category="section-title">REST API 소개</block>
+  <block id="8df6c80ff18efadb362ec0a4942fb7b6" category="paragraph">Astra Control REST API는 Astra Control Service 오퍼링과 함께 사용할 수 있습니다. REST 기술과 현재의 모범 사례를 기반으로 개발되었으며 API는 Astra 구축을 자동화하기 위한 기반을 제공하며 다음과 같은 기능과 이점을 제공합니다.</block>
+  <block id="0ef8b3f579af1cdc8418626db265a1ce" category="list-text">14개의 REST 리소스 유형을 사용할 수 있습니다.</block>
+  <block id="121299e02e8f57f664e9d96d52862087" category="list-text">API 토큰 액세스</block>
+  <block id="afa765b35dc1feb232f57160727f2c44" category="list-text">REST API에 대한 액세스는 Astra 웹 사용자 인터페이스에서 생성할 수 있는 API 액세스 토큰을 통해 제공됩니다. API 토큰은 API에 대한 보안 액세스를 제공합니다.</block>
+  <block id="affb0039f4c476ad568439a171c9db0c" category="list-text">컬렉션 지원</block>
+  <block id="39fc3040b9fe64cf202ce4de80bf7f69" category="list-text">리소스 컬렉션에 액세스하는 데 사용할 수 있는 다양한 쿼리 매개 변수 집합이 있습니다. 지원되는 일부 작업에는 필터링, 정렬 및 페이지 매김이 포함됩니다.</block>
+  <block id="4bdd2ccefb2f03cc6285395d8c1ae399" category="summary">이 사이트의 설명서에서는 Astra Control REST API와 두 가지 Astra Control 구축 모델에 포함된 관련 자동화 기술에 대해 설명합니다.</block>
+  <block id="d71331c5ce470b093ebf6c996f4ed88a" category="doc">이 릴리스에 대해</block>
+  <block id="f61369f881218faa68ada1128b5d5854" category="paragraph-title">릴리스 버전 관리</block>
+  <block id="809951d75a5959408aaef7facffe73f1" category="paragraph">모든 Astra Control 릴리스에는 * YY.MM * 형식의 버전 번호가 할당됩니다. 이 값은 연도(_YY_) 및 월(_MM_)을 기준으로 버전이 사용 가능해진 것을 나타냅니다. 예를 들어, Astra Control Center 23.07은 2023년 7월에 출시되었습니다.</block>
+  <block id="b23a60ebc7020fe310d80180653261b7" category="paragraph-title">릴리스 회전수</block>
+  <block id="0dde93985fcf355fdbe3950194c0dd60" category="paragraph">일반적으로 Astra Control Service와 Astra Control Center의 업데이트는 동시에 수행됩니다. 하지만 이전의 Astra Control Service에서는 릴리즈 주기가 가속화되었습니다. 이로 인해 최신 Astra Control Center 릴리즈를 넘어서는 하나 이상의 증분 업데이트가 발생했습니다.</block>
+  <block id="ce2f654fe20c0aa5fa4ece0648021275" category="paragraph-title">Astra Control 배포</block>
+  <block id="fdd9fe55f1a01a1ad085e5d6ce35c93b" category="paragraph">이 사이트의 문서는 다음 Astra Control 릴리스에 적용됩니다.</block>
+  <block id="64d97a20d86a4938bc2f0ca6487991bf" category="list-text">Astra Control 서비스 23.10</block>
+  <block id="4646da7b1b74b708dde12727beab50a2" category="list-text">Astra Control Center 23.10</block>
+  <block id="80eee0325102cbbe5624dd825f288da6" category="paragraph">이 사이트에서는 두 구축 모델의 REST API를 문서화하기 때문에 하나의 배포 모델 또는 다른 배포 모델에서만 일부 기능을 사용할 수 있습니다. 이 두 가지 간의 유의한 차이는 필요에 따라 기록됩니다.</block>
+  <block id="ab066b3292d8ab61ef3b5c77169cdd19" category="paragraph-title">추가 정보</block>
+  <block id="06661ae837df4aebc82db4f943f32dd7" category="paragraph">이전 Astra Control 릴리스와 현재 버전에 대한 자세한 내용은 다음 페이지 및 사이트를 참조하십시오.</block>
+  <block id="89d597c4d411409065b7e48fe97b7327" category="inline-link-macro">Astra Control REST API의 새로운 기능</block>
+  <block id="55d1aec576bc2fa5929c487a67f4f1fe" category="list-text"><block ref="55d1aec576bc2fa5929c487a67f4f1fe" category="inline-link-macro-rx"></block></block>
+  <block id="c4fabb35d8b386aaa673c94aee7e69f2" category="inline-link-macro">REST 리소스 및 엔드포인트</block>
+  <block id="d8c5d8ee32fcd828c5197ddcb0a431b2" category="list-text"><block ref="d8c5d8ee32fcd828c5197ddcb0a431b2" category="inline-link-macro-rx"></block></block>
+  <block id="fdd081f1598a50889ba0720484271938" category="inline-link-macro">이전 버전의 Astra Automation 설명서</block>
+  <block id="d33e3df86964bc9c994984b08fd48e76" category="list-text"><block ref="d33e3df86964bc9c994984b08fd48e76" category="inline-link-macro-rx"></block></block>
+  <block id="6dbfc88df6a1c21e55d3430850d3bd1c" category="paragraph-title">문서 개선에 도움을 주세요</block>
+  <block id="3f4fc4220755866f399810fee47c7884" category="inline-link-macro">GitHub 기고자입니다</block>
+  <block id="d2d35c8cbc7027976910df89e09c7b5a" category="paragraph">NetApp 설명서에 관한 알림을 보려면 Twitter * @NetAppDoc * 를 팔로우하십시오. 또한 이(가) 되어 피드백을 제공할 수도 있습니다 <block ref="78cabac26f0b6e0ce9a3e24d1b749910" category="inline-link-macro-rx"></block> 또는 _doccomments@netapp.com_ 으로 이메일을 보내주십시오.</block>
+  <block id="86d5185860be6c597f7e7d99be200aa0" category="summary">이전 Astra Control 릴리즈에 대한 자동화 문서에 액세스할 수 있습니다.</block>
+  <block id="4bddbc6d61b2586c05f9efdf9aa7b5cd" category="paragraph">아래 링크를 통해 이전 Astra Control 릴리즈에 대한 자동화 문서에 액세스할 수 있습니다.</block>
+  <block id="319cbcbe823e54bc4431c0aeca14c9d6" category="inline-link">Astra Control Automation 23.07 설명서</block>
+  <block id="bff628185da3389d42f4449fd249480c" category="list-text"><block ref="bff628185da3389d42f4449fd249480c" category="inline-link-rx"></block></block>
+  <block id="43a62b176f718092748cfb8e6a9afa19" category="inline-link">Astra Control Automation 23.04 문서</block>
+  <block id="da054b04f4f9b4f05d91fce1501f15ef" category="list-text"><block ref="da054b04f4f9b4f05d91fce1501f15ef" category="inline-link-rx"></block></block>
+  <block id="013e0c333b0775d95a5c6579724b4b45" category="inline-link">Astra Control Automation 22.11 문서</block>
+  <block id="52eabae058b28c969498b7a857c6879d" category="list-text"><block ref="52eabae058b28c969498b7a857c6879d" category="inline-link-rx"></block></block>
+  <block id="165fa9bdd003d8079831262d0360efc1" category="inline-link">Astra Control Automation 22.08 문서</block>
+  <block id="94ed7ec7b9510cd1e4664fbfe8a08329" category="list-text"><block ref="94ed7ec7b9510cd1e4664fbfe8a08329" category="inline-link-rx"></block></block>
+  <block id="798161428a705ba47c31cc8ace9316e3" category="inline-link">Astra Control Automation 22.04 문서</block>
+  <block id="693af21b54b2e5032434113328d4a53e" category="list-text"><block ref="693af21b54b2e5032434113328d4a53e" category="inline-link-rx"></block></block>
+  <block id="d61b1a26306fd2300000d407ac76b0ca" category="inline-link">Astra Control Automation 21.12 문서</block>
+  <block id="f7fb8efb01216bddc5505f64c4c92bae" category="list-text"><block ref="f7fb8efb01216bddc5505f64c4c92bae" category="inline-link-rx"></block></block>
+  <block id="832210201d55f5c764a32c055a00b726" category="inline-link">Astra Control Automation 21.08 문서</block>
+  <block id="025fa2688359a439d7fa215fbbbaf287" category="list-text"><block ref="025fa2688359a439d7fa215fbbbaf287" category="inline-link-rx"></block></block>
+  <block id="5ef64ef4145885449a36757ad3925285" category="summary">Astra Control의 현재 릴리즈와 관련 REST API에 대해 알려진 모든 문제를 검토해야 합니다. 알려진 문제는 제품을 성공적으로 사용하지 못하게 만들 수 있는 문제를 식별합니다.</block>
+  <block id="95dc0391ce7b396d7dd5622284e8fc3e" category="doc">알려진 문제</block>
+  <block id="0158322c4aa7f21160a8bc5298e211b1" category="paragraph">Astra Control의 현재 릴리즈와 관련 REST API에 대해 알려진 모든 문제를 검토해야 합니다. 알려진 문제는 제품을 성공적으로 사용하지 못하게 만들 수 있는 문제를 식별합니다. 배포 모델에 따라 다음 페이지 중 하나를 참조하십시오.</block>
+  <block id="eb6a5d80177fc44f1a834a5fac76b612" category="inline-link">Astra Control Service에 대해 알려진 문제입니다</block>
+  <block id="1a8244f3a147b8df7de50e9d16df07ac" category="list-text"><block ref="1a8244f3a147b8df7de50e9d16df07ac" category="inline-link-rx"></block></block>
+  <block id="1a0effa7d96595790539ef715ec535f7" category="inline-link">Astra Control Center 23.10의 알려진 문제</block>
+  <block id="515e237c61620a69bcbdecb406402437" category="list-text"><block ref="515e237c61620a69bcbdecb406402437" category="inline-link-rx"></block></block>
+  <block id="d41d8cd98f00b204e9800998ecf8427e" category="doc"></block>
+  <block id="8814863051032c96890d514b89b4519c" category="summary">Astra Control REST API는 정의된 쿼리 매개 변수를 통해 리소스 컬렉션에 액세스하는 여러 가지 방법을 제공합니다.</block>
+  <block id="bf14a6bb5484aa858662864c8b0d062f" category="paragraph-title">값 선택</block>
+  <block id="70aa5e2062c38998b012ec6ad0a58b47" category="paragraph">를 사용하여 각 리소스 인스턴스에 대해 반환할 키 값 쌍을 지정할 수 있습니다<block ref="d436eb0fd9de10b54a828ce6435f7e81" prefix=" " category="inline-code"></block> 매개 변수. 모든 인스턴스가 응답 바디에 반환됩니다.</block>
+  <block id="9a588db8471730dbfebac65cd5467ad8" category="paragraph-title">필터링</block>
+  <block id="9ef1f99668081dc49f2b7578a58a3eb0" category="paragraph">컬렉션 리소스 필터링을 사용하면 API 사용자가 리소스가 응답 본문에 반환되는지 여부를 결정하는 조건을 지정할 수 있습니다. 를 클릭합니다<block ref="b2c97ae425dd751b0e48a3acae79cf4a" prefix=" " category="inline-code"></block> 매개 변수는 필터링 조건을 나타내는 데 사용됩니다.</block>
+  <block id="2808a34767e19b842d906ab8ab6264c6" category="paragraph-title">정렬</block>
+  <block id="46a94c0bcecf335769bbfabb72514b44" category="paragraph">컬렉션 리소스 정렬을 사용하면 API 사용자가 응답 본문에서 리소스가 반환되는 순서를 지정할 수 있습니다. 를 클릭합니다<block ref="4294376261299ba2cafafdb77ca4deeb" prefix=" " category="inline-code"></block> 매개 변수는 필터링 조건을 나타내는 데 사용됩니다.</block>
+  <block id="cbb81506a7fe3ef03f7a89c76c52131a" category="paragraph-title">페이지 매김</block>
+  <block id="b4a49af66f4e673d029ee977129248ee" category="paragraph">를 사용하여 요청에 대해 반환되는 리소스 인스턴스 수를 제한하여 페이지 매김 기능을 적용할 수 있습니다<block ref="aa9f73eea60a006820d0f8768bc8a3fc" prefix=" " category="inline-code"></block> 매개 변수.</block>
+  <block id="e93f994f01c537c4e2f7d8528c3eb5e9" category="paragraph-title">카운트</block>
+  <block id="6a7d4ae9b8c0f0a303422357fd399580" category="paragraph">부울 매개 변수를 포함하는 경우<block ref="e2942a04780e223b215eb8b663cf5353" prefix=" " category="inline-code"></block> 를 로 설정합니다<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block>지정된 응답에 대해 반환된 배열의 리소스 수는 메타데이터 섹션에 나와 있습니다.</block>
+  <block id="c09d3feeeeb00d4c76b65e91bde7c0ac" category="summary">Astra REST API는 역할 기반 액세스 제어(RBAC)를 지원하여 시스템 기능에 대한 액세스를 부여하고 제한합니다.</block>
+  <block id="93f59591ef6394ec20a0c8c92e574665" category="section-title">아스트라 역할</block>
+  <block id="1dfeab1980c9d1053325319ee410d098" category="paragraph">모든 Astra 사용자는 수행할 수 있는 작업을 결정하는 단일 역할에 할당됩니다. 역할은 아래 표에 설명된 대로 계층 구조로 정렬됩니다.</block>
+  <block id="b6f4a2ec6356bbd56d49f2096bf9d3d3" category="cell">소유자</block>
+  <block id="40923151202a4a1da433572b776bb7ae" category="cell">Admin 역할의 모든 권한이 있으며 Astra 계정도 삭제할 수 있습니다.</block>
+  <block id="e3afed0047b08059d0fada10f400c1e5" category="cell">관리자</block>
+  <block id="7bd88b6f5fdbbacda32d9f1f4588445c" category="cell">에는 구성원 역할의 모든 권한이 있으며, 사용자를 초대하여 계정에 참가할 수도 있습니다.</block>
+  <block id="858ba4765e53c712ef672a9570474b1d" category="cell">회원</block>
+  <block id="c37989e11868a0f90a80fc60977df53f" category="cell">Astra 애플리케이션 및 컴퓨팅 리소스를 완벽하게 관리할 수 있습니다.</block>
+  <block id="fb15c53f22336982a182b84aeb2f42eb" category="cell">Viewer(뷰어)</block>
+  <block id="29b1525afac196c8ab375f7fdb7808de" category="cell">리소스를 볼 수만 있습니다.</block>
+  <block id="ca9f95dba864c02ec48ffa894954ce17" category="admonition">이 기능은 Astra REST API 22.04 릴리스에 도입되었습니다.</block>
+  <block id="a9d9517c68a53b1205519361f2ca686a" category="paragraph">특정 사용자에 대해 역할 바인딩을 설정할 때 제약 조건을 적용하여 사용자가 액세스할 수 있는 네임스페이스를 제한할 수 있습니다. 이 제약 조건은 아래 표에 설명된 대로 여러 가지 방법으로 정의할 수 있습니다. 매개 변수를 참조하십시오<block ref="9d72e251fdcf37fccaf2f90e4fdc8cc0" prefix=" " category="inline-code"></block> 자세한 내용은 역할 바인딩 API를 참조하십시오.</block>
+  <block id="b1c94ca2fbc3e78fc30069c8d0f01680" category="cell">모두</block>
+  <block id="2314ef5c1b30435a1b1cc4653755e483" category="cell">사용자는 와일드카드 매개 변수 " * ""를 통해 모든 네임스페이스에 액세스할 수 있습니다. 이 값은 이전 버전과의 호환성을 유지하기 위한 기본값입니다.</block>
+  <block id="6adf97f83acf6453d4a6a4b1070f3754" category="cell">없음</block>
+  <block id="d199198d4707ccee0eda9f48caa1d5a2" category="cell">제약 조건 목록은 비어 있지만 지정됩니다. 이는 사용자가 네임스페이스에 액세스할 수 없음을 나타냅니다.</block>
+  <block id="b3a4cc1061fd85ffd3c83cd8e72944d9" category="cell">네임스페이스 목록</block>
+  <block id="20ff3ae26f36cff01131b324696db602" category="cell">네임스페이스 UUID가 포함되어 있어 사용자를 단일 네임스페이스로 제한합니다. 쉼표로 구분된 목록을 사용하여 여러 네임스페이스에 액세스할 수도 있습니다.</block>
+  <block id="b021df6aac4654c454f46c77646e745f" category="cell">라벨</block>
+  <block id="18ea4b625687c7be99c38ace25c075e1" category="cell">레이블이 지정되고 일치하는 모든 네임스페이스에 대한 액세스가 허용됩니다.</block>
+  <block id="0f20f78dc9e61210d9143c555c8e2db8" category="summary">더 이상 필요하지 않은 경우 Astra 웹 인터페이스에서 API 토큰을 취소할 수 있습니다.</block>
+  <block id="99910604d292e8754daf25a401bb8857" category="doc">API 토큰을 취소합니다</block>
+  <block id="561b378328b0d2bb9add930467a2bffd" category="paragraph">배포를 위해 Astra 웹 사용자 인터페이스에 로그인하려면 자격 증명이 필요합니다.  취소할 토큰도 식별해야 합니다.</block>
+  <block id="bbe48fb854ea022537208eeeff822f91" category="paragraph-title">이 작업에 대해</block>
+  <block id="c4f78d9edffd445c660b4325747b976a" category="paragraph">토큰이 취소되면 즉시 영구적으로 사용할 수 없게 됩니다.</block>
+  <block id="f3a29486bed19a90f2da6d007818b427" category="list-title">단계</block>
+  <block id="c961cf856b145ed8b86b895597c0d1b6" category="list-text">다음과 같이 계정 자격 증명을 사용하여 Astra에 로그인합니다.</block>
+  <block id="c3cd4b6e8352817aeaab7114fc20ee4d" category="inline-link"><block ref="c3cd4b6e8352817aeaab7114fc20ee4d" category="inline-link-rx"></block></block>
+  <block id="f3cc9a8807405c26d51d9df37d490dd7" category="list-text">Astra 제어 서비스:<block ref="0045c0d6f22ad59c53fc1e6d3b91c771" category="inline-link-rx"></block></block>
+  <block id="b95e7570a853619e504ccb1e42b41457" category="list-text">Astra Control Center: 설치 중에 설정한 로컬 환경에 대한 URL을 사용합니다</block>
+  <block id="7d88293618d45c51062ebb23f7a5777d" category="list-text">페이지 오른쪽 상단의 그림 아이콘을 클릭하고 * API access * 를 선택합니다.</block>
+  <block id="6aec476981db1f529613506dbaf170dd" category="list-text">취소할 토큰을 선택합니다.</block>
+  <block id="ae4a6c751a5ef4ed21296977cde2b309" category="list-text">작업 * 드롭다운 상자에서 * 토큰 해지 * 를 클릭합니다.</block>
+  <block id="d5def2c7a33c06df000ce3ff88f44d5e" category="summary">Astra Control REST API에서 진단 및 디버깅에 사용할 수 있는 몇 가지 지원 기능이 있습니다.</block>
+  <block id="ccfae33112eaa095d6943fef30aeb1c6" category="section-title">API 리소스</block>
+  <block id="519b3b4f6c348f4c18db7639e52ec355" category="paragraph">API 리소스를 통해 진단 정보와 지원을 제공하는 몇 가지 Astra 기능이 제공됩니다.</block>
+  <block id="621e2d44fe17dda8434e1747939506fc" category="cell">Astra 처리의 일부로 기록된 시스템 활동.</block>
+  <block id="b9df3bfca1810fb5992aadc53d6c5f6e" category="cell">사용자에게 제공할 만큼 중요한 것으로 간주되는 이벤트의 하위 집합입니다.</block>
+  <block id="0f15555c27239decf2cb19f7c4f55045" category="cell">사용자가 읽거나 검색할 수 없는 알림입니다.</block>
+  <block id="e14d216616a4529ca008fe30d48b4bda" category="summary">Astra Control Center 및 Astra Control Service는 공통 REST API를 제공하여 Curl과 같은 프로그래밍 언어 또는 유틸리티를 통해 직접 액세스할 수 있습니다. API의 주요 특징 및 이점은 여러 가지가 있습니다.</block>
+  <block id="48f085a79b3bd49f8180067c06092213" category="doc">기능 및 이점 개요</block>
+  <block id="640575a1239211b2cdac8d24cbd8fe4e" category="paragraph">Astra Control Center 및 Astra Control Service는 공통 REST API를 제공하여 Curl과 같은 프로그래밍 언어 또는 유틸리티를 통해 직접 액세스할 수 있습니다. API의 주요 특징 및 이점은 다음과 같습니다.</block>
+  <block id="351df3aa3706c8ed2199a8019e815c0c" category="admonition">REST API에 액세스하려면 먼저 Astra 웹 사용자 인터페이스에 로그인하고 API 토큰을 생성해야 합니다. 각 API 요청에 토큰을 포함해야 합니다.</block>
+  <block id="305f82eee427805e1142e3f58b3e6aff" category="paragraph-title">REST 기술 기반</block>
+  <block id="6c38ead9bdb25d09c6e504c53fc268a5" category="paragraph">Astra Control API는 REST 기술과 최신 Best Practice를 사용하여 만들어졌습니다. 코어 기술에는 HTTP, JSON 및 RBAC가 포함됩니다.</block>
+  <block id="9f58c2cc1c4a1a9d30320aec8702f1e5" category="paragraph-title">Astra Control 배포 모델 2개 지원</block>
+  <block id="6ded6cd1a82081d2c5fe31ad44e26927" category="paragraph">Astra Control Service는 퍼블릭 클라우드 환경 내에서 사용되고, Astra Control Center는 사내 배포용으로 사용됩니다. 이러한 구축 모델을 모두 지원하는 하나의 REST API가 있습니다.</block>
+  <block id="308e494b1e26dffecccd3503e87801ab" category="paragraph-title">REST 엔드포인트 리소스와 객체 모델 간의 매핑을 해제합니다</block>
+  <block id="8538dfe988aff949d5dd74e2d6c12949" category="paragraph">리소스 맵에 액세스하는 데 사용되는 외부 REST 엔드포인트는 Astra 서비스에서 내부적으로 유지 관리하는 일관된 오브젝트 모델에 있습니다. 객체 모델은 API 작업과 응답을 명확하게 정의하는 데 도움이 되는 ER(Entity-relationship) 모델링을 사용하여 설계되었습니다.</block>
+  <block id="5c4c20c54ea821de85f6857e32e28368" category="paragraph-title">다양한 쿼리 매개 변수 집합</block>
+  <block id="479c256f055cedaadf40e8a31b1cb62f" category="paragraph">REST API는 리소스 컬렉션에 액세스하는 데 사용할 수 있는 풍부한 쿼리 매개 변수 집합을 제공합니다. 지원되는 일부 작업에는 필터링, 정렬 및 페이지 매김이 포함됩니다.</block>
+  <block id="807ccc731ac69ad871b23fef84f7a6a9" category="paragraph-title">Astra Control 웹 UI와 정렬</block>
+  <block id="bdc2516aa5546e7df819a07cd9385485" category="paragraph">Astra 웹 사용자 인터페이스의 설계는 REST API와 일치하므로 두 액세스 경로와 사용자 경험 간에 일관성이 있습니다.</block>
+  <block id="d92a4a4962077027ebae61f4c351e303" category="paragraph-title">강력한 디버깅 및 문제 확인 데이터</block>
+  <block id="973e2c06fdb700a27ccfb70fe4627261" category="paragraph">Astra Control REST API는 시스템 이벤트 및 사용자 알림을 포함하여 강력한 디버깅 및 문제 확인 기능을 제공합니다.</block>
+  <block id="04bff76b57babc7298f6780f4f20901e" category="paragraph-title">워크플로 프로세스</block>
+  <block id="b6c92126e042e664395830549916fde8" category="paragraph">자동화 코드 개발을 지원하기 위해 일련의 워크플로우가 제공됩니다. 워크플로우는 인프라 및 관리의 두 가지 범주로 구성됩니다.</block>
+  <block id="fcf3c3d757005a8b62346f06f3b393ff" category="paragraph-title">고급 자동화 기술의 기반</block>
+  <block id="e252a713c9e65fd0bb92dbc65b6b0610" category="paragraph">REST API에 직접 액세스하는 것 외에도 REST API를 기반으로 하는 다른 자동화 기술을 사용할 수 있습니다.</block>
+  <block id="d4f45c394127f6c3eb5c89e1eb467c9b" category="paragraph-title">Astra 제품군 문서의 일부입니다</block>
+  <block id="4b675e54aa1095b2b20f8c4019de37b0" category="inline-link">Astra 문서</block>
+  <block id="e24577a913c63a00f3c432062590ce18" category="paragraph">Astra Control Automation 문서는 대규모 Astra 제품군 문서의 일부입니다. 을 참조하십시오<block ref="30a4a2719bc4878ee8fefb5295fc2613" category="inline-link-rx"></block> 를 참조하십시오.</block>
+  <block id="06146decfb17ed58c6f7a0bb23eea2a6" category="summary">LDAP가 Astra Control Center의 인증 공급자로 구성된 후에는 Astra가 LDAP 자격 증명을 사용하여 인증할 LDAP 사용자를 선택할 수 있습니다.</block>
+  <block id="14a831c3d0557a853d7f16eb752484db" category="doc">Astra에 LDAP 항목을 추가합니다</block>
+  <block id="512191c92b8b24122d2373ac3caf757a" category="paragraph">LDAP가 Astra Control Center의 인증 공급자로 구성된 후에는 Astra가 LDAP 자격 증명을 사용하여 인증할 LDAP 사용자를 선택할 수 있습니다. 각 사용자는 Astra Control REST API를 통해 Astra에 액세스하려면 먼저 Astra에서 역할을 수행해야 합니다.</block>
+  <block id="1259e1bcb3defbf8468fa9b4b317baff" category="paragraph">역할을 할당하도록 Astra를 구성하는 방법에는 두 가지가 있습니다. 해당 환경에 적합한 제품을 선택하십시오.</block>
+  <block id="4e373987ab6f121d73cb3c9d829a077c" category="inline-link-macro">개별 사용자를 추가하고 바인딩합니다</block>
+  <block id="f5acfb5a1e2e11204a7efeab66f37841" category="list-text"><block ref="f5acfb5a1e2e11204a7efeab66f37841" category="inline-link-macro-rx"></block></block>
+  <block id="eada538a3e306c617fada774394426a6" category="inline-link-macro">그룹을 추가하고 바인딩합니다</block>
+  <block id="16cec7fbd9ab597f4db09dbf853b7ceb" category="list-text"><block ref="16cec7fbd9ab597f4db09dbf853b7ceb" category="inline-link-macro-rx"></block></block>
+  <block id="e99b81ee58ab09acce5c0fbc08127e13" category="admonition">LDAP 자격 증명은 이메일 주소 및 관련 LDAP 암호 형식의 사용자 이름입니다.</block>
+  <block id="362b4b17b5ad67c04eaf618b3c217139" category="paragraph">LDAP 인증 후에 사용되는 각 Astra 사용자에게 역할을 할당할 수 있습니다. 이는 사용자 수가 적으며 각 사용자가 서로 다른 관리 특성을 가지고 있을 때 적합합니다.</block>
+  <block id="7250e7ffd1bdbfad9824adacd3541cb3" category="section-title">사용자를 추가합니다</block>
+  <block id="80429b74c4df5ad07a23ce4efb1b2faa" category="paragraph">다음 REST API 호출을 수행하여 Astra에 사용자를 추가하고 LDAP가 인증 제공자임을 나타냅니다.</block>
+  <block id="12662cf5431171146c880e7742535780" category="cell">/accounts/{account_id}/core/v1/users</block>
+  <block id="ecfba265de37f13d6cf0121430a4909e" category="paragraph">입력 매개변수에 대한 다음 사항을 참고하십시오.</block>
+  <block id="181e7c57490e9fb900c9322a2192473b" category="list-text">다음 매개 변수가 필요합니다.</block>
+  <block id="1123062a01214f821b854c82829467dc" category="list-text"><block ref="4cca77ccfa67be28ea8df8e2fa55e35c" prefix="" category="inline-code"></block></block>
+  <block id="b40bc453bbcc2acf8046abddfb823971" category="list-text"><block ref="ef09e344c513115a542722d58e78b298" prefix="" category="inline-code"></block></block>
+  <block id="ae1bde34794270bb273f407db5974619" category="list-text"><block ref="0c83f57c786a0b4a39efab23731c7ebc" prefix="" category="inline-code"></block></block>
+  <block id="8b6d79c2a8205303d04c5e068e578fd8" category="list-text"><block ref="ef09e344c513115a542722d58e78b298" prefix="" category="inline-code"></block> LDAP에 있는 사용자의 DN(고유 이름)입니다</block>
+  <block id="885e6661c5477a454659497bcf807df5" category="list-text"><block ref="0c83f57c786a0b4a39efab23731c7ebc" prefix="" category="inline-code"></block> Astra에 정의된 모든 사용자에 대해 고유해야 합니다</block>
+  <block id="97c54ae5385dfb0bfaf0ebfe82486c53" category="paragraph">를 누릅니다<block ref="0c83f57c786a0b4a39efab23731c7ebc" prefix=" " category="inline-code"></block> 값이 고유하지 않고 오류가 발생하여 409 HTTP 상태 코드가 응답에서 반환됩니다.</block>
+  <block id="d6c64252b8ce71696a41d941f4cab6e6" category="section-title">JSON 응답 예</block>
+  <block id="73ae336a1bcf7abf02f83c9d961066d2" category="section-title">2.사용자에 대한 역할 바인딩을 추가합니다</block>
+  <block id="f82c041e2677cb63989e7061882203bc" category="paragraph">다음 REST API 호출을 수행하여 사용자를 특정 역할에 바인딩합니다. 이전 단계에서 생성한 사용자의 UUID가 있어야 합니다.</block>
+  <block id="df1b95e51c579994a391aca64bff2062" category="cell">/accounts/{account_id}/core/v1/roleBindings</block>
+  <block id="afeef4481e8f77ed56c4383e82369e67" category="list-text">에 대해 사용된 값입니다<block ref="4fe22a948503c3fe556cc6f6831342a9" prefix=" " category="inline-code"></block> Astra의 현재 릴리스에서 사용할 수 있는 유일한 옵션입니다. 이 메시지는 사용자가 제한된 네임스페이스 집합으로 제한되지 않고 모든 네임스페이스에 액세스할 수 있음을 나타냅니다.</block>
+  <block id="0622cb2fb15cd9db10328e2ba1d3e821" category="paragraph">응답 매개변수에 대한 다음 사항에 유의하십시오.</block>
+  <block id="ac7d66f43ecf3e035bc9139997762243" category="list-text">값입니다<block ref="ee11cbb19052e40b07aac0ca060c23ee" prefix=" " category="inline-code"></block> 의 경우<block ref="463fafd3510d11b15f43ef6174576d16" prefix=" " category="inline-code"></block> 필드는 그룹에 추가되지 않은 사용자에 대해 추가된 역할 바인딩을 나타냅니다.</block>
+  <block id="1cce2e3f66074da3b3746e8ff32e3fa7" category="paragraph">LDAP 인증 후에 사용되는 Astra 그룹에 역할을 할당할 수 있습니다. 이는 많은 수의 사용자가 있고 각 사용자가 유사한 관리 특성을 가지고 있을 때 적합합니다.</block>
+  <block id="92c4973d42b7f8c2b77e4ecde1fb1110" category="section-title">그룹을 추가합니다</block>
+  <block id="c0ad03b2572c4c7580edf10837ea5620" category="paragraph">다음 REST API 호출을 수행하여 Astra에 그룹을 추가하고 LDAP가 인증 제공자임을 나타냅니다.</block>
+  <block id="bbef9cdc428921bc094d4e8eb4f67852" category="cell">/accounts/{account_id}/core/v1/groups</block>
+  <block id="d951c83a74c1539e200b4b2a6abc7a9d" category="section-title">그룹에 대한 역할 바인딩을 추가합니다</block>
+  <block id="a5a9025a2565e62426d0d6fa46ca4e54" category="paragraph">다음 REST API 호출을 수행하여 그룹을 특정 역할에 바인딩합니다. 이전 단계에서 생성한 그룹의 UUID가 있어야 합니다. 그룹 구성원인 사용자는 LDAP가 인증을 수행한 후 Astra에 로그인할 수 있습니다.</block>
+  <block id="3f78918ffaed6aa648fbf481030b078e" category="list-text">에 대해 사용된 값입니다<block ref="4fe22a948503c3fe556cc6f6831342a9" prefix=" " category="inline-code"></block> Astra의 현재 릴리스에서 사용할 수 있는 유일한 옵션입니다. 이 메시지는 사용자가 특정 네임스페이스에만 제한되지 않고 모든 네임스페이스에 액세스할 수 있음을 나타냅니다.</block>
+  <block id="535f31c0d94d3cf84629bee7a5935c63" category="list-text">값입니다<block ref="db0f6f37ebeb6ea09489124345af2a45" prefix=" " category="inline-code"></block> 의 경우<block ref="463fafd3510d11b15f43ef6174576d16" prefix=" " category="inline-code"></block> 필드는 사용자가 아닌 그룹에 대해 역할 바인딩이 추가되었음을 나타냅니다.</block>
+  <block id="a70539afac49ca03ebbf1219df791a81" category="summary">특정 클라우드에 사용 가능한 클러스터를 나열할 수 있습니다.</block>
+  <block id="daaec12836753c1aad81b32a5a058476" category="section-title">클라우드를 선택합니다</block>
+  <block id="aef02d026fec2eb688571bfa2422be3a" category="inline-link-macro">구름 목록을 표시합니다</block>
+  <block id="6e7a5e444e17b81da2d35e5e7b5fb7ea" category="paragraph">워크플로우를 수행합니다 <block ref="c4922000cf4edc9c6c02533eba85b458" category="inline-link-macro-rx"></block> 클러스터가 포함된 클라우드를 선택합니다.</block>
+  <block id="4a8c29c133faeda5a63e72796ed312c8" category="section-title">클러스터를 나열합니다</block>
+  <block id="279e904c662f9babe50ce81e0df24ea5" category="paragraph">다음 REST API 호출을 수행하여 특정 클라우드에 있는 클러스터를 나열합니다.</block>
+  <block id="dd8bce8e0fdc7bda8fad7990aa89d570" category="cell">/accounts/{account_id}/topology/v1/cloud/{cloud_id}/cluster</block>
+  <block id="6ff447fbf69dd4070e63e99da1dde7b0" category="section-title">curl 예: 모든 클러스터의 모든 데이터를 반환합니다</block>
+  <block id="29927b373bf91a30324f8b9244efff87" category="summary">Astra Control Center 배포용으로 필요에 따라 수행할 수 있는 두 가지 관련 관리 작업은 선택 사항입니다. LDAP 인증을 전역적으로 비활성화하고 LDAP 구성을 재설정할 수 있습니다.</block>
+  <block id="9f836651cdc687b80d11b030386b39cc" category="doc">LDAP를 비활성화하고 재설정합니다</block>
+  <block id="0409c9f1dab10d77e34c0dde2e7d2640" category="inline-link-macro">LDAP 설정의 UUID를 조회한다</block>
+  <block id="60c04eaeef0130847b81e4afbda94ddd" category="paragraph">두 워크플로 작업 모두 에 대한 ID가 필요합니다<block ref="3940413bb3049c60c5e6b30073232b82" prefix=" " category="inline-code"></block> 아스트라 설정. 설정 ID를 검색하는 방법에 대한 자세한 내용은 * LDAP 서버 구성 * 에 포함되어 있습니다. 을 참조하십시오 <block ref="79d5da28a6715eb561c830637b2fc4c6" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="1b7e4184801e48f4201e523ef3933d7f" category="inline-link-macro">LDAP 인증을 비활성화합니다</block>
+  <block id="7d40ea0a4f491763035cc48ea1a6ddcf" category="list-text"><block ref="7d40ea0a4f491763035cc48ea1a6ddcf" category="inline-link-macro-rx"></block></block>
+  <block id="1f4306b5533c4a2e43c1a403aeb464e4" category="inline-link-macro">LDAP 인증 구성을 재설정합니다</block>
+  <block id="554945e8b5658618072d4db6e6f57ea1" category="list-text"><block ref="554945e8b5658618072d4db6e6f57ea1" category="inline-link-macro-rx"></block></block>
+  <block id="e37b6056e7a6d186a2c97a4d2a9aad18" category="paragraph">다음 REST API 호출을 수행하여 특정 Astra 구축에 대한 LDAP 인증을 전역적으로 비활성화할 수 있습니다. 통화가 를 업데이트합니다<block ref="3940413bb3049c60c5e6b30073232b82" prefix=" " category="inline-code"></block> 설정 및 을 참조하십시오<block ref="d97a94e6c10d324fbb3c5f3a1c4a12d5" prefix=" " category="inline-code"></block> 값이 로 설정되어 있습니다<block ref="68934a3e9455fa72420237eb05902327" prefix=" " category="inline-code"></block>.</block>
+  <block id="65c0a361e2806ea6ef418d2456417faa" category="cell">/accounts/{account_id}/core/v1/settings/{setting_id}</block>
+  <block id="2fc2b6f607cda95230b0bc78aff13ddf" category="paragraph">통화가 성공적으로 이루어지면, 입니다<block ref="57bec28586ffcd6cb601b3992f95c356" prefix=" " category="inline-code"></block> 응답이 반환됩니다. 필요에 따라 구성 설정을 다시 검색하여 변경을 확인할 수 있습니다.</block>
+  <block id="d2378ce17d1deb939d9765a975ab1310" category="paragraph">다음 REST API 호출을 수행하여 LDAP 서버에서 Astra 연결을 끊고 Astra에서 LDAP 구성을 재설정할 수 있습니다. 통화가 를 업데이트합니다<block ref="3940413bb3049c60c5e6b30073232b82" prefix=" " category="inline-code"></block> 설정 및 값<block ref="0fe1baa8e02361e3eee878349edf39fc" prefix=" " category="inline-code"></block> 가 지워집니다.</block>
+  <block id="404ddca7091b6ebdfdac8d79757305f6" category="paragraph">의 값<block ref="d97a94e6c10d324fbb3c5f3a1c4a12d5" prefix=" " category="inline-code"></block> 도 로 설정해야 합니다<block ref="68934a3e9455fa72420237eb05902327" prefix=" " category="inline-code"></block>. 재설정 통화를 하기 전에 또는 재설정 통화를 하기 위해 이 값을 설정할 수 있습니다. 두 번째 경우는<block ref="0fe1baa8e02361e3eee878349edf39fc" prefix=" " category="inline-code"></block> 및 을(를) 지워야 합니다<block ref="d97a94e6c10d324fbb3c5f3a1c4a12d5" prefix=" " category="inline-code"></block> 동일한 재설정 호출에서 false 로 설정합니다.</block>
+  <block id="bbb26ec6e926ef3caf7a0e11d73ac4f8" category="admonition">이는 중단을 야기하는 작업이므로 주의하여 진행해야 합니다. 가져온 LDAP 사용자 및 그룹이 모두 삭제됩니다. 또한 Astra Control Center에서 만든 관련 Astra 사용자, 그룹 및 roleBindings(LDAP 유형)도 모두 삭제합니다.</block>
+  <block id="cf3a2d2c139bf5c9cc87fe714bfff3b1" category="paragraph">다음 사항에 유의하십시오.</block>
+  <block id="bca37564b08c352c9b5fbb27a68163fc" category="list-text">LDAP 서버를 변경하려면 LDAP 변경을 해제하고 재설정해야 합니다<block ref="3a40e7a1b430feef8590ca83c2def76a" prefix=" " category="inline-code"></block> 위 예에 표시된 대로 null 값으로.</block>
+  <block id="6fde5ce7c3e78a7b80189e22926ce1a9" category="paragraph">통화가 성공적으로 이루어지면, 입니다<block ref="57bec28586ffcd6cb601b3992f95c356" prefix=" " category="inline-code"></block> 응답이 반환됩니다. 선택적으로 구성을 다시 검색하여 변경을 확인할 수 있습니다.</block>
+  <block id="9aba329f6bcfe3b8f1b0df8dd4c1e1fa" category="summary">ANF 스토리지 백엔드가 있는 전용 사내 클러스터에서 관리되는 앱을 백업할 때 동적 ANF 풀 기능을 활성화해야 합니다. 이는 용량 풀을 확장 및 계약할 때 사용할 구독 ID를 제공하여 수행됩니다.</block>
+  <block id="5eb0c12811f3c807e7fa3fce6fb5b38d" category="inline-link">Azure 애플리케이션 백업</block>
+  <block id="d2f8ee1082b8b805ab4862d852412403" category="admonition">동적 ANF 풀은 ANF(Azure NetApp Files) 스토리지 백엔드를 사용하는 Astra 관리 애플리케이션의 기능입니다. 이러한 애플리케이션을 백업할 때 Astra는 영구 볼륨이 속한 용량 풀을 자동으로 확장 및 축소하며, 이는 1.5배 정도입니다. 이를 통해 추가 영구 비용을 부과하지 않고도 백업에 충분한 공간을 확보할 수 있습니다. 을 참조하십시오<block ref="e77f243482d8cab01f119049bce61a15" category="inline-link-rx"></block> 를 참조하십시오.</block>
+  <block id="7d1e075c0879d28eb6f2e0dc2ca0c95d" category="section-title">Azure 구독 식별자를 추가합니다</block>
+  <block id="842df53ed4115db6639f801f88098d30" category="admonition">서비스 보안 주체에 대한 구독 ID 및 base64 값을 포함하여 사용자 환경에 맞게 JSON 입력 예제를 업데이트해야 합니다.</block>
+  <block id="2b6846c3506af3b4e3ea2d784f2b82f0" category="cell">/accounts/{account_id}/core/v1/credentials</block>
+  <block id="e740ac68beb1aec839dcd6ebdf75bf51" category="section-title">필요한 경우 버킷을 추가합니다</block>
+  <block id="efdbcac27db1bf42436b1e2e15d5d0e5" category="paragraph">필요한 경우 관리되는 애플리케이션에 버킷을 추가해야 합니다.</block>
+  <block id="31858496f01db3c4c122cda1f4614893" category="section-title">관리되는 앱의 백업을 수행합니다</block>
+  <block id="25e18fd10fb78e25d46577d809123272" category="paragraph">워크플로우를 수행합니다 <block ref="531c5c815f0a3a3ceb921ff9baf4d1b9" category="inline-link-macro-rx"></block>. 원래 영구 볼륨이 있는 용량 풀은 자동으로 확장 및 축소됩니다.</block>
+  <block id="96422ff09af7e6fad796f820c7b0e17c" category="section-title">4.이벤트 로그를 검토합니다</block>
+  <block id="5212b6690e36338eb93a0191226877d7" category="paragraph">작업 이벤트는 백업 중에 기록됩니다. 워크플로우를 수행합니다 <block ref="0828f7558c056f6ee4409551e28d3465" category="inline-link-macro-rx"></block> 를 눌러 메시지를 봅니다.</block>
+  <block id="846402b8c9f043783b1fea0eaa5d5e3a" category="summary">특정 Astra 계정에 대해 정의된 S3 버킷을 나열할 수 있습니다.</block>
+  <block id="69e44482660be2fd1013a46b8f354ef2" category="doc">버킷을 나열하십시오</block>
+  <block id="9117feaebfa26145178f03156c040dec" category="section-title">버킷을 나열하십시오</block>
+  <block id="4609424b2fcb4eca19af08e562b2f818" category="paragraph">다음 REST API 호출을 수행하여 Bucket을 나열합니다.</block>
+  <block id="bf4b4c35219181bf2cbc48772ecf228d" category="cell">/accounts/{account_id}/topology/v1/버킷</block>
+  <block id="cfafa44c04121f529847f5cd8be51756" category="section-title">CURL 예: 모든 버킷에 대한 모든 데이터를 반환합니다</block>
+  <block id="4c7aee6e8d40dfdf7713e4a924264d5a" category="summary">특정 Astra 계정에 대해 정의된 사용자를 나열할 수 있습니다.</block>
+  <block id="d300c143bcf19edd33215193d09dde78" category="doc">사용자를 나열합니다</block>
+  <block id="908398b479e9327ae04f2325e64e79ad" category="section-title">사용자를 나열합니다</block>
+  <block id="d5eaca06185acdad8b69d18d2b7d8a07" category="section-title">curl 예: 모든 사용자의 모든 데이터를 반환합니다</block>
+  <block id="6f0f5a995f8609d334baee54a5b0c773" category="section-title">curl 예: 모든 사용자의 이름, 성 및 ID를 반환합니다</block>
+  <block id="5b11110b9a97c66915e86bcba53ee809" category="summary">특정 Astra 계정을 정의하고 사용할 수 있는 클라우드를 나열할 수 있습니다.</block>
+  <block id="1b6ac21e78d44a219b6937e90879165d" category="section-title">클라우드를 나열합니다</block>
+  <block id="095599abd98771dd2c043675b15cd910" category="paragraph">다음 REST API 호출을 수행하여 클라우드를 나열합니다.</block>
+  <block id="56bfeb16726f4551417cc98e43b97b43" category="cell">/accounts/{account_id}/topology/v1/클라우드</block>
+  <block id="e660247893e67f2eed38a94a3b63cd22" category="section-title">curl 예: 모든 클라우드에 대한 모든 데이터를 반환합니다</block>
+  <block id="96e8b262ac53bb3f01457c0c38ed44d1" category="summary">데이터 보호 작업을 수행할 수 있도록 Kubernetes 클러스터를 관리할 수 있습니다.</block>
+  <block id="b07c44c21401db918cbbe0f16f65f02d" category="doc">클러스터 관리</block>
+  <block id="46443fe8f8a5e981e03dc9c27f667bba" category="paragraph">데이터 보호를 수행할 수 있도록 Kubernetes 클러스터를 관리할 수 있습니다.</block>
+  <block id="7f8edbfa07fdddc2b36b6ef33b38eb6d" category="section-title">관리할 클러스터를 선택합니다</block>
+  <block id="c7a97245522ed1fb42a97f5e4d3c60b7" category="inline-link-macro">클러스터 나열</block>
+  <block id="c34eca2cd66003553184da76495d4c73" category="paragraph">워크플로우를 수행합니다 <block ref="43eeb3a6199b799839a97c97fac67885" category="inline-link-macro-rx"></block> 원하는 클러스터를 선택합니다. 속성<block ref="1454762565548055b90a7701d83300db" prefix=" " category="inline-code"></block> 의 클러스터가 이어야 합니다<block ref="a4078d5d3c7b4099b0e6e6cc3ac7d2cd" prefix=" " category="inline-code"></block>.</block>
+  <block id="57c02db141949f6cd9bc959185c1549c" category="section-title">선택 사항으로 스토리지 클래스를 선택합니다</block>
+  <block id="a2e45d2c4126abee2b89f161a0a3a50f" category="inline-link-macro">스토리지 클래스를 나열합니다</block>
+  <block id="ce44453b1a2349be569ca70117dc0084" category="paragraph">필요한 경우 워크플로우를 수행합니다 <block ref="884c867cca3f28784b93799b7c1af829" category="inline-link-macro-rx"></block> 원하는 스토리지 클래스를 선택합니다.</block>
+  <block id="4b5051ec9f46833b1124a6c78b91ce7c" category="admonition">호출 중에 클러스터 관리를 위한 스토리지 클래스를 제공하지 않으면 기본 스토리지 클래스가 사용됩니다.</block>
+  <block id="51c65ac5f91c0fe025d2538bb5501fea" category="section-title">클러스터를 관리합니다</block>
+  <block id="34d1129bcb3e6d80617b667f0ab676ac" category="paragraph">다음 REST API 호출을 수행하여 클러스터를 관리합니다.</block>
+  <block id="e58ad16d27f6c2bc0d209139b5397dce" category="cell">/accounts/{account_id}/topology/v1/managedClusters</block>
+  <block id="c3a6f95958616037be5bc621e7f71032" category="summary">사용 가능한 저장소 백엔드를 나열할 수 있습니다.</block>
+  <block id="99a4fd4c49fccb599a3b4d33e4b37909" category="doc">저장소 백엔드를 나열합니다</block>
+  <block id="be1dcc1afbc1a43cd23e6374cd48ad18" category="section-title">백엔드 목록을 표시합니다</block>
+  <block id="1c66273c79676c96af07f60339276e5e" category="cell">/accounts/{account_id}/topology/v1/storageBackends</block>
+  <block id="97d6ce33b116e0cdc883be2e518a550e" category="section-title">curl 예: 모든 저장소 백엔드에 대한 모든 데이터를 반환합니다</block>
+  <block id="1b382a88a3817dcba16a81ec9e5cf1c5" category="summary">현재 Astra에서 관리하는 Kubernetes 클러스터를 나열할 수 있습니다.</block>
+  <block id="49d7482cad2dac48b0f0e77473d3a249" category="doc">관리되는 클러스터를 나열합니다</block>
+  <block id="fa52d266bf5c95bd5d51a11ed63c7fa3" category="section-title">관리되는 클러스터를 나열합니다</block>
+  <block id="bec9f16b8e469e038cb36941a7f49a27" category="summary">이러한 워크플로우를 사용하여 Astra Control Center 구축과 함께 사용되는 인프라를 생성하고 유지 관리할 수 있습니다. 대부분의 경우 Astra Control Service에서도 워크플로를 사용할 수 있습니다.</block>
+  <block id="c2864f49ccd62b4a439e6e98cf080bad" category="paragraph">인프라 워크플로우는 다양한 범주로 구성되어 있어 원하는 워크플로를 쉽게 찾을 수 있습니다.</block>
+  <block id="cfc97f6bd7c3456321d1fd8b90352beb" category="cell">ID 및 액세스</block>
+  <block id="d65ef3c48dc6be2ab6c525428ec0071f" category="cell">이러한 워크플로를 통해 ID 및 Astra 액세스 방법을 관리할 수 있습니다. 리소스에는 사용자, 자격 증명 및 토큰이 포함됩니다.</block>
+  <block id="da44d6a90298c4994e9893ac3929f496" category="cell">선택적으로 LDAP를 사용하여 선택한 사용자를 인증하도록 Astra Control Center를 구성할 수 있습니다.</block>
+  <block id="9b99bf7d2bfd4b09363304c166832734" category="cell">클러스터</block>
+  <block id="fb06a1a5fb91fa6698fe3e86c0957986" category="cell">관리 Kubernetes 클러스터를 추가하여 포함된 애플리케이션을 보호하고 지원할 수 있습니다.</block>
+  <block id="4a8f72b777dc9735afaebac72822c77e" category="cell">클라우드</block>
+  <block id="9f8189b17fcf187cb4416d8f8ee93490" category="cell">이러한 워크플로우를 통해 Astra Control REST API를 통해 사용 가능한 클라우드에 액세스할 수 있습니다.</block>
+  <block id="62254758dcfe975098fab22609c8aa79" category="cell">버킷</block>
+  <block id="acda08632ae3ad28c4cd07196e0eedc6" category="cell">이러한 워크플로우를 사용하여 백업을 저장하는 데 사용되는 S3 버킷을 생성하고 관리할 수 있습니다.</block>
+  <block id="8c4aa541ee911e8d80451ef8cc304806" category="cell">스토리지</block>
+  <block id="86bae698153c67b42f5d6879975769c8" category="cell">이러한 워크플로우를 사용하여 스토리지 백엔드 및 볼륨을 추가하고 유지할 수 있습니다.</block>
+  <block id="efc48892bfa2d48bf7b7099da5e8b1cb" category="summary">선택적으로 Astra Control Center를 LDAP(Lightweight Directory Access Protocol) 서버와 통합하여 선택한 Astra 사용자에 대한 인증을 수행할 수 있습니다.</block>
+  <block id="5416f32b477dd06c275634ccd1f515ef" category="doc">LDAP 구성을 준비합니다</block>
+  <block id="64e2f4d6a4ddca1f96b57f2204e643e0" category="paragraph">선택적으로 Astra Control Center를 LDAP(Lightweight Directory Access Protocol) 서버와 통합하여 선택한 Astra 사용자에 대한 인증을 수행할 수 있습니다. LDAP는 분산된 디렉터리 정보에 액세스하기 위한 업계 표준 프로토콜이며 엔터프라이즈 인증에 널리 사용되는 프로토콜입니다.</block>
+  <block id="7ec8f89b6c735a5a73c147cd118f1dc0" category="inline-link">LDAP 기술 사양 로드맵</block>
+  <block id="4a5c91444ee2cc7af3551ee1a7752ceb" category="list-text"><block ref="4a5c91444ee2cc7af3551ee1a7752ceb" category="inline-link-rx"></block></block>
+  <block id="2a906b17d905fdd3a0299e217eccf792" category="inline-link">LDAP 버전 3</block>
+  <block id="7cf9f7fe5b261dcd2ad0d601d9060fc4" category="list-text"><block ref="7cf9f7fe5b261dcd2ad0d601d9060fc4" category="inline-link-rx"></block></block>
+  <block id="28b2cfaececf9f33556a32eb29382c27" category="section-title">구현 프로세스 개요</block>
+  <block id="32011db5e3f2b973acfc8aed3c0529a5" category="paragraph">높은 수준에서는 Astra 사용자에게 인증을 제공하기 위해 LDAP 서버를 구성하기 위해 수행해야 하는 몇 가지 단계가 있습니다.</block>
+  <block id="c1b67e408996198828424d7c76c02bd0" category="admonition">아래 제시된 단계는 순서대로 진행되는 반면, 경우에 따라 다른 순서로 수행할 수 있습니다. 예를 들어, LDAP 서버를 구성하기 전에 Astra 사용자 및 그룹을 정의할 수 있습니다.</block>
+  <block id="a3cb839890daad4f93490c8dec227de5" category="inline-link-macro">요구 사항 및 제한 사항</block>
+  <block id="c56b0e2cad98039f90afc405a76c9339" category="list-text">검토 <block ref="686b04a911782dec11ddeea9b8f057bc" category="inline-link-macro-rx"></block> 옵션, 요구 사항 및 제한 사항을 이해합니다.</block>
+  <block id="90380231066a158ebf6100b796ff4c99" category="list-text">LDAP 서버와 원하는 구성 옵션(보안 포함)을 선택합니다.</block>
+  <block id="5eb4ace08e506648d2ccc5e95a6d5d96" category="inline-link-macro">LDAP 서버를 사용하도록 Astra를 구성합니다</block>
+  <block id="5740ce327fba4073ca1904b06bc75eb3" category="list-text">워크플로우를 수행합니다 <block ref="bf310a7fd12c5fc1c6d25b61c9a5b93c" category="inline-link-macro-rx"></block> LDAP 서버와 Astra를 통합합니다.</block>
+  <block id="b9c3ffd9ba3c6bf134abfff90267daf9" category="list-text">LDAP 서버의 사용자 및 그룹을 검토하여 올바르게 정의되었는지 확인합니다.</block>
+  <block id="449f06d287054d92195f8d12380492a2" category="list-text">에서 적절한 워크플로를 수행합니다 <block ref="fa99eeb7a6945e9d3646f3be23581902" category="inline-link-macro-rx"></block> LDAP를 사용하여 인증할 사용자를 식별합니다.</block>
+  <block id="3ff570634537eaff0815860b69ce8091" category="paragraph">인증을 위해 LDAP를 사용하도록 Astra를 구성하기 전에 제한 사항 및 구성 옵션을 포함하여 아래에 제시된 Astra 구성 필수 사항을 검토해야 합니다.</block>
+  <block id="11509d3a68301ed377a3d4e05dcd020d" category="paragraph-title">Astra Control Center에서만 지원됩니다</block>
+  <block id="c36e6b423c38bf8ef0ea8072377038ba" category="paragraph">Astra Control 플랫폼은 두 가지 구축 모델을 제공합니다. LDAP 인증은 Astra Control Center 구축에서만 지원됩니다.</block>
+  <block id="1c44f09ee73ed5762695177ad34b47a5" category="paragraph-title">REST API 또는 웹 사용자 인터페이스를 사용한 구성</block>
+  <block id="440c9ff0e7eba386ee5e844a6dc1d5c3" category="paragraph">Astra Control Center의 현재 릴리즈는 Astra Control REST API와 Astra 웹 사용자 인터페이스를 모두 사용하는 LDAP 인증 구성을 지원합니다.</block>
+  <block id="743f17b310d3349edb0c1f45cc81de25" category="paragraph-title">LDAP 서버가 필요합니다</block>
+  <block id="18164a8c6c2e5e2bcefd983d32500f4b" category="paragraph">Astra 인증 요청을 수락하고 처리하려면 LDAP 서버가 있어야 합니다. Microsoft의 Active Directory는 현재 Astra Control Center 릴리스에서 지원됩니다.</block>
+  <block id="8dccbd929a8dad2beba58b2f79ba3436" category="paragraph-title">LDAP 서버에 대한 보안 연결</block>
+  <block id="200a1d5a87da368403e19065f0bdc581" category="paragraph">Astra에서 LDAP 서버를 구성할 때 선택적으로 보안 연결을 정의할 수 있습니다. 이 경우 LDAPS 프로토콜에 인증서가 필요합니다.</block>
+  <block id="84bc6bd3e8bef314de14969bdd159ece" category="paragraph-title">사용자 또는 그룹을 구성합니다</block>
+  <block id="9977ea9eb2d078e2d962856f8263451f" category="paragraph">LDAP를 사용하여 인증할 사용자를 선택해야 합니다. 개별 사용자 또는 사용자 그룹을 식별하여 이 작업을 수행할 수 있습니다. LDAP 서버에서 계정을 정의해야 합니다. 또한 인증 요청을 LDAP로 전달할 수 있는 Astra(LDAP 입력)에서도 식별되어야 합니다.</block>
+  <block id="b42b70c1eeb08f4931a7765d41130fe7" category="paragraph-title">사용자 또는 그룹을 바인딩할 때 역할 제약 조건</block>
+  <block id="2513c835dd297cecfbb5520096ce3826" category="paragraph">Astra Control Center의 현재 출시와 함께 에서 유일하게 지원되는 값입니다<block ref="4fe22a948503c3fe556cc6f6831342a9" prefix=" " category="inline-code"></block> " * "입니다. 이는 사용자가 제한된 네임스페이스 집합으로 제한되지 않고 모든 네임스페이스에 액세스할 수 있음을 나타냅니다. 을 참조하십시오 <block ref="fa99eeb7a6945e9d3646f3be23581902" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="610559891957534380ce83e8c749ad4b" category="paragraph-title">LDAP 자격 증명</block>
+  <block id="9b220fa67069c2260857f2597ac91e53" category="paragraph">LDAP에서 사용하는 자격 증명에는 사용자 이름(이메일 주소) 및 관련 암호가 포함됩니다.</block>
+  <block id="a2a945099fa6ce86e287032c4a7995a0" category="paragraph-title">고유한 이메일 주소입니다</block>
+  <block id="8c7e9f2dfcd0125922dfbce36a1a4c2a" category="inline-link">사용자를 제거합니다</block>
+  <block id="8b762bd0efe3e57dbdbc5d0f912ee411" category="paragraph">Astra Control Center 배포에서 사용자 이름으로 작동하는 모든 이메일 주소는 고유해야 합니다. Astra에 이미 정의된 이메일 주소를 가진 LDAP 사용자는 추가할 수 없습니다. 중복된 이메일이 있는 경우 먼저 Astra에서 삭제해야 합니다. 을 참조하십시오<block ref="a92cb03f8a893365ffccb1d3a846870f" category="inline-link-rx"></block> 자세한 내용은 Astra Control Center 문서 사이트에서 확인하십시오.</block>
+  <block id="0a6eb1c694ac34589f0bb421705552b0" category="paragraph-title">선택적으로 LDAP 사용자 및 그룹을 먼저 정의합니다</block>
+  <block id="83e2e963b0499e60bb6c46f08a38ce7b" category="paragraph">LDAP 사용자 및 그룹이 LDAP에 없거나 LDAP 서버가 구성되어 있지 않은 경우에도 Astra Control Center에 LDAP 사용자 및 그룹을 추가할 수 있습니다. 이렇게 하면 LDAP 서버를 구성하기 전에 사용자 및 그룹을 미리 구성할 수 있습니다.</block>
+  <block id="b1237b8e9dcb5a28b7d8e23df54f6b0d" category="paragraph-title">여러 LDAP 그룹에 정의된 사용자입니다</block>
+  <block id="2839ece291324f6c806790ca58811cc8" category="paragraph">LDAP 사용자가 여러 LDAP 그룹에 속해 있고 Astra에서 그룹에 서로 다른 역할이 할당된 경우 인증 시 사용자의 유효 역할이 가장 큰 권한이 됩니다. 예를 들어, 사용자에게 가 할당된 경우<block ref="4b2a1529867b8d697685b1722ccd0149" prefix=" " category="inline-code"></block> 그룹 1의 역할이지만 을(를) 가지고 있습니다<block ref="aa08769cdcb26674c6706093503ff0a3" prefix=" " category="inline-code"></block> 역할 그룹 2에서 사용자의 역할은 입니다<block ref="aa08769cdcb26674c6706093503ff0a3" prefix=" " category="inline-code"></block>. 이것은 Astra에서 사용하는 계층 구조를 기반으로 합니다(가장 높은 계층부터 가장 낮은 계층까지).</block>
+  <block id="197a73ee4a006ef52c4fbd2b948357d6" category="paragraph-title">주기적인 계정 동기화</block>
+  <block id="f2ed562f43254d0123b5ec5c7446769b" category="paragraph">Astra는 IT의 사용자 및 그룹을 약 60초마다 LDAP 서버와 동기화합니다. 따라서 LDAP에 사용자 또는 그룹을 추가하거나 LDAP에서 제거할 경우 Astra에서 사용할 수 있으려면 1분 정도 걸릴 수 있습니다.</block>
+  <block id="70d08db9e31d103a9a98ae62d1f934cd" category="paragraph-title">LDAP 구성 비활성화 및 재설정</block>
+  <block id="b76debe413bda7ec6dfd72991496d708" category="paragraph">LDAP 구성을 재설정하기 전에 먼저 LDAP 인증을 비활성화해야 합니다. 또한 LDAP 서버를 변경합니다 <block ref="0fe1baa8e02361e3eee878349edf39fc" prefix="(" category="inline-code"></block>), 두 작업을 모두 수행해야 합니다. 을 참조하십시오 <block ref="9757cdec26988067ceb9687504d1344e" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="19050c1d965285490381eed739648de9" category="paragraph-title">REST API 매개 변수</block>
+  <block id="e89fa43834d6738a939f8c7ecd4c28a4" category="paragraph">LDAP 구성 워크플로에서는 REST API 호출을 수행하여 특정 작업을 수행합니다. 각 API 호출은 제공된 샘플에 나와 있는 입력 매개 변수를 포함할 수 있습니다. 을 참조하십시오 <block ref="bc3e5681b34d05fe80cb8ba4dac9f8c1" category="inline-link-macro-rx"></block> 참조 문서를 찾는 방법에 대한 자세한 내용은 를 참조하십시오.</block>
+  <block id="d4b519107715681619ac9ac9f0e7c2e8" category="summary">LDAP 서버를 선택하고 인증 공급자로 서버를 사용하도록 Astra를 구성해야 합니다.</block>
+  <block id="a4cce93638d786143ceaec53646fcbd0" category="paragraph">LDAP 서버를 선택하고 인증 공급자로 서버를 사용하도록 Astra를 구성해야 합니다. 구성 작업은 아래에 설명된 단계로 구성됩니다. 각 단계에는 단일 REST API 호출이 포함됩니다.</block>
+  <block id="b05f354eda3398ade96e9055b0305ee6" category="section-title">CA 인증서를 추가합니다</block>
+  <block id="468c35b0a371a6568ff7d068ff72eeea" category="paragraph">다음 REST API 호출을 수행하여 CA 인증서를 Astra에 추가합니다.</block>
+  <block id="073d8b65fb7ecf85a06f38d463b9fdd1" category="admonition">이 단계는 선택 사항이며, Astra와 LDAP가 LDAPS를 사용하여 보안 채널을 통해 통신하도록 하려는 경우에만 필요합니다.</block>
+  <block id="a5db48aa11044013c988ffcf3b8ad0de" category="cell">/accounts/{account_id}/core/v1/certificates</block>
+  <block id="7557b2b9d5bb2e98944494352545b875" category="list-text"><block ref="b6ba9fa6ea18201bf39ea635ecca9f13" prefix="" category="inline-code"></block> base64로 인코딩된 PKCS-11 형식의 인증서(PEM 인코딩)가 포함된 JSON 문자열입니다.</block>
+  <block id="6387f0ce5ee860358d87cf0c10e51883" category="list-text"><block ref="90cfc6da5652d21260206e3e7b812234" prefix="" category="inline-code"></block> 을(를) 로 설정해야 합니다<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block> 인증서가 자체 서명된 경우 기본값은 입니다<block ref="68934a3e9455fa72420237eb05902327" prefix=" " category="inline-code"></block>.</block>
+  <block id="d18a6eed5380b79bc54e2eb6e4de5506" category="section-title">바인딩 자격 증명을 추가합니다</block>
+  <block id="9beb1432cc918de4d5a2f634c78b257d" category="paragraph">다음 REST API 호출을 수행하여 바인딩 자격 증명을 추가합니다.</block>
+  <block id="ae15f0c9912e2e37b3523e7e2e9f84ee" category="list-text"><block ref="e28922e50817cf44dfc07d9869ad3c81" prefix="" category="inline-code"></block> 및<block ref="5f4dcc3b5aa765d61d8327deb882cf99" prefix=" " category="inline-code"></block> LDAP 디렉토리를 연결하고 검색할 수 있는 LDAP 관리자 사용자의 base64로 인코딩된 바인딩 자격 증명입니다.<block ref="e28922e50817cf44dfc07d9869ad3c81" prefix=" " category="inline-code"></block> LDAP 사용자의 이메일 주소입니다.</block>
+  <block id="bc1e18d5941e02ad1eb5530ea712bf97" category="paragraph">다음과 같은 응답 매개 변수에 유의하십시오.</block>
+  <block id="7650c05d04a1e9ff8418e0b2c4d3117a" category="list-text">를 클릭합니다<block ref="b80bb7740288fda1f201890375a60c8f" prefix=" " category="inline-code"></block> 다음 워크플로우 단계에서 자격 증명의 가 사용됩니다.</block>
+  <block id="be0de023c657d3318fab7db4965e926d" category="section-title">LDAP 설정의 UUID를 검색합니다</block>
+  <block id="bdf56457fecf48ce12cedd63e4baec6a" category="paragraph">의 UUID를 검색하려면 다음 REST API 호출을 수행합니다<block ref="3940413bb3049c60c5e6b30073232b82" prefix=" " category="inline-code"></block> Astra Control Center에 포함된 설정입니다.</block>
+  <block id="9a7c85ed5d7349bb01adfea8e76844c3" category="admonition">아래 curl 예제에서는 query 매개 변수를 사용하여 설정 컬렉션을 필터링합니다. 대신 필터를 제거하여 모든 설정을 확인한 다음 을 검색할 수 있습니다<block ref="3940413bb3049c60c5e6b30073232b82" prefix=" " category="inline-code"></block>.</block>
+  <block id="4d9116db5ddde7c7ed296b365fba6639" category="cell">/accounts/{account_id}/core/v1/settings</block>
+  <block id="a04f6fc98905b19569e98c821652785c" category="section-title">LDAP 설정을 업데이트합니다</block>
+  <block id="c74075f7ca4f004176562adafe18dc7f" category="paragraph">다음 REST API 호출을 수행하여 LDAP 설정을 업데이트하고 구성을 완료합니다. 를 사용합니다<block ref="b80bb7740288fda1f201890375a60c8f" prefix=" " category="inline-code"></block> 에 대한 이전 API 호출의 값입니다<block ref="7ea6634ba39c1f0d96a6fb712db84dee" prefix=" " category="inline-code"></block> 아래 URL 경로의 값.</block>
+  <block id="0634ea9e84d965a9b2b7b53435251582" category="admonition">특정 설정에 대한 가져오기 요청을 먼저 발행하여 configSchema 를 볼 수 있습니다. 이렇게 하면 구성의 필수 필드에 대한 자세한 정보를 얻을 수 있습니다.</block>
+  <block id="ca58d7a87892784f449108b5713d3d80" category="list-text"><block ref="d97a94e6c10d324fbb3c5f3a1c4a12d5" prefix="" category="inline-code"></block> 을(를) 로 설정해야 합니다<block ref="b326b5062b2f0e69046810717534cb09" prefix=" " category="inline-code"></block> 또는 오류가 발생할 수 있습니다.</block>
+  <block id="51d0b9cf69c2739ca15a60cff099889f" category="list-text"><block ref="833182351578d6a0a4fc4fcb7c9ee80f" prefix="" category="inline-code"></block> 는 앞에서 만든 바인딩 자격 증명의 ID입니다.</block>
+  <block id="91977da3ac4942f4a1225522ce4a5c8d" category="list-text"><block ref="2596a2b64637696b3703150219e9b695" prefix="" category="inline-code"></block> 을(를) 로 설정해야 합니다<block ref="2363dee608bcd9f6ce7f980bfdad5789" prefix=" " category="inline-code"></block> 또는<block ref="298fcfb5d2eed57aee2342417e0ee046" prefix=" " category="inline-code"></block> 이전 단계의 구성을 기반으로 합니다.</block>
+  <block id="760e899cc5769c0faca3e4d9e4a5fe50" category="list-text">'Active Directory'만 공급업체로 지원됩니다.</block>
+  <block id="c7d952ff6c857d0f8f2f2361f8599340" category="paragraph">호출이 성공하면 HTTP 204 응답이 반환됩니다.</block>
+  <block id="da31a4db41ccdf3dc0b4203a87c48c02" category="section-title">LDAP 설정을 검색합니다</block>
+  <block id="49776a9f5739155239c8bae279694c8f" category="paragraph">선택적으로 다음 REST API 호출을 수행하여 LDAP 설정을 검색하고 업데이트를 확인할 수 있습니다.</block>
+  <block id="88b81844873daf6f3107692fe9afb47e" category="paragraph">를 찾습니다<block ref="9ed39e2ea931586b6a985a6942ef573e" prefix=" " category="inline-code"></block> 아래 표에 있는 값 중 하나를 갖는 응답의 필드입니다.</block>
+  <block id="46a2a41cc6e552044816a2d04634545d" category="cell">상태</block>
+  <block id="7c6c2e5d48ab37a007cbf70d3ea25fa4" category="cell">보류 중</block>
+  <block id="1bf4c086db2064d68723fe48dcda6be2" category="cell">구성 프로세스가 아직 활성 상태이며 아직 완료되지 않았습니다.</block>
+  <block id="9f7d0ee82b6a6ca7ddeae841f3253059" category="cell">유효합니다</block>
+  <block id="8ca1440fffd6ba28f4d36aa66ef134f4" category="cell">구성이 성공적으로 완료되었습니다<block ref="00c442f55ef4e21b2669179048817b6a" prefix=" " category="inline-code"></block> 응답이 일치합니다<block ref="4308c350049ae0705f60efc443759184" prefix=" " category="inline-code"></block>.</block>
+  <block id="cb5e100e5a9a3e7f6d1fd97512215282" category="cell">오류</block>
+  <block id="d6b82591a59dcebabe58a580017b8eb7" category="cell">LDAP 구성 프로세스가 실패했습니다.</block>
+  <block id="10a1bf46a85da0a993b0bdc9671634b9" category="summary">특정 자격 증명과 사전 정의된 역할을 가진 사용자를 생성할 수 있습니다. 선택적으로 사용자의 특정 네임스페이스에 대한 액세스를 제한할 수도 있습니다.</block>
+  <block id="5fed933898706fd78ac043eef2dcc541" category="doc">사용자를 생성합니다</block>
+  <block id="e4349772cddf8d27148f14bb1c090bc5" category="section-title">사용자 이름을 선택합니다</block>
+  <block id="f923f903857a5387d3db70494e074632" category="inline-link-macro">사용자를 나열합니다</block>
+  <block id="bf579e87389753dc6d0b880128602f3e" category="paragraph">워크플로우를 수행합니다 <block ref="803a43b46c084c148a870ad78dfe7497" category="inline-link-macro-rx"></block> 를 클릭하고 현재 사용 중이 아닌 사용 가능한 이름을 선택합니다.</block>
+  <block id="7656639cc81b8de453d75419028ba7bb" category="section-title">2.사용자를 생성합니다</block>
+  <block id="35586540b5807703d873e9f863008b67" category="paragraph">다음 REST API 호출을 수행하여 사용자를 생성합니다. 통화가 성공적으로 완료된 후 새 사용자는 아직 사용할 수 없습니다.</block>
+  <block id="f8bd80db3c02397ae8e40a4e6de0b758" category="section-title">3.허용되는 네임스페이스를 선택적으로 선택합니다</block>
+  <block id="21e83956b83b77c2e3a07a7483b69661" category="paragraph">워크플로우를 수행합니다 <block ref="d14574597a65756c248d691b26627131" category="inline-link-macro-rx"></block> 액세스를 제한할 네임스페이스를 선택합니다.</block>
+  <block id="cadba72d8e514fc5b8a0e60e624ac9a9" category="section-title">역할에 사용자를 바인딩합니다</block>
+  <block id="d792a9c3d9a5eeca78d6128f5cc15afd" category="paragraph">사용자를 역할에 바인딩하려면 다음 REST API 호출을 수행합니다. 아래 예제에서는 네임스페이스 액세스에 제한이 없습니다. 을 참조하십시오 <block ref="d5f96da881f3bbb1f2ce5df565a9eaea" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="abfd7bd655e908837e751c0d0f89aebf" category="section-title">자격 증명을 생성합니다</block>
+  <block id="b8f71e8040a8090368e4c50131b50bb5" category="paragraph">다음 REST API 호출을 수행하여 자격 증명을 생성하여 사용자와 연결합니다. 이 예제에서는 base64 값으로 제공된 암호를 사용합니다. 를 클릭합니다<block ref="b068931cc450442b63f5b3d276ea4297" prefix=" " category="inline-code"></block> 속성에는 이전 단계에서 반환된 사용자의 ID가 포함되어야 합니다. 입력 속성<block ref="eb399bcaca686f8609137153307eecf1" prefix=" " category="inline-code"></block> 또한 base64로 인코딩되어야 하며 사용자가 처음 로그인할 때 암호를 변경해야 하는지 여부를 결정합니다 <block ref="b326b5062b2f0e69046810717534cb09" prefix="(" category="inline-code"></block> 또는<block ref="68934a3e9455fa72420237eb05902327" prefix=" " category="inline-code"></block>)를 클릭합니다.</block>
+  <block id="b5c7506e2454fbc7d8931d71087f0f8c" category="admonition">이 단계는 로컬 인증을 사용하여 Astra Control Center를 구축하는 경우에만 필요합니다. LDAP 또는 Astra Control Service를 구축한 Astra Control Center 구축 환경에서는 필요하지 않습니다.</block>
+  <block id="9b419681cf780fc8739ee91b14338a6d" category="summary">사용 가능한 스토리지 클래스를 나열할 수 있습니다.</block>
+  <block id="0d3339545a3c8c350c171199c6549779" category="paragraph">워크플로우를 수행합니다 <block ref="c4922000cf4edc9c6c02533eba85b458" category="inline-link-macro-rx"></block> 작업할 클라우드를 선택하십시오.</block>
+  <block id="0555a951c447a0cbe3807de815a06d5d" category="section-title">특정 클러스터의 스토리지 클래스를 나열합니다</block>
+  <block id="646ae38688e5af41b737db05fd5a5cdb" category="paragraph">다음 REST API 호출을 수행하여 특정 클러스터 및 클라우드에 대한 스토리지 클래스를 표시합니다.</block>
+  <block id="c23ee749361bcb35c4bb9425ae5cd602" category="cell">/accounts/{account_id}/topology/v1/클라우드/&lt;CLOUD_ID&gt;/클러스터/&lt;CLUSTER_ID&gt;/storageClaes</block>
+  <block id="55d1071fe1b5a920cb319a5cdd834452" category="section-title">curl 예: 모든 저장소 클래스에 대한 모든 데이터를 반환합니다</block>
+  <block id="38a0f81608bad4301a7bd0c62937c7a0" category="summary">클러스터를 추가하면 Astra에서 관리할 수 있습니다.</block>
+  <block id="617a1e32f2d409a9c77e56b76a744edc" category="doc">자격 증명을 사용하여 클러스터를 추가합니다</block>
+  <block id="ec23c88fbeb1dbd6e4036cbd90351825" category="paragraph">클러스터를 추가하면 Astra에서 관리할 수 있습니다. Astra 22.11 릴리즈부터 Astra Control Center와 Astra Control Service가 모두 포함된 클러스터를 추가할 수 있습니다.</block>
+  <block id="ec1064b7d3d701d90bcd843f62de2199" category="admonition">주요 클라우드 공급자(AKS, EKS, GKE) 중 하나에서 Kubernetes 서비스를 사용할 때는 클러스터를 추가할 필요가 없습니다.</block>
+  <block id="9a7df7f9a0a709d54e5600f10282be3c" category="section-title">1.kubecon무화과 파일을 구하세요</block>
+  <block id="0f9d366662bdbaac5e7e94b497107f97" category="paragraph">Kubernetes 관리자 또는 서비스로부터 * kubconfig * 파일의 복사본을 얻어야 합니다.</block>
+  <block id="4213c71e0f3bf4e29d847ed32a86c256" category="section-title">구베코무화과 파일을 준비합니다</block>
+  <block id="2f01fc21d4fc91a63d214e05b58d1ae3" category="paragraph">kubecononfig * 파일을 사용하기 전에 다음 작업을 수행해야 합니다.</block>
+  <block id="0e20371f2b50c1982ba88634480d8036" category="paragraph-title">YAML 형식에서 JSON으로 파일을 변환합니다</block>
+  <block id="4439d3db8fedf30a9f782857c3ba84c1" category="paragraph">YAML 형식의 kubecononfig 파일을 받으면 JSON으로 변환해야 합니다.</block>
+  <block id="fb08278d28a518a351675c5e1706ae41" category="paragraph-title">base64에서 JSON을 인코딩합니다</block>
+  <block id="b30ac06bf6c3102a84f420a5a1444360" category="paragraph">base64에서 JSON 파일을 인코딩해야 합니다.</block>
+  <block id="62a9da32071f678334a21060c67e7014" category="paragraph">다음은 kubecononfig 파일을 YAML에서 JSON으로 변환한 후 base64로 인코딩하는 예입니다.</block>
+  <block id="9413bfba8f719cfbad604b6dc31a25c7" category="paragraph"><block ref="c4fe76de412e2e8e625be88a4c8c0409" prefix="" category="inline-code"></block></block>
+  <block id="179dae9c1238082df51d848f55149f2b" category="section-title">3.클라우드를 선택합니다</block>
+  <block id="a334c61bdbeeba71f0e5b3f6261056cf" category="paragraph">워크플로우를 수행합니다 <block ref="c4922000cf4edc9c6c02533eba85b458" category="inline-link-macro-rx"></block> 클러스터를 추가할 클라우드를 선택합니다.</block>
+  <block id="adaaed5dfdf88205bfc2a19f52977915" category="admonition">선택할 수 있는 유일한 클라우드는 * 프라이빗 * 클라우드입니다.</block>
+  <block id="0da20235e02091f71130fe02f554db86" category="section-title">자격 증명을 생성합니다</block>
+  <block id="9309ae9888680ed2a9bdac6c4088fda7" category="paragraph">kubecononfig 파일을 사용하여 자격 증명을 생성하려면 다음 REST API 호출을 수행합니다.</block>
+  <block id="eeb0a36c0a2afb32d05402176c5257dc" category="section-title">클러스터를 추가합니다</block>
+  <block id="6cfceed1b9ea5b28883e844012ce6f31" category="paragraph">다음 REST API 호출을 수행하여 클러스터를 클라우드에 추가합니다. 의 값<block ref="5f2852e58e87847c0c9324d5a8954ae2" prefix=" " category="inline-code"></block> 입력 필드는 이전 단계의 REST API 호출에서 얻어집니다.</block>
+  <block id="736214fe7532e2fc83d855d2d8a1cc51" category="summary">실제 배포와 함께 사용하기 전에 Astra 워크플로의 구성 및 형식을 숙지해야 합니다.</block>
+  <block id="0b79795d3efc95b9976c7c5b933afce2" category="section-title">소개</block>
+  <block id="b3433e01f10e1e1369d819f420b2a8a7" category="paragraph">Workflow _ 은(는) 특정 관리 작업 또는 목표를 달성하는 데 필요한 하나 이상의 단계 시퀀스입니다. Astra Control 워크플로우의 각 단계는 다음 중 하나입니다.</block>
+  <block id="6f01c5142da7df41a4b71dc3f7570bda" category="list-text">REST API 호출(curl 및 JSON 예 등의 세부 정보 포함)</block>
+  <block id="78fa555cbbf5cfea76fb1b1f6ee2dd29" category="list-text">다른 Astra 워크플로 호출</block>
+  <block id="0250c1a44d81b589b5b4f427275ac9f1" category="list-text">기타 관련 작업(예: 필요한 설계 결정)</block>
+  <block id="b4ad63a307b10645d3f05daf2a68fd69" category="paragraph">워크플로에는 각 작업을 수행하는 데 필요한 핵심 단계와 매개 변수가 포함됩니다. 또한 자동화 환경을 사용자 지정할 수 있는 출발점을 제공합니다.</block>
+  <block id="3791b7d0d91a2238c40dbbfefa886cc7" category="section-title">공통 입력 매개변수</block>
+  <block id="4793f7e43c0b614d9436bdc916a53132" category="paragraph">아래에 설명된 입력 매개 변수는 REST API 호출을 나타내는 데 사용되는 모든 curl 샘플에 공통으로 사용됩니다.</block>
+  <block id="accb68848ca657de52fbb603de5210a7" category="admonition">이러한 입력 매개 변수는 보편적으로 필요하기 때문에 개별 워크플로에서 더 이상 설명되지 않습니다. 특정 curl 예제에 추가 입력 매개 변수가 사용되는 경우 * 추가 입력 매개 변수 * 절에 설명되어 있습니다.</block>
+  <block id="18a5eb10fa0d3a464702a4b8daac4266" category="section-title">경로 매개 변수</block>
+  <block id="503c8aae9452b9959d308d3f2d3096fe" category="paragraph">모든 REST API 호출에 사용되는 엔드포인트 경로에는 다음 매개 변수가 포함됩니다. 도 참조하십시오 <block ref="d30352e41f8ff3b0c022e188e6d650e9" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="351a2eb8764e19b9e565e8a355469e70" category="list-text">계정 ID입니다</block>
+  <block id="1f6e2f2cfb847644b16a490ce41ebd8b" category="list-text">API 작업이 실행되는 Astra 계정을 식별하는 UIDv4 값이다. 을 참조하십시오 <block ref="949977ec887dbf77cf703083221524dc" category="inline-link-macro-rx"></block> 계정 ID를 찾는 방법에 대한 자세한 내용은 를 참조하십시오.</block>
+  <block id="736943e80c16e2be98d8595e6376e4ee" category="section-title">요청 헤더</block>
+  <block id="60a612c6fb7649fb73c8bba8ecc92e3e" category="paragraph">REST API 호출에 따라 몇 가지 요청 헤더를 포함해야 할 수도 있습니다.</block>
+  <block id="9a536be7255d1442830c11bda56d6752" category="list-text">워크플로의 모든 API 호출에는 사용자를 식별하기 위한 API 토큰이 필요합니다. 에 토큰을 포함해야 합니다<block ref="9cd8a2455b1839ff98ef70c05b9b5983" prefix=" " category="inline-code"></block> 요청 헤더. 을 참조하십시오 <block ref="949977ec887dbf77cf703083221524dc" category="inline-link-macro-rx"></block> API 토큰 생성에 대한 자세한 내용은 를 참조하십시오.</block>
+  <block id="266ba14af58a3dfa4b9e1c90a8879dfb" category="list-text">콘텐츠 유형</block>
+  <block id="d3372edb76427cc513c6612948a1009a" category="list-text">HTTP POST 및 PUT 요청을 사용하여 요청 본문에 JSON이 포함된 경우 Astra 리소스를 기반으로 미디어 유형을 선언해야 합니다. 예를 들어 머리글을 포함할 수 있습니다<block ref="6b1fa66c8eb31836b3e529f0e6b8671a" prefix=" " category="inline-code"></block> 관리 대상 응용 프로그램에 대한 스냅샷을 생성할 때</block>
+  <block id="06aaa274f211af6567a97cd2601245c4" category="list-text">Astra 리소스를 기반으로 응답에서 예상하는 콘텐츠의 특정 미디어 유형을 선언할 수 있습니다. 예를 들어 머리글을 포함할 수 있습니다<block ref="9cd2649dcee6f80ddd08934531e4b34e" prefix=" " category="inline-code"></block> 관리 대상 응용 프로그램의 백업을 나열하는 경우 그러나 간단히 하기 위해 워크플로의 curl 샘플에는 모든 미디어 유형이 적용됩니다.</block>
+  <block id="e61e133d4cfd72503fe6ac169a680fab" category="section-title">토큰 및 식별자 표시</block>
+  <block id="89b2bf9f7f0100dcd9717a9f846c1938" category="paragraph">curl 예제에 사용된 API 토큰과 기타 ID 값은 식별 가능한 의미 없이 불투명합니다. 따라서 샘플의 가독성을 향상시키기 위해 실제 토큰 및 ID 값은 사용되지 않습니다. 대신, 다음과 같은 몇 가지 이점을 제공하는 더 작은 예약 키워드가 사용됩니다.</block>
+  <block id="4358f6bef945b7769bf5d4ac6e199f45" category="list-text">CURL 및 JSON 샘플은 보다 명확하고 이해하기 쉽습니다.</block>
+  <block id="f18d64be11866478e05d45955bbf2455" category="list-text">모든 키워드는 대괄호와 대문자를 사용하여 동일한 형식을 사용하기 때문에 삽입하거나 추출할 위치와 내용을 빠르게 식별할 수 있습니다.</block>
+  <block id="ae8a59dcfdfdb01ea66130c76c50f0a7" category="list-text">원래 매개 변수를 복사하여 실제 배포에서 사용할 수 없으므로 값이 손실되지 않습니다.</block>
+  <block id="a5fa758a804c6e775ad8c0643a197329" category="paragraph">다음은 curl 예제에 사용되는 몇 가지 일반적인 예약된 키워드입니다. 이 목록은 전체 목록이 아니며 필요에 따라 추가 키워드가 사용됩니다. 그들의 의미는 상황에 따라 분명해야 합니다.</block>
+  <block id="220f3d3750583b9db48568a0b5b9a5f1" category="cell">키워드</block>
+  <block id="901931235afef62a62e9ee2657e55eaf" category="cell">account_ID&gt;입니다</block>
+  <block id="7b5c2e331dadd94a7f2f3c331d308424" category="cell">API 작업이 실행되는 계정을 식별하는 UIDv4 값입니다.</block>
+  <block id="4a66fdca0794b65eaa799aa5ead36fb1" category="cell">api_token&gt;</block>
+  <block id="14ce98600753e7afda082ba76ce94155" category="cell">호출자를 식별하고 승인하는 베어러 토큰.</block>
+  <block id="8aaca9da7a2057e6c3482b19683ee3b0" category="cell">APP_ID&gt;</block>
+  <block id="f5a4b32e77235d71cac07525901e432b" category="cell">API 호출에 대한 응용 프로그램을 식별하는 UIDv4 값입니다.</block>
+  <block id="20d2410ae6d60054698fdb2241648ec0" category="paragraph">배포 모델에 따라 두 가지 범주의 Astra 워크플로를 사용할 수 있습니다. Astra Control Center를 사용하는 경우 인프라 워크플로로 시작한 다음 관리 워크플로로 넘어가야 합니다. Astra Control Service를 사용하는 경우 일반적으로 관리 워크플로로 직접 이동할 수 있습니다.</block>
+  <block id="3968c3333db40e7d3ec4d8fb2fc30853" category="admonition">워크플로의 curl 샘플은 Astra Control Service의 URL을 사용합니다. 사내 Astra Control Center를 사용하는 경우 해당 환경에 맞게 URL을 변경해야 합니다.</block>
+  <block id="23f646b4da04b69e64a7e464ec005504" category="paragraph">이러한 워크플로우에서는 자격 증명, 버킷 및 스토리지 백엔드를 포함한 Astra 인프라를 처리합니다. Astra Control Center와 함께 필요하지만 대부분의 경우 Astra Control Service와 함께 사용할 수 있습니다. 워크플로우는 Astra 관리 클러스터를 설정하고 유지하는 데 필요한 작업에 중점을 둡니다.</block>
+  <block id="ead63516b6f8d40a5195059120a34741" category="paragraph">관리되는 클러스터가 있는 경우 이러한 워크플로우를 사용할 수 있습니다. 워크플로우는 애플리케이션 보호 및 앱 백업, 복원, 클론 복제 등의 지원 작업에 중점을 둡니다.</block>
+  <block id="4086ad8bc58a79384e2abed3e4c7b4f1" category="summary">Astra REST API를 사용할 때는 몇 가지 Kubernetes 개념을 이해해야 합니다.</block>
+  <block id="35e431c9f5b342b3021d74196ba6d0ca" category="doc">기본 Kubernetes 개념</block>
+  <block id="c8308b1eba7ba926a61b8fd802194386" category="section-title">오브젝트</block>
+  <block id="f1cc005117a5cbfdc746b09fc2740ce3" category="paragraph">Kubernetes 환경 내에 유지되는 객체는 클러스터 구성을 나타내는 영구 엔터티입니다. 이러한 오브젝트는 클러스터 워크로드를 포함한 시스템의 상태를 종합적으로 설명합니다.</block>
+  <block id="e4bf9ae863cd1aefddf2b696b955f449" category="paragraph">네임스페이스는 단일 클러스터 내에서 리소스를 격리하는 기술을 제공합니다. 이 조직 구조는 작업, 사용자 및 자원의 유형을 나눌 때 유용합니다. _namespace scope_의 개체는 네임스페이스 내에서 고유해야 하지만 _cluster scope_를 가진 개체는 전체 클러스터에서 고유해야 합니다.</block>
+  <block id="3ad6cb6100190c8f81e99fd52debf7ef" category="section-title">라벨</block>
+  <block id="3430bf151db09278950b5545d1433fc0" category="paragraph">라벨은 Kubernetes 오브젝트와 연결될 수 있습니다. 이들은 키 값 쌍을 사용하여 특성을 설명하고, 조직에 유용할 수 있지만 핵심 Kubernetes 운영 이외의 클러스터에 임의 조직을 적용할 수 있습니다.</block>
+  <block id="3c7367ab4ec3900042f765d5f3b81ee6" category="summary">Astra Control REST API를 시작할 수 있도록 빠르게 준비할 수 있습니다.</block>
+  <block id="ff187555434d269d1d36dedf48955cdb" category="paragraph">아래 단계를 검토하여 Astra Control REST API를 시작할 수 있도록 빠르게 준비할 수 있습니다.</block>
+  <block id="1a615153bb2bd3389942d44023a8f4bb" category="paragraph-title">Astra 계정 자격 증명을 가지고 있어야 합니다</block>
+  <block id="2f4e21e17441a71f2d731b0fdb15fc17" category="paragraph">Astra 웹 사용자 인터페이스에 로그인하고 API 토큰을 생성하려면 Astra 자격 증명이 필요합니다. Astra Control Center를 사용하면 이러한 자격 증명을 로컬로 관리할 수 있습니다. Astra Control Service를 사용하면 * Auth0 * 서비스를 통해 계정 자격 증명에 액세스할 수 있습니다.</block>
+  <block id="7e8def8db3d7d1cc38b119879791cb9b" category="paragraph-title">Kubernetes의 기본 개념에 대해 잘 알고 있어야 합니다</block>
+  <block id="4b96d62533ac6ea29ddc9891a6776a3b" category="paragraph">Kubernetes의 몇 가지 기본 개념에 익숙해야 합니다. 을 참조하십시오 <block ref="e274b8e6d2e2ed892d318b3b2d0764db" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="0182974655f974e8429fb64bb3d15eb2" category="paragraph-title">REST 개념 및 구현을 검토합니다</block>
+  <block id="67d003f4d71c424d95442bd22e4d9b35" category="inline-link-macro">핵심 REST 구현</block>
+  <block id="0c59027cf761af16d5101de509ed5ef7" category="paragraph">반드시 검토하십시오 <block ref="533ba43849291e761802432633424684" category="inline-link-macro-rx"></block> REST 개념과 Astra Control REST API의 설계 방식에 대한 자세한 내용은</block>
+  <block id="bf07f432276ee2fe7e55f9ea12c2ba5a" category="paragraph-title">자세한 정보를 확인하십시오</block>
+  <block id="1975d27c17bd745494bde5176f3687d2" category="paragraph">에 나와 있는 추가 정보 리소스를 숙지해야 합니다 <block ref="d9232e9ba333ee728d29f8228e038c57" category="inline-link-macro-rx"></block>.</block>
+  <block id="7a161061772a428a5823e2adbe01f5f4" category="summary">HTTP 메서드, 입력 매개 변수 및 응답을 포함하여 Astra Control REST API 호출의 세부 정보에 액세스할 수 있습니다. 이 전체 참조는 REST API를 사용하여 자동화 응용 프로그램을 개발할 때 유용합니다.</block>
+  <block id="53b4dbb805da489969e32d5e207f43af" category="doc">Astra API 참조 문서에 액세스합니다</block>
+  <block id="e90840c9e835dabec4f6627d0ccddef2" category="paragraph">배포를 위해 Astra 웹 사용자 인터페이스에 로그인하려면 자격 증명이 필요합니다. 참조 문서에 액세스하는 절차는 Astra Control Service 및 Astra Control Center와 동일합니다. URL만 다릅니다. 참조 문서를 액세스하고 보는 데 API 토큰이 필요하지 않습니다.</block>
+  <block id="ffda91bc16561c140aa3a3293cb3373d" category="list-text">Astra 제어 서비스: <block ref="a7c1946d9e83ca7cb364e2283d9c1bfa" category="inline-link-macro-rx"></block></block>
+  <block id="a242cf3d90ad638fe0e23d9477b74175" category="list-text">페이지 맨 위에서 * API Documentation * 아래에 표시된 URL을 클릭합니다.</block>
+  <block id="8eea62084ca7e541d918e823422bd82e" category="paragraph-title">결과</block>
+  <block id="93a04a12da3b73c104f76110d28e439f" category="paragraph">Swagger 페이지가 새 창 또는 탭에서 시작됩니다. URL에는 로그인한 계정의 계정 ID가 포함되어 있습니다.</block>
+  <block id="58eaebf972358f1cf03d386a4ade1a0f" category="paragraph-title">다음 단계</block>
+  <block id="d2d3bbdb180fea4732023aa385c2bcad" category="inline-link-macro">Astra REST API 호출 전송</block>
+  <block id="2e72d917f5fd43aa4a556d9db54a8b23" category="paragraph">Swagger 페이지에서 API 호출을 선택적으로 실행할 수 있습니다. 을 참조하십시오 <block ref="d791a02ae369ca3bfa55295caf72fedd" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="2d388ce46646f517f31092dee87e1af6" category="summary">워크스테이션 CLI에서 간단한 curl 명령을 실행하여 Astra Control REST API를 사용하여 사용 가능 여부를 확인할 수 있습니다.</block>
+  <block id="88e25761f6eadcead9ced5f76a00e95c" category="doc">첫 번째 API 호출입니다</block>
+  <block id="9b355d9a0df5a5e777f4cd881f971a4e" category="paragraph">Curl 유틸리티는 로컬 워크스테이션에서 사용할 수 있어야 합니다. 또한 API 토큰과 관련 계정 식별자가 있어야 합니다. 을 참조하십시오 <block ref="67af9ad396391bc7ade4b472f0b4f030" category="inline-link-macro-rx"></block> 를 참조하십시오.</block>
+  <block id="cbd2fd368381db0d8cdbdead253cf132" category="paragraph">다음 Curl 명령은 Astra 사용자 목록을 검색합니다. 표시된 대로 적절한 &lt;account_ID&gt; 및 &lt;api_token&gt;을 제공합니다.</block>
+  <block id="f2082cbd04c532123c4a60b265595268" category="summary">Astra Control REST API를 사용하려면 Astra API 토큰을 얻어야 합니다.</block>
+  <block id="3b878279a04dc47d60932cb294d96259" category="section-title">개요</block>
+  <block id="e18812059a8d09f0f17ebcad797930df" category="paragraph">API 토큰은 Astra에 호출자를 식별하며 모든 REST API 호출에 포함되어야 합니다.</block>
+  <block id="7652ed5ca976b004d92eaaa78c376c9d" category="list-text">Astra 웹 사용자 인터페이스를 사용하여 API 토큰을 생성해야 합니다.</block>
+  <block id="3c8afa648b8d63ba3e2f942bec9ab73e" category="list-text">토큰 생성 절차는 Astra 배포 모델 모두에 대해 동일합니다. Astra에 액세스하는 데 사용되는 URL만 다릅니다.</block>
+  <block id="19f3e619111d8d4c522de7221584fc6c" category="list-text">토큰과 관련 권한으로 전달된 사용자 ID는 토큰을 만든 사용자에 의해 결정됩니다.</block>
+  <block id="80c4d1da0ffc63fa594010f5c5541b4b" category="list-text">토큰은 에 포함되어야 합니다<block ref="9cd8a2455b1839ff98ef70c05b9b5983" prefix=" " category="inline-code"></block> HTTP 요청 헤더입니다.</block>
+  <block id="261bfb4842abd90ac7080375e1e3a342" category="list-text">토큰이 생성된 후에는 만료되지 않습니다.</block>
+  <block id="7d3bb36b2de41ab91073fa12ad3242f6" category="list-text">Astra 웹 사용자 인터페이스에서 토큰을 취소할 수 있습니다.</block>
+  <block id="344fcf1ffe13f47b7e084c95c8926ec6" category="list-text"><block ref="344fcf1ffe13f47b7e084c95c8926ec6" category="inline-link-macro-rx"></block></block>
+  <block id="1ac36aa6ca00de5e76a5920ca6368fa6" category="section-title">Astra API 토큰을 생성합니다</block>
+  <block id="8d4eb0217153cb37c8687158d7067cfb" category="paragraph">다음 단계에서는 Astra API 토큰을 생성하는 방법을 설명합니다.</block>
+  <block id="646fd3c3d22d826a188a59c1bba8854b" category="paragraph">Astra 계정에 대한 자격 증명이 필요합니다.</block>
+  <block id="af02d3e1ad157f1839fbba3f7e1fc763" category="paragraph">이 작업은 Astra 웹 인터페이스에서 API 토큰을 생성합니다. 또한 API 호출 시 필요한 계정 ID도 검색해야 합니다.</block>
+  <block id="69c0346ff6510c5ad7f7659ec6fd66be" category="list-text">페이지에서 * API 토큰 생성 * 을 클릭한 다음 팝업 창에서 * API 토큰 생성 * 을 클릭합니다.</block>
+  <block id="3040c02566f3d35a3b86a6ca9472dadd" category="list-text">아이콘을 클릭하여 토큰 문자열을 클립보드에 복사하고 편집기에 저장합니다.</block>
+  <block id="df98c0b39730eeb3f14749ea1c0684c2" category="list-text">동일한 페이지에서 사용할 수 있는 계정 ID를 복사하여 저장합니다.</block>
+  <block id="bd965e38a0c9cf27aa1bde099308e23f" category="paragraph-title">작업을 마친 후</block>
+  <block id="e720ccabcfbd213be97f4476ff0c5601" category="paragraph">curl 또는 프로그래밍 언어를 통해 Astra Control REST API에 액세스하는 경우 HTTP에 API 베어러 토큰을 포함해야 합니다<block ref="9cd8a2455b1839ff98ef70c05b9b5983" prefix=" " category="inline-code"></block> 요청 헤더.</block>
+  <block id="e347b2f3a025e39e9b9b45d49ad72dab" category="summary">API 참조 문서 페이지에서 Astra Control REST API 호출을 실행할 수 있습니다.</block>
+  <block id="ebe7080a642d0936cad4e377fe9b8401" category="paragraph">Astra에 로그인하여 API 참조 페이지에 액세스해야 합니다. 을 참조하십시오 <block ref="010c4a1892f0ae334c914939807b2734" category="inline-link-macro-rx"></block> 를 참조하십시오. REST API를 사용하려면 토큰도 필요합니다. 을 참조하십시오 <block ref="949977ec887dbf77cf703083221524dc" category="inline-link-macro-rx"></block> API 토큰 생성에 대한 자세한 내용은 를 참조하십시오.</block>
+  <block id="cbed555cdf913285d9275ccd1866519f" category="list-text">API 참조 페이지 상단에서 * authorize * 를 클릭합니다.</block>
+  <block id="f1fca9fdba2865f1e5e68171f8e501c8" category="list-text">팝업 창의 필드에 API 토큰 값을 복사하여 붙여 넣고 * authorize * 를 클릭한 다음 * Close * 를 클릭합니다.</block>
+  <block id="d77956bf312c489126fb210ac26e1560" category="list-text">페이지를 아래로 스크롤하여 원하는 API 호출을 엽니다.</block>
+  <block id="640c9068a50bdac21a3ada93c538c020" category="list-text">마우스 오른쪽 단추로 * 시험 사용 * 을 클릭합니다.</block>
+  <block id="db21e6fd52879394e8294f15387580ad" category="list-text">동일한 API 호출 내에서 아래로 스크롤합니다. 필요한 매개 변수 값을 입력하고 * Execute * 를 클릭하여 호출을 실행합니다.</block>
+  <block id="5a698356ed60cc238c0048ecf6f15037" category="paragraph">API 호출이 실행되고 HTTP 상태 코드가 표시됩니다.</block>
+  <block id="e9c44bbfd795a5d63d74c6a77afee70d" category="summary">법적 고지 사항은 저작권 선언, 상표, 특허 등에 대한 액세스를 제공합니다.</block>
+  <block id="30d965eef5ba25c6b9998ae38270b43e" category="doc">법적 고지</block>
+  <block id="6016a2b341113bf496b719905398ecd2" category="section-title">저작권</block>
+  <block id="52009bb7ee17227f566cd26a02caee56" category="inline-link-macro"><block ref="52009bb7ee17227f566cd26a02caee56" category="inline-link-rx"></block></block>
+  <block id="a1a9afcf552a769c282769271829889a" category="paragraph"><block ref="a1a9afcf552a769c282769271829889a" category="inline-link-macro-rx"></block></block>
+  <block id="126a02652da6de02962cf1b654fd6376" category="section-title">상표</block>
+  <block id="c4ce4761e466527d26b3e3d5ed1006fd" category="paragraph">NetApp, NetApp 로고, NetApp 상표 페이지에 나열된 마크는 NetApp Inc.의 상표입니다. 기타 회사 및 제품 이름은 해당 소유자의 상표일 수 있습니다.</block>
+  <block id="f99aa604031e5049799e73b5c3748a98" category="inline-link-macro"><block ref="f99aa604031e5049799e73b5c3748a98" category="inline-link-rx"></block></block>
+  <block id="5d545fe5152641e2ebe654e336e520e5" category="paragraph"><block ref="5d545fe5152641e2ebe654e336e520e5" category="inline-link-macro-rx"></block></block>
+  <block id="be89498d2f8a22ce47c02ba9795fe2af" category="section-title">특허</block>
+  <block id="d0b19d36be2c5f16e9aef46c8a452d3d" category="paragraph">NetApp 소유 특허 목록은 다음 사이트에서 확인할 수 있습니다.</block>
+  <block id="88e5eabd3917048b6927c42496b98f86" category="inline-link-macro"><block ref="88e5eabd3917048b6927c42496b98f86" category="inline-link-rx"></block></block>
+  <block id="dd38f906b37d412de7d1c1dcf4cbf31c" category="paragraph"><block ref="dd38f906b37d412de7d1c1dcf4cbf31c" category="inline-link-macro-rx"></block></block>
+  <block id="56c34c6410dd45c5cec44149ad0ce037" category="section-title">개인 정보 보호 정책</block>
+  <block id="8acb58cbd50ef1b468a020ee0bd351d3" category="inline-link-macro"><block ref="8acb58cbd50ef1b468a020ee0bd351d3" category="inline-link-rx"></block></block>
+  <block id="2352c4e1f4d0024ade0869e00e6243f4" category="paragraph"><block ref="2352c4e1f4d0024ade0869e00e6243f4" category="inline-link-macro-rx"></block></block>
+  <block id="e81b0f8fae224ca0c3d3258b75a989dd" category="section-title">Astra Control API 라이센스</block>
+  <block id="f7c79ca7f13fd9da78390d5a97db7042" category="paragraph"><block ref="f7c79ca7f13fd9da78390d5a97db7042" category="inline-link-rx"></block></block>
+  <block id="7e26b5a9ba2a4c5baf0f7c50d405e838" category="sidebar">Astra Control Automation 23.10 문서</block>
+  <block id="90a5fcdce1500ecacc854f6c87061ce9" category="sidebar">Astra REST 구현</block>
+  <block id="824ee32982b0cc1ac1aca8447c9cb3cf" category="sidebar">애플리케이션 제어</block>
+  <block id="4d3e9b74a79b7af51564aa58491a951e" category="sidebar">앱 나열</block>
+  <block id="373370c9330843dbc9a492b75e68e396" category="sidebar">애플리케이션 보호</block>
+  <block id="f787d303cdb9d100881b69dd4d492588" category="sidebar">스냅샷을 나열합니다</block>
+  <block id="f7bcabdf07e891b3508301fa92282eea" category="sidebar">백업 목록을 표시합니다</block>
+  <block id="bfb2cee5de3a54c30810194a0077e673" category="sidebar">스냅샷 생성</block>
+  <block id="905771c53eca9759892774cc3976e8b7" category="sidebar">백업을 생성합니다</block>
+  <block id="c461a6f00f9a642a637e3f162f3ded1b" category="sidebar">스냅샷을 삭제합니다</block>
+  <block id="b6cf8e12bbbeee058067ebf8c8dda7e2" category="sidebar">백업을 삭제합니다</block>
+  <block id="826f785c760529ceb6e978afdab2a9a7" category="sidebar">보호 정책을 생성합니다</block>
+  <block id="c315f2255bd42f6e4eec1a748ed0acba" category="sidebar">앱 복제 및 복원</block>
+  <block id="76427b3f214d8ae919f1432a89eefd65" category="sidebar">이름 공간 나열</block>
+  <block id="999e0dcec594b55111b1ede61b4409f5" category="sidebar">알림을 나열합니다</block>
+  <block id="365c8dec8255a8a164436c71a2611920" category="sidebar">Python 사용</block>
+  <block id="35bcd8d33247c44923eb71df2f2f0a2d" category="sidebar">기본 Python</block>
+  <block id="19ec08da81a826d919d64ab860845c04" category="sidebar">API 참조입니다</block>
+  <block id="43659ebbefa72dddc0bf81f83ff3645d" category="sidebar">리소스 요약</block>
+  <block id="f8de52ebe15fa6f74d720087c5ea48fb" category="sidebar">코어 설계</block>
+  <block id="7d0ee6fed10d3d4e5c9ee496729ab519" category="sidebar">릴리스 정보</block>
+  <block id="33871b6190a8d5adbe8b15282054766c" category="sidebar">새로운 소식</block>
+  <block id="93168a8084b3e838d2932c4734bd234e" category="sidebar">이전 버전</block>
+  <block id="36b64aad8a26246fe3ad4116a2b6f289" category="sidebar">진단</block>
+  <block id="35ae08a314ffffc02580e3c3fbfad924" category="sidebar">기능 및 이점</block>
+  <block id="b0df0cbb0d80fcf4a587effd8b8f3f6a" category="sidebar">LDAP 서버를 구성합니다</block>
+  <block id="013a127f643228c21ab6c9baf558cef5" category="sidebar">클러스터를 추가합니다</block>
+  <block id="b99e07f4bea810f88b69ecfe1784ab28" category="sidebar">구름 목록을 표시합니다</block>
+  <block id="b65e59022e022b723c1c1fbb73cd0092" category="sidebar">버킷 나열</block>
+  <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">시작하십시오</block>
+  <block id="157ecd713825d83c3595df6b4c0c11af" category="sidebar">참조 문서에 액세스합니다</block>
+</blocks>
