@@ -618,7 +618,6 @@
   <block id="8a95104150e07b745de96037e7eb15b4" category="list-text">URL을 완료합니다</block>
   <block id="d01376790c7b0b81f92f0a93fe0d3fad" category="paragraph">해당 끝점의 전체 URL은 다음과 같습니다.<block ref="889041d0c093d3ff7a84829871523416" prefix=" " category="inline-code"></block>.</block>
   <block id="b844ee2db8fd78557f753d0c04015c4a" category="summary">Astra Control은 Kubernetes 애플리케이션에 데이터 라이프사이클 관리를 제공하는 NetApp 소프트웨어 제품입니다. 환경에 따라 두 가지 구축 모델을 사용할 수 있습니다. Astra Control Center와 Astra Control Service는 릴리즈에 따라 동일한 REST API를 공유합니다. REST API 및 기타 관련 자동화 기술을 사용하여 Astra Control 배포를 관리할 수 있습니다.</block>
-  <block id="1a0ca7f0a5aea880c24d544b4655d6ed" category="doc">Astra Control Automation 설명서</block>
   <block id="7128d9d8a839786105f002007172fbe5" category="summary">NetApp은 새로운 기능, 개선 사항 및 버그 수정을 제공하기 위해 Astra Control REST API를 정기적으로 업데이트합니다.</block>
   <block id="c93cc787737ceea532bea714170e32cf" category="doc">Astra Control REST API의 새로운 기능</block>
   <block id="6881779f2ae76c74d15a56eaefcccd8b" category="section-title">2023년 11월 7일(23.10)</block>
@@ -1250,4 +1249,13 @@
   <block id="b65e59022e022b723c1c1fbb73cd0092" category="sidebar">버킷 나열</block>
   <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">시작하십시오</block>
   <block id="157ecd713825d83c3595df6b4c0c11af" category="sidebar">참조 문서에 액세스합니다</block>
+  <block id="2ce5679e796a226301682da2e8eb77f6" category="sidebar">Astra Control Automation 23.10 설명서</block>
+  <block id="547abae9d6ca9df339ec4543e220ab8e" category="sidebar">첫 번째 API 호출</block>
+  <block id="4beba69037bd14812e726a2a137a8c7f" category="sidebar">코어 레스트 디자인</block>
+  <block id="b4ec6b7393a41bf5e5870f1ce48009e5" category="sidebar">REST 리소스 및 컬렉션</block>
+  <block id="f38713c0367843938a57ef219a3bfbfc" category="sidebar">Astra API 리소스 요약</block>
+  <block id="e6b088db24ebe67ed0e9567d309387ec" category="sidebar">워크플로우</block>
+  <block id="9a5f09cf66e692efdae493ce4c9aa64f" category="sidebar">준비</block>
+  <block id="a7f5f35426b927411fc9231b56382173" category="sidebar">파이썬</block>
+  <block id="ea1c0b8e4018f75659e26eb720b206e5" category="sidebar">Python을 기본으로 사용합니다</block>
 </blocks>
