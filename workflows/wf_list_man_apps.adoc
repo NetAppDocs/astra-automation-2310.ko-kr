@@ -18,6 +18,7 @@ summary: 현재 Astra에서 관리하는 애플리케이션을 나열할 수 있
 
 
 
+[[1-list-the-applications]]
 === 응용 프로그램을 나열합니다
 
 다음과 같은 REST API 호출을 수행한다.
