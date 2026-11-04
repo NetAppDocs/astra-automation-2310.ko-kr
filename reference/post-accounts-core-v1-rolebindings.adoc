@@ -117,7 +117,7 @@ summary: 새 역할 바인딩 생성
 
 * 
 +
-= 모든 클라우드의 모든 클러스터에서 "dev"로 표시된 모든 네임스페이스와 그 아래의 모든 항목에 대한 액세스를 허용합니다: "roleConstraints": [ "namespaces:kubernetesLabels='http://dev.example.com/appname=dev["dev.example.com/appname=dev'.*"]" ]
+= 모든 클라우드의 모든 클러스터에서 "dev"로 레이블이 지정된 모든 네임스페이스와 그 하위의 모든 항목에 대한 액세스를 허용합니다. "roleConstraints": [ "namespaces:kubernetesLabels='dev.example.com/appname=dev'.*" ]
 
 * 
 +
@@ -260,7 +260,7 @@ Status: 201, Returns the newly created roleBinding resource in the JSON response
 
 * 
 +
-= 모든 클라우드의 모든 클러스터에서 "dev"로 표시된 모든 네임스페이스와 그 아래의 모든 항목에 대한 액세스를 허용합니다: "roleConstraints": [ "namespaces:kubernetesLabels='http://dev.example.com/appname=dev["dev.example.com/appname=dev'.*"]" ]
+= 모든 클라우드의 모든 클러스터에서 "dev"로 레이블이 지정된 모든 네임스페이스와 그 하위의 모든 항목에 대한 액세스를 허용합니다. "roleConstraints": [ "namespaces:kubernetesLabels='dev.example.com/appname=dev'.*" ]
 
 * 
 +
